@@ -5,8 +5,8 @@ from unittest import skip
 from assassin_game_csss.domain.player import Player
 
 
-@skip("Not Yet Implemented")
 class TestPlayer(TestCase):
+    @skip("Not Yet Implemented")
     def test_get_name(self):
         expected_name = "Test Name"
         player = Player(expected_name)
