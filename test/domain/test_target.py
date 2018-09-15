@@ -1,6 +1,9 @@
 from unittest import skip, TestCase
 
 from assassin_game_csss.domain.target import Target
+from assassin_game_csss.domain.item import Item
+from assassin_game_csss.domain.location import Location
+from assassin_game_csss.domain.player import Player
 from test.test_helper.anon import anon_item, anon_player, anon_location
 
 
@@ -31,3 +34,15 @@ class TestTarget(TestCase):
 
         # Assert
         self.assertRaises(action)
+
+    @skip("Not Yet Implemented")
+    def test__equals__shouldReturnTrue__whenConstructionIsIdentical(self):
+        # Arrange
+        target_a = Target(Player("Identical Player"), Item("Identical Item"), Location("Identical Location"))
+        target_b = Target(Player("Identical Player"), Item("Identical Item"), Location("Identical Location"))
+
+        # Act
+        actual = (target_a == target_b)
+
+        # Assert
+        self.assertTrue(actual)

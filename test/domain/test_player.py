@@ -63,3 +63,15 @@ class TestPlayer(TestCase):
         expected_name = "Test Name"
         player = Player(expected_name)
         self.assertEqual(expected_name, player.get_name())
+
+    @skip("Not Yet Implemented")
+    def test__equals__shouldReturnTrue__whenConstructionIsIdentical(self):
+        # Arrange
+        player_a = Player("Identical Name")
+        player_b = Player("Identical Name")
+
+        # Act
+        actual = (player_a == player_b)
+
+        # Assert
+        self.assertTrue(actual)

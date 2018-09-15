@@ -62,3 +62,14 @@ class TestLocation(TestCase):
         expected_name = "Test Name"
         location = Location(expected_name)
         self.assertEqual(expected_name, location.get_name())
+
+    @skip("Not Yet Implemented")
+    def test__equals__shouldReturnTrue__whenConstructionIsIdentical(self):
+        # Arrange
+        location_a = Location("Identical Name")
+        location_b = Location("Identical Name")
+
+        # Act
+        actual = (location_a == location_b)
+        # Assert
+        self.assertTrue(actual)
