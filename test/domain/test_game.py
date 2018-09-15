@@ -2,6 +2,7 @@ from unittest import TestCase, skip
 
 from assassin_game_csss.domain.game import Game
 from assassin_game_csss.domain.game_state import GameState
+from assassin_game_csss.domain.target import Target
 from test.test_helper.anon import anon_item, anon_location, anon_player, anon_game
 
 
@@ -122,3 +123,49 @@ class TestGame(TestCase):
         # Assert
         self.assertEqual(GameState.ENDED, actual)
 
+    @skip("Not Yet Implemented")
+    def test__get_score__shouldReturnZeroForEveryPlayer__whenGameJustCreated(self):
+        # Arrange
+        players = {anon_player(), anon_player(), anon_player()}
+        game = anon_game(players=players)
+
+        # Act
+        actual = [game.get_score(player) for player in players]
+
+        # Assert
+        for score in actual:
+            self.assertEqual(0, score)
+
+    @skip("Not Yet Implemented")
+    def test__get_score__shouldReturnOne__whenPlayerSuccessfullyKillsTarget(self):
+        # Arrange
+        first_player = anon_player()
+        target_player = anon_player()
+        target_item = anon_item()
+        target_location = anon_location()
+        game = anon_game(players={first_player, target_player}, items={target_item}, locations={target_location})
+        game.start()
+        game.confirm_kill(first_player, Target(target_player, target_item, target_location))
+
+        # Act
+        actual = game.get_score(first_player)
+
+        # Assert
+        self.assertEqual(1, actual)
+
+    @skip("Not Yet Implemented")
+    def test__get_score__shouldIncrement__whenPlayerKillsSuccessiveTargets(self):
+        # Arrange
+        player = anon_player()
+        game = anon_game(players={player, anon_player(), anon_player()})
+        game.start()
+        target = game.get_target(player)
+        game.confirm_kill(player, target)
+        target = game.get_target(player)
+        game.confirm_kill(player, target)
+
+        # Act
+        actual = game.get_score(player)
+
+        # Assert
+        self.assertEqual(2, actual)
