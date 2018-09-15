@@ -2,7 +2,7 @@ class Player:
     __name: str = None
 
     def __init__(self, name: str) -> None:
-        self.__name = name
+        raise NotImplementedError
 
     def get_name(self):
         raise NotImplementedError
