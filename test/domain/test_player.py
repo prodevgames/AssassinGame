@@ -4,11 +4,11 @@ from unittest import skip
 from assassin_game_csss.domain.player import Player
 
 
-# noinspection PyTypeChecker
 class TestPlayer(TestCase):
     @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedNone(self):
         # Act
+        # noinspection PyTypeChecker
         def action(): Player(None)
 
         # Assert
@@ -17,6 +17,7 @@ class TestPlayer(TestCase):
     @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedInt(self):
         # Act
+        # noinspection PyTypeChecker
         def action(): Player(3)
 
         # Assert
@@ -25,6 +26,7 @@ class TestPlayer(TestCase):
     @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedFloat(self):
         # Act
+        # noinspection PyTypeChecker
         def action(): Player(3.4)
 
         # Assert
@@ -33,6 +35,7 @@ class TestPlayer(TestCase):
     @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedDict(self):
         # Act
+        # noinspection PyTypeChecker
         def action(): Player(3)
 
         # Assert
@@ -41,6 +44,7 @@ class TestPlayer(TestCase):
     @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedList(self):
         # Act
+        # noinspection PyTypeChecker
         def action(): Player(3)
 
         # Assert

@@ -6,7 +6,6 @@ from assassin_game_csss.domain.target import Target
 from test.test_helper.anon import anon_item, anon_location, anon_player, anon_game
 
 
-# noinspection PyTypeChecker
 class TestGame(TestCase):
     @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenPlayersArgIsNotSetOfPlayers(self):
@@ -55,6 +54,7 @@ class TestGame(TestCase):
         locations = {anon_location(), anon_location(), anon_location()}
 
         # Act
+        # noinspection PyTypeChecker
         def action(): Game(players, items, locations, num_targets=None)
 
         # Assert
