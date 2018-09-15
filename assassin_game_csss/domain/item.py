@@ -1,0 +1,8 @@
+class Item:
+    __name: str = None
+
+    def __init__(self, name: str) -> None:
+        raise NotImplementedError
+
+    def get_name(self):
+        raise NotImplementedError
