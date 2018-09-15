@@ -14,30 +14,40 @@ class TestPlayer(TestCase):
 
     @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedNone(self):
+        # Act
         def action(): Player(None)
 
-        self.assertRaises(action)
+        # Assert
+        self.assertRaises(TypeError, action)
 
     @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedInt(self):
+        # Act
         def action_int(): Player(3)
 
-        self.assertRaises(action_int)
+        # Assert
+        self.assertRaises(TypeError, action_int)
 
     @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedFloat(self):
+        # Act
         def action_float(): Player(3.4)
 
-        self.assertRaises(action_float)
+        # Assert
+        self.assertRaises(TypeError, action_float)
 
     @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedDict(self):
+        # Act
         def action_dict(): Player(3)
 
-        self.assertRaises(action_dict)
+        # Assert
+        self.assertRaises(TypeError, action_dict)
 
     @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedList(self):
+        # Act
         def action_list(): Player(3)
 
-        self.assertRaises(action_list)
+        # Assert
+        self.assertRaises(TypeError, action_list)
