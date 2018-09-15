@@ -47,6 +47,14 @@ class TestPlayer(TestCase):
         self.assertRaises(TypeError, action_list)
 
     @skip("Not Yet Implemented")
+    def test_constructor__shouldThrowException_whenProvidedEmptyString(self):
+        # Act
+        def action(): Player("")
+
+        # Assert
+        self.assertRaises(ValueError, action)
+
+    @skip("Not Yet Implemented")
     def test__get_name__shouldReturnName(self):
         expected_name = "Test Name"
         player = Player(expected_name)
