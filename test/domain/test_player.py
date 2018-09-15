@@ -7,12 +7,6 @@ from assassin_game_csss.domain.player import Player
 # noinspection PyTypeChecker
 class TestPlayer(TestCase):
     @skip("Not Yet Implemented")
-    def test__get_name(self):
-        expected_name = "Test Name"
-        player = Player(expected_name)
-        self.assertEqual(expected_name, player.get_name())
-
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedNone(self):
         # Act
         def action(): Player(None)
@@ -51,3 +45,9 @@ class TestPlayer(TestCase):
 
         # Assert
         self.assertRaises(TypeError, action_list)
+
+    @skip("Not Yet Implemented")
+    def test__get_name__shouldReturnName(self):
+        expected_name = "Test Name"
+        player = Player(expected_name)
+        self.assertEqual(expected_name, player.get_name())
