@@ -9,5 +9,14 @@ class Game:
     __targets: dict = None
 
     def __init__(self, players: set, items: set, locations: set, num_targets: int = 1):
-        pass
+        raise NotImplementedError
+
+    def get_status(self):
+        raise NotImplementedError
+
+    def start(self):
+        raise NotImplementedError
+
+    def end(self):
+        raise NotImplementedError
 

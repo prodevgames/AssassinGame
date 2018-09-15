@@ -1,6 +1,7 @@
 from unittest import TestCase, skip
 
 from assassin_game_csss.domain.game import Game
+from assassin_game_csss.domain.game_state import GameState
 from test.test_helper.anon import anon_item, anon_location, anon_player
 
 
@@ -85,4 +86,48 @@ class TestGame(TestCase):
         # Assert
         self.assertRaises(NotImplementedError, action)
 
+    @skip("Not Yet Implemented")
+    def test__get_status__shouldReturnCreated__whenGameJustConstructed(self):
+        # Arrange
+        players = {anon_player(), anon_player(), anon_player()}
+        items = {anon_item(), anon_item(), anon_item()}
+        locations = {anon_location(), anon_location(), anon_location()}
+        game = Game(players, items, locations)
+
+        # Act
+        actual = game.get_status()
+
+        # Assert
+        self.assertEqual(GameState.CREATED, actual)
+
+    @skip("Not Yet Implemented")
+    def test__get_status__shouldReturnStarted__whenGameHasBeenStarted(self):
+        # Arrange
+        players = {anon_player(), anon_player(), anon_player()}
+        items = {anon_item(), anon_item(), anon_item()}
+        locations = {anon_location(), anon_location(), anon_location()}
+        game = Game(players, items, locations)
+        game.start()
+
+        # Act
+        actual = game.get_status()
+
+        # Assert
+        self.assertEqual(GameState.STARTED, actual)
+
+    @skip("Not Yet Implemented")
+    def test__get_status__shouldReturnEnded__whenGameHasBeenEnded(self):
+        # Arrange
+        players = {anon_player(), anon_player(), anon_player()}
+        items = {anon_item(), anon_item(), anon_item()}
+        locations = {anon_location(), anon_location(), anon_location()}
+        game = Game(players, items, locations)
+        game.start()
+        game.end()
+
+        # Act
+        actual = game.get_status()
+
+        # Assert
+        self.assertEqual(GameState.ENDED, actual)
 
