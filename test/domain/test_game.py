@@ -2,7 +2,7 @@ from unittest import TestCase, skip
 
 from assassin_game_csss.domain.game import Game
 from assassin_game_csss.domain.game_state import GameState
-from test.test_helper.anon import anon_item, anon_location, anon_player
+from test.test_helper.anon import anon_item, anon_location, anon_player, anon_game
 
 
 # noinspection PyTypeChecker
@@ -89,10 +89,7 @@ class TestGame(TestCase):
     @skip("Not Yet Implemented")
     def test__get_status__shouldReturnCreated__whenGameJustConstructed(self):
         # Arrange
-        players = {anon_player(), anon_player(), anon_player()}
-        items = {anon_item(), anon_item(), anon_item()}
-        locations = {anon_location(), anon_location(), anon_location()}
-        game = Game(players, items, locations)
+        game = anon_game()
 
         # Act
         actual = game.get_status()
@@ -103,10 +100,7 @@ class TestGame(TestCase):
     @skip("Not Yet Implemented")
     def test__get_status__shouldReturnStarted__whenGameHasBeenStarted(self):
         # Arrange
-        players = {anon_player(), anon_player(), anon_player()}
-        items = {anon_item(), anon_item(), anon_item()}
-        locations = {anon_location(), anon_location(), anon_location()}
-        game = Game(players, items, locations)
+        game = anon_game()
         game.start()
 
         # Act
@@ -118,10 +112,7 @@ class TestGame(TestCase):
     @skip("Not Yet Implemented")
     def test__get_status__shouldReturnEnded__whenGameHasBeenEnded(self):
         # Arrange
-        players = {anon_player(), anon_player(), anon_player()}
-        items = {anon_item(), anon_item(), anon_item()}
-        locations = {anon_location(), anon_location(), anon_location()}
-        game = Game(players, items, locations)
+        game = anon_game()
         game.start()
         game.end()
 
