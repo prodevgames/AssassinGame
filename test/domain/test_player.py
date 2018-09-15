@@ -47,7 +47,7 @@ class TestPlayer(TestCase):
         self.assertRaises(TypeError, action)
 
     @skip("Not Yet Implemented")
-    def test_constructor__shouldThrowException_whenProvidedEmptyString(self):
+    def test__constructor__shouldThrowException__whenProvidedEmptyString(self):
         # Act
         def action(): Player("")
 
