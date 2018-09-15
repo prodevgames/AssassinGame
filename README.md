@@ -3,4 +3,4 @@
 ## Authors
 
 - Garrett Hansen, ***REMOVED***, ***REMOVED***
-- Jarod Pas, <nsid>, <student number>
+- Jarod Pas, ***REMOVED***, ***REMOVED***
