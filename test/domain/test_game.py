@@ -127,6 +127,48 @@ class TestGame(TestCase):
         self.assertRaises(NotImplementedError, action)
 
     @skip("Not Yet Implemented")
+    def test__constructor__shouldGenerateTargetsForEachPlayerFromProvidedOptions__whenGameJustCreated(self):
+        # Arrange
+        player1 = anon_player()
+        player2 = anon_player()
+        items = {anon_item(), anon_item(), anon_item()}
+        locations = {anon_location(), anon_location(), anon_location()}
+
+        # Act
+        game = Game({player1, player2}, items, locations)
+
+        # Assert
+        player1_target = game.get_target(player1)
+        player2_target = game.get_target(player2)
+        self.assertEqual(player2, player1_target.get_player())
+        self.assertEqual(player1, player2_target.get_player())
+        self.assertIn(player1_target.get_item(), items)
+        self.assertIn(player2_target.get_item(), items)
+        self.assertIn(player2_target.get_location(), locations)
+        self.assertIn(player2_target.get_location(), locations)
+
+    @skip("Not Yet Implemented")
+    def test__constructor__shouldGenerateSingleCompleteLoopOfPlayerTargets__whenNumTargetsArgIsOne(self):
+        # Arrange
+        initial_player = anon_player()
+        players = {initial_player, anon_player(), anon_player(), anon_player(), anon_player(), anon_player()}
+        items = {anon_item(), anon_item(), anon_item()}
+        locations = {anon_location(), anon_location(), anon_location()}
+
+        # Act
+        game = Game(players, items, locations, num_targets=1)
+
+        # Assert
+        current_player = initial_player
+        seen_players = set()
+        for index in range(0, len(players)):
+            next_player = game.get_target(current_player).get_player()
+            self.assertNotIn(next_player, seen_players)
+            seen_players.add(next_player)
+            current_player = next_player
+        self.assertEqual(current_player, initial_player)
+
+    @skip("Not Yet Implemented")
     def test__get_status__shouldReturnCreated__whenGameJustConstructed(self):
         # Arrange
         game = anon_game()
