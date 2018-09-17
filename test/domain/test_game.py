@@ -240,7 +240,7 @@ class TestGame(TestCase):
         target_location = anon_location()
         game = anon_game(players={first_player, target_player}, items={target_item}, locations={target_location})
         game.start()
-        game.confirm_kill(first_player, Target(target_player, target_item, target_location))
+        game.mark_kill(first_player, Target(target_player, target_item, target_location))
 
         # Act
         actual = game.get_score(first_player)
@@ -255,9 +255,9 @@ class TestGame(TestCase):
         game = anon_game(players={player, anon_player(), anon_player()})
         game.start()
         target = game.get_target(player)
-        game.confirm_kill(player, target)
+        game.mark_kill(player, target)
         target = game.get_target(player)
-        game.confirm_kill(player, target)
+        game.mark_kill(player, target)
 
         # Act
         actual = game.get_score(player)

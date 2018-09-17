@@ -29,7 +29,7 @@ class Game:
     def end(self):
         raise NotImplementedError
 
-    def confirm_kill(self, player: Player, target: Target) -> bool:
+    def mark_kill(self, player: Player, target: Target) -> bool:
         raise NotImplementedError
 
     def get_game_id(self):
