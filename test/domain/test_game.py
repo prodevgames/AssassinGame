@@ -238,7 +238,7 @@ class TestGame(TestCase):
         target_player = anon_player()
         target_item = anon_item()
         target_location = anon_location()
-        game = anon_game(players={first_player, target_player}, items={target_item}, locations={target_location})
+        game = Game({first_player, target_player}, {target_item}, {target_location})
         game.start()
         game.mark_kill(first_player, Target(target_player, target_item, target_location))
 
