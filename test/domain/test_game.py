@@ -299,6 +299,78 @@ class TestGame(TestCase):
         self.assertFalse(actual)
 
     @skip("Not Yet Implemented")
+    def test__mark_kill__shouldReturnTrue__whenTargetIsCorrectAndGameIsStarted(self):
+        # Arrange
+        player1 = anon_player()
+        player2 = anon_player()
+        location = anon_location()
+        item = anon_item()
+        game = Game({player1, player2}, {item}, {location})
+        game.start()
+
+        # Act
+        actual = game.mark_kill(player1, Target(player2, item, location))
+
+        # Assert
+        self.assertTrue(actual)
+
+    @skip("Not Yet Implemented")
+    def test__mark_kill__shouldReturnFalse__whenTargetIsIncorrectAndGameIsStarted(self):
+        # Arrange
+        player1 = anon_player()
+        player2 = anon_player()
+        location = anon_location()
+        item1 = anon_item()
+        item2 = anon_item()
+        game = Game({player1, player2}, {item1, item2}, {location})
+        target = game.get_target(player1)
+        other_item = item1 if target.get_item() != item1 else item2
+        game.start()
+
+        # Act
+        actual = game.mark_kill(player1, Target(player2, other_item, location))
+
+        # Assert
+        self.assertFalse(actual)
+
+    @skip("Not Yet Implemented")
+    def test__mark_kill__shouldReturnFalse__whenTargetIsCorrectButGameHasEnded(self):
+        # Arrange
+        player1 = anon_player()
+        player2 = anon_player()
+        location = anon_location()
+        item = anon_item()
+        game = Game({player1, player2}, {item}, {location})
+        game.start()
+        game.end()
+
+        # Act
+        actual = game.mark_kill(player1, Target(player2, item, location))
+
+        # Assert
+        self.assertFalse(actual)
+
+    @skip("Not Yet Implemented")
+    def test__mark_kill__shouldReturnFalse__whenTargetIsIncorrectGameHasEnded(self):
+        # Arrange
+        player1 = anon_player()
+        player2 = anon_player()
+        location = anon_location()
+        item1 = anon_item()
+        item2 = anon_item()
+        game = Game({player1, player2}, {item1, item2}, {location})
+        target = game.get_target(player1)
+        other_item = item1 if target.get_item() != item1 else item2
+        game.start()
+        game.end()
+
+        # Act
+        actual = game.mark_kill(player1, Target(player2, other_item, location))
+
+        # Assert
+        self.assertFalse(actual)
+
+    @skip("Not Yet Implemented")
     def test__equals__shouldReturnFalse__whenGamesCreatedWithIdenticalOptions(self):
         # Arrange
         players = {anon_player(), anon_player(), anon_player()}
