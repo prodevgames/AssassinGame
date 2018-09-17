@@ -312,4 +312,3 @@ class TestGame(TestCase):
 
         # Assert
         self.assertFalse(actual)
-
