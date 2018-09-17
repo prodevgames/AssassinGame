@@ -264,3 +264,19 @@ class TestGame(TestCase):
 
         # Assert
         self.assertEqual(2, actual)
+
+    @skip("Not Yet Implemented")
+    def test__equals__shouldReturnFalse__whenGamesCreatedWithIdenticalOptions(self):
+        # Arrange
+        players = {anon_player(), anon_player(), anon_player()}
+        items = {anon_item(), anon_item(), anon_item()}
+        locations = {anon_location(), anon_location(), anon_location()}
+        game1 = Game(players, items, locations)
+        game2 = Game(players, items, locations)
+
+        # Act
+        actual = (game1 == game2)
+
+        # Assert
+        self.assertFalse(actual)
+
