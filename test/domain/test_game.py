@@ -47,6 +47,45 @@ class TestGame(TestCase):
         self.assertRaises(TypeError, action)
 
     @skip("Not Yet Implemented")
+    def test__constructor__shouldThrowException__whenLessThanTwoPlayersProvided(self):
+        # Arrange
+        players = {anon_player()}
+        items = {anon_item(), anon_item(), anon_item()}
+        locations = {anon_location(), anon_location(), anon_location()}
+
+        # Act
+        def action(): Game(players, items, locations)
+
+        # Assert
+        self.assertRaises(ValueError, action)
+
+    @skip("Not Yet Implemented")
+    def test__constructor__shouldThrowException__whenLessThanOneItemProvided(self):
+        # Arrange
+        players = {anon_player(), anon_player(), anon_player()}
+        items = set()
+        locations = {anon_location(), anon_location(), anon_location()}
+
+        # Act
+        def action(): Game(players, items, locations)
+
+        # Assert
+        self.assertRaises(ValueError, action)
+
+    @skip("Not Yet Implemented")
+    def test__constructor__shouldThrowException__whenLessThanOneLocationProvided(self):
+        # Arrange
+        players = {anon_player(), anon_player(), anon_player()}
+        items = {anon_item(), anon_item(), anon_item()}
+        locations = set()
+
+        # Act
+        def action(): Game(players, items, locations)
+
+        # Assert
+        self.assertRaises(ValueError, action)
+
+    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenNumTargetsArgIsNotAnInt(self):
         # Arrange
         players = {anon_player(), anon_player(), anon_player()}
