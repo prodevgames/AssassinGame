@@ -169,6 +169,20 @@ class TestGame(TestCase):
         self.assertEqual(current_player, initial_player)
 
     @skip("Not Yet Implemented")
+    def test__constructor__shouldGenerateUniqueIdentifiers__whenGameInfoIsOtherwiseIdentical(self):
+        # Arrange
+        players = {anon_player(), anon_player(), anon_player()}
+        items = {anon_item(), anon_item(), anon_item()}
+        locations = {anon_location(), anon_location(), anon_location()}
+
+        # Act
+        game1 = Game(players, items, locations)
+        game2 = Game(players, items, locations)
+
+        # Assert
+        self.assertNotEqual(game1.get_game_id(), game2.get_game_id())
+
+    @skip("Not Yet Implemented")
     def test__get_status__shouldReturnCreated__whenGameJustConstructed(self):
         # Arrange
         game = anon_game()

@@ -31,3 +31,6 @@ class Game:
 
     def confirm_kill(self, player: Player, target: Target) -> bool:
         raise NotImplementedError
+
+    def get_game_id(self):
+        raise NotImplementedError
