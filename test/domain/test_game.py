@@ -264,6 +264,39 @@ class TestGame(TestCase):
 
         # Assert
         self.assertEqual(2, actual)
+        
+    @skip("Not Yet Implemented")
+    def test__mark_kill__shouldReturnFalse__whenTargetIsCorrectButGameIsNotStarted(self):
+        # Arrange
+        player1 = anon_player()
+        player2 = anon_player()
+        location = anon_location()
+        item = anon_item()
+        game = Game({player1, player2}, {item}, {location})
+
+        # Act
+        actual = game.mark_kill(player1, Target(player2, item, location))
+
+        # Assert
+        self.assertFalse(actual)
+
+    @skip("Not Yet Implemented")
+    def test__mark_kill__shouldReturnFalse__whenTargetIsIncorrectAndGameIsNotStarted(self):
+        # Arrange
+        player1 = anon_player()
+        player2 = anon_player()
+        location = anon_location()
+        item1 = anon_item()
+        item2 = anon_item()
+        game = Game({player1, player2}, {item1, item2}, {location})
+        target = game.get_target(player1)
+        other_item = item1 if target.get_item() != item1 else item2
+
+        # Act
+        actual = game.mark_kill(player1, Target(player2, other_item, location))
+
+        # Assert
+        self.assertFalse(actual)
 
     @skip("Not Yet Implemented")
     def test__equals__shouldReturnFalse__whenGamesCreatedWithIdenticalOptions(self):
