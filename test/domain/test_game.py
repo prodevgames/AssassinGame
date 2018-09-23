@@ -339,6 +339,18 @@ class TestGame(TestCase):
         self.assertEqual(GameState.ENDED, game.get_status())
 
     @skip("Not Yet Implemented")
+    def test__mark_kill__shouldThrowException__whenTargetPlayerIsKillingPlayer(self):
+        # Arrange
+        player = anon_player()
+        game = anon_game(players={player, anon_player(), anon_player()})
+
+        # Act
+        def action(): game.mark_kill(player, Target(player, anon_item(), anon_location()))
+
+        # Assert
+        self.assertRaises(ValueError, action)
+
+    @skip("Not Yet Implemented")
     def test__mark_kill__shouldReturnFalse__whenTargetIsCorrectButGameIsNotStarted(self):
         # Arrange
         player1 = anon_player()
@@ -553,6 +565,62 @@ class TestGame(TestCase):
         # Assert
         p1_actual_target = game.get_target(player1)
         self.assertEqual(expected_target, p1_actual_target)
+
+    @skip("Not Yet Implemented")
+    def test__mark_kill__shouldGiveKilledPlayersTargetToKiller__whenKilledPlayerHasTargetThatIsNotKiller(self):
+        # Arrange
+        player = anon_player()
+        game = anon_game(players={player, anon_player(), anon_player()})
+        target = game.get_target(player)
+        expected_next_target = game.get_target(target.get_player())
+
+        # Act
+        game.mark_kill(player, target)
+
+        # Assert
+        self.assertEqual(expected_next_target, game.get_target(player))
+
+    @skip("Not Yet Implemented")
+    def test__mark_kill__shouldSetTargetToNone__whenKilledPlayersTargetIsTheKiller(self):
+        # Arrange
+        player = anon_player()
+        game = anon_game(players={player, anon_player()})
+        target = game.get_target(player)
+
+        # Act
+        game.mark_kill(player, target)
+
+        # Assert
+        self.assertEqual(None, game.get_target(player))
+
+    @skip("Not Yet Implemented")
+    def test__mark_kill__shouldEndGame__whenAllPlayersButLastHaveBeenKilled(self):
+        # Arrange
+        player = anon_player()
+        game = anon_game(players={player, anon_player(), anon_player()})
+        first_target = game.get_target(player)
+        game.mark_kill(player, first_target)
+        final_target = game.get_target(player)
+
+        # Act
+        game.mark_kill(player, final_target)
+
+        # Assert
+        self.assertEqual(GameState.ENDED, game.get_status())
+
+    @skip("Not Yet Implemented")
+    def test__mark_kill__shouldSetTargetOfKilledPlayerToNone__whenPlayerSuccessfullyKilled(self):
+        # Arrange
+        player = anon_player()
+        game = anon_game(players={player, anon_player(), anon_player()})
+        target = game.get_target(player)
+        killed_player = target.get_player()
+
+        # Act
+        game.mark_kill(player, target)
+
+        # Assert
+        self.assertEqual(None, game.get_target(killed_player))
 
     @skip("Not Yet Implemented")
     def test__equals__shouldReturnFalse__whenGamesCreatedWithIdenticalOptions(self):
