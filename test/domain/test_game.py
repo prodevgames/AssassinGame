@@ -180,7 +180,7 @@ class TestGame(TestCase):
         game2 = Game(players, items, locations)
 
         # Assert
-        self.assertNotEqual(game1.get_game_id(), game2.get_game_id())
+        self.assertNotEqual(game1.get_id(), game2.get_id())
 
     @skip("Not Yet Implemented")
     def test__get_status__shouldReturnCreated__whenGameJustConstructed(self):

@@ -15,6 +15,9 @@ class Game:
     def __init__(self, players: set, items: set, locations: set, num_targets: int = 1) -> None:
         raise NotImplementedError
 
+    def get_id(self) -> UUID:
+        raise NotImplementedError
+
     def get_status(self) -> GameState:
         raise NotImplementedError
 
@@ -31,7 +34,4 @@ class Game:
         raise NotImplementedError
 
     def mark_kill(self, player: Player, target: Target) -> bool:
-        raise NotImplementedError
-
-    def get_game_id(self) -> UUID:
         raise NotImplementedError
