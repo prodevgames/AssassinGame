@@ -287,7 +287,46 @@ class TestGame(TestCase):
         # Assert
         self.assertRaises(ValueError, action)
     
-    # TODO GH 2018-Sep-22: add tests for get_target 
+    @skip("Not Yet Implemented")
+    def test__get_target__shouldReturnTarget__whenGameCreated(self):
+        # Arrange
+        player = anon_player()
+        game = anon_game(players={player, anon_player(), anon_player()})
+
+        # Act
+        actual = game.get_target(player)
+
+        # Assert
+        self.assertIsNotNone(actual)
+
+    @skip("Not Yet Implemented")
+    def test__get_target__shouldReturnSameTarget__whenCalledAfterGameStarted(self):
+        # Arrange
+        player = anon_player()
+        game = anon_game(players={player, anon_player(), anon_player()})
+        expected_target = game.get_target(player)
+        game.start()
+
+        # Act
+        actual = game.get_target(player)
+
+        # Assert
+        self.assertEqual(expected_target, actual)
+
+    @skip("Not Yet Implemented")
+    def test__get_target__shouldReturnSameTarget__whenCalledAfterGameEnded(self):
+        # Arrange
+        player = anon_player()
+        game = anon_game(players={player, anon_player(), anon_player()})
+        game.start()
+        expected_target = game.get_target(player)
+        game.end()
+
+        # Act
+        actual = game.get_target(player)
+
+        # Assert
+        self.assertEqual(expected_target, actual)
 
     @skip("Not Yet Implemented")
     def test__start__shouldThrowException__whenCalledAfterGameAlreadyStarted(self):
