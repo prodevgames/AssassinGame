@@ -301,7 +301,43 @@ class TestGame(TestCase):
         # Assert
         actual = game.get_status()
         self.assertEqual(GameState.STARTED, actual)
-        
+
+    @skip("Not Yet Implemented")
+    def test__end__shouldThrowException__whenCalledOnGameInCreatedState(self):
+        # Arrange
+        game = anon_game()
+
+        # Act
+        def action(): game.end()
+
+        # Assert
+        self.assertRaises(RuntimeError, action)
+
+    @skip("Not Yet Implemented")
+    def test__end__shouldThrowException__whenCalledAfterGameEnded(self):
+        # Arrange
+        game = anon_game()
+        game.start()
+        game.end()
+
+        # Act
+        def action(): game.end()
+
+        # Assert
+        self.assertRaises(RuntimeError, action)
+
+    @skip("Not Yet Implemented")
+    def test__end__shouldModifyStatusToEnded__whenCalledOnGameInStartedState(self):
+        # Arrange
+        game = anon_game()
+        game.start()
+
+        # Act
+        game.end()
+
+        # Assert
+        self.assertEqual(GameState.ENDED, game.get_status())
+
     @skip("Not Yet Implemented")
     def test__mark_kill__shouldReturnFalse__whenTargetIsCorrectButGameIsNotStarted(self):
         # Arrange
