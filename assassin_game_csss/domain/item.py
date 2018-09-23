@@ -4,5 +4,5 @@ class Item:
     def __init__(self, name: str) -> None:
         raise NotImplementedError
 
-    def get_name(self):
+    def get_name(self) -> str:
         raise NotImplementedError
