@@ -219,6 +219,17 @@ class TestGame(TestCase):
         self.assertEqual(GameState.ENDED, actual)
 
     @skip("Not Yet Implemented")
+    def test__get_score__shouldThrowException__whenPlayerNotInGame(self):
+        # Arrange
+        game = anon_game()
+
+        # Act
+        def action(): game.get_score(anon_player())
+
+        # Assert
+        self.assertRaises(ValueError, action)
+
+    @skip("Not Yet Implemented")
     def test__get_score__shouldReturnZeroForEveryPlayer__whenGameJustCreated(self):
         # Arrange
         players = {anon_player(), anon_player(), anon_player()}
@@ -264,6 +275,19 @@ class TestGame(TestCase):
 
         # Assert
         self.assertEqual(2, actual)
+    
+    @skip("Not Yet Implemented")
+    def test__get_target__shouldThrowException__whenPlayerNotInGame(self):
+        # Arrange
+        game = anon_game()
+
+        # Act
+        def action(): game.get_target(anon_player())
+
+        # Assert
+        self.assertRaises(ValueError, action)
+    
+    # TODO GH 2018-Sep-22: add tests for get_target 
 
     @skip("Not Yet Implemented")
     def test__start__shouldThrowException__whenCalledAfterGameAlreadyStarted(self):
@@ -337,6 +361,93 @@ class TestGame(TestCase):
 
         # Assert
         self.assertEqual(GameState.ENDED, game.get_status())
+    
+    @skip("Not Yet Implemented")
+    def test__mark_kill__shouldThrowException__whenPlayerNotInGameAndGameCreated(self):
+        # Arrange
+        player = anon_player()
+        game = anon_game(players={player, anon_player()})
+        valid_target = game.get_target(player)
+
+        # Act
+        def action(): game.mark_kill(anon_player(), valid_target)
+
+        # Assert
+        self.assertRaises(ValueError, action)
+
+    @skip("Not Yet Implemented")
+    def test__mark_kill__shouldThrowException__whenPlayerNotInGameAndGameStarted(self):
+        # Arrange
+        player = anon_player()
+        game = anon_game(players={player, anon_player()})
+        valid_target = game.get_target(player)
+        game.start()
+
+        # Act
+        def action(): game.mark_kill(anon_player(), valid_target)
+
+        # Assert
+        self.assertRaises(ValueError, action)
+
+    @skip("Not Yet Implemented")
+    def test__mark_kill__shouldThrowException__whenPlayerNotInGameAndGameEnded(self):
+        # Arrange
+        player = anon_player()
+        game = anon_game(players={player, anon_player()})
+        valid_target = game.get_target(player)
+        game.start()
+        game.end()
+
+        # Act
+        def action(): game.mark_kill(anon_player(), valid_target)
+
+        # Assert
+        self.assertRaises(ValueError, action)
+
+    @skip("Not Yet Implemented")
+    def test__mark_kill__shouldThrowException__whenTargetPlayerNotInGameAndGameCreated(self):
+        # Arrange
+        player = anon_player()
+        game = anon_game(players={player, anon_player()})
+        valid_target = game.get_target(player)
+        invalid_target = Target(anon_player(), valid_target.get_item(), valid_target.get_location())
+
+        # Act
+        def action(): game.mark_kill(player, invalid_target)
+
+        # Assert
+        self.assertRaises(ValueError, action)
+
+    @skip("Not Yet Implemented")
+    def test__mark_kill__shouldThrowException__whenTargetPlayerNotInGameAndGameStarted(self):
+        # Arrange
+        player = anon_player()
+        game = anon_game(players={player, anon_player()})
+        valid_target = game.get_target(player)
+        invalid_target = Target(anon_player(), valid_target.get_item(), valid_target.get_location())
+        game.start()
+
+        # Act
+        def action(): game.mark_kill(player, invalid_target)
+
+        # Assert
+        self.assertRaises(ValueError, action)
+
+    @skip("Not Yet Implemented")
+    def test__mark_kill__shouldThrowException__whenTargetPlayerNotInGameAndGameEnded(self):
+        # Arrange
+        player = anon_player()
+        game = anon_game(players={player, anon_player()})
+        valid_target = game.get_target(player)
+        invalid_target = Target(anon_player(), valid_target.get_item(), valid_target.get_location())
+        game.start()
+        game.end()
+
+        # Act
+        def action(): game.mark_kill(player, invalid_target)
+
+        # Assert
+        self.assertRaises(ValueError, action)
 
     @skip("Not Yet Implemented")
     def test__mark_kill__shouldThrowException__whenTargetPlayerIsKillingPlayer(self):
