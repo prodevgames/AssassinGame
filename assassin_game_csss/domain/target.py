@@ -11,11 +11,11 @@ class Target:
     def __init__(self, player: Player, item: Item, location: Location):
         raise NotImplementedError
 
-    def get_player(self):
+    def get_player(self) -> Player:
         raise NotImplementedError
 
-    def get_item(self):
+    def get_item(self) -> Item:
         raise NotImplementedError
 
-    def get_location(self):
+    def get_location(self) -> Location:
         raise NotImplementedError
