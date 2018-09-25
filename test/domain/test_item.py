@@ -49,7 +49,6 @@ class TestItem(TestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedEmptyString(self):
         # Act
         def action(): Item("")
