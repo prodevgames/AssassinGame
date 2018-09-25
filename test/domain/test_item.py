@@ -4,7 +4,6 @@ from assassin_game_csss.domain.item import Item
 
 
 class TestItem(TestCase):
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedNone(self):
         # Act
         # noinspection PyTypeChecker
