@@ -12,7 +12,6 @@ class TestItem(TestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedInt(self):
         # Act
         # noinspection PyTypeChecker
@@ -21,7 +20,6 @@ class TestItem(TestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedFloat(self):
         # Act
         # noinspection PyTypeChecker
@@ -30,7 +28,6 @@ class TestItem(TestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedDict(self):
         # Act
         # noinspection PyTypeChecker
@@ -39,7 +36,6 @@ class TestItem(TestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedList(self):
         # Act
         # noinspection PyTypeChecker
