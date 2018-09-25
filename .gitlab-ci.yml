@@ -3,4 +3,4 @@ before_script:
 
 tests:
   script:
-    - python -m unittest
+    - python -m unittest --verbose
