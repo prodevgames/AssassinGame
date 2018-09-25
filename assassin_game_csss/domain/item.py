@@ -3,7 +3,7 @@ class Item:
 
     def __init__(self, name: str) -> None:
         if type(name) is not str:
-            raise TypeError("sdklgjhasd")
+            raise TypeError("Argument 'name' must be an instance of 'str'")
         if len(name) == 0:
             raise ValueError('name must be at least 1 character')
         raise NotImplementedError
