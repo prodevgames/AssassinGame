@@ -1,4 +1,4 @@
-from unittest import TestCase
+from unittest import TestCase, skip
 
 from assassin_game_csss.domain.player import Player
 
@@ -83,3 +83,29 @@ class TestPlayer(TestCase):
 
         # Assert
         self.assertTrue(actual)
+
+    @skip("Not Yet Implemented")
+    def test__equals__shouldConsiderInstancesIdentical__whenConstructionIsIdentical(self):
+        # Arrange
+        player_a = Player("Identical Name")
+        player_b = Player("Identical Name")
+        players = {player_a}
+
+        # Act
+        players.add(player_b)
+
+        # Assert
+        self.assertEqual(1, players)
+
+    @skip("Not Yet Implemented")
+    def test__equals__shouldConsiderInstancesDifferent__whenConstructionIsDifferent(self):
+        # Arrange
+        player_a = Player("Not Player B")
+        player_b = Player("Not Player A")
+        players = {player_a}
+
+        # Act
+        players.add(player_b)
+
+        # Assert
+        self.assertEqual(2, players)
