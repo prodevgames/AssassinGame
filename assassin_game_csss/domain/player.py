@@ -10,3 +10,9 @@ class Player:
 
     def get_name(self) -> str:
         return self.__name
+
+    def __eq__(self, other):
+        if not isinstance(other, Player):
+            return False
+
+        return self.__name == other.__name
