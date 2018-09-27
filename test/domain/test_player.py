@@ -54,9 +54,15 @@ class TestPlayer(TestCase):
 
     # @skip("Not Yet Implemented")
     def test__get_name__shouldReturnName(self):
+        # Arrange
         expected_name = "Test Name"
         player = Player(expected_name)
-        self.assertEqual(expected_name, player.get_name())
+
+        # Act
+        actual = player.get_name()
+
+        # Assert
+        self.assertEqual(expected_name, actual)
 
     @skip("Not Yet Implemented")
     def test__equals__shouldReturnTrue__whenConstructionIsIdentical(self):
