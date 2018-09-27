@@ -68,3 +68,41 @@ class TestItem(TestCase):
 
         # Assert
         self.assertTrue(actual)
+
+    @skip("Not Yet Implemented")
+    def test__equals__shouldReturnFalse__whenConstructionIsDifferent(self):
+        # Arrange
+        item_a = Item("Not Item B")
+        item_b = Item("Not Item A")
+
+        # Act
+        actual = (item_a != item_b)
+
+        # Assert
+        self.assertTrue(actual)
+
+    @skip("Not Yet Implemented")
+    def test__equals__shouldConsiderInstancesIdentical__whenConstructionIsIdentical(self):
+        # Arrange
+        item_a = Item("Identical Name")
+        item_b = Item("Identical Name")
+        items = {item_a}
+
+        # Act
+        items.add(item_b)
+
+        # Assert
+        self.assertEqual(1, items)
+
+    @skip("Not Yet Implemented")
+    def test__equals__shouldConsiderInstancesDifferent__whenConstructionIsDifferent(self):
+        # Arrange
+        item_a = Item("Not Item B")
+        item_b = Item("Not Item A")
+        items = {item_a}
+
+        # Act
+        items.add(item_b)
+
+        # Assert
+        self.assertEqual(2, items)
