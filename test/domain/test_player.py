@@ -5,7 +5,6 @@ from assassin_game_csss.domain.player import Player
 
 
 class TestPlayer(TestCase):
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedNone(self):
         # Act
         # noinspection PyTypeChecker
@@ -14,7 +13,6 @@ class TestPlayer(TestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedInt(self):
         # Act
         # noinspection PyTypeChecker
@@ -23,7 +21,6 @@ class TestPlayer(TestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedFloat(self):
         # Act
         # noinspection PyTypeChecker
@@ -32,7 +29,6 @@ class TestPlayer(TestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedDict(self):
         # Act
         # noinspection PyTypeChecker
@@ -41,7 +37,6 @@ class TestPlayer(TestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedList(self):
         # Act
         # noinspection PyTypeChecker
@@ -50,7 +45,6 @@ class TestPlayer(TestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedEmptyString(self):
         # Act
         def action(): Player("")
@@ -58,7 +52,7 @@ class TestPlayer(TestCase):
         # Assert
         self.assertRaises(ValueError, action)
 
-    @skip("Not Yet Implemented")
+    # @skip("Not Yet Implemented")
     def test__get_name__shouldReturnName(self):
         expected_name = "Test Name"
         player = Player(expected_name)
