@@ -51,7 +51,6 @@ class TestItem(TestCase):
         # Assert
         self.assertRaises(ValueError, action)
 
-    @skip("Not Yet Implemented")
     def test__get_name__shouldReturnName(self):
         # Arrange
         expected_name = "Test Name"

@@ -6,7 +6,7 @@ class Item:
             raise TypeError("Argument name must be of type str")
         if len(name) == 0:
             raise ValueError("Argument name must be at least 1 character")
-        raise NotImplementedError
+        self.__name = name
 
     def get_name(self) -> str:
-        raise NotImplementedError
+        return self.__name
