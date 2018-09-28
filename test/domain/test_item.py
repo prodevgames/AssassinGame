@@ -82,10 +82,10 @@ class TestItem(TestCase):
         item_b = Item("Not Item A")
 
         # Act
-        actual = (item_a != item_b)
+        actual = (item_a == item_b)
 
         # Assert
-        self.assertTrue(actual)
+        self.assertFalse(actual)
 
     @skip("Not Yet Implemented")
     def test__equals__shouldConsiderInstancesIdentical__whenConstructionIsIdentical(self):
@@ -98,7 +98,7 @@ class TestItem(TestCase):
         items.add(item_b)
 
         # Assert
-        self.assertEqual(1, items)
+        self.assertEqual(1, len(items))
 
     @skip("Not Yet Implemented")
     def test__equals__shouldConsiderInstancesDifferent__whenConstructionIsDifferent(self):
@@ -111,4 +111,4 @@ class TestItem(TestCase):
         items.add(item_b)
 
         # Assert
-        self.assertEqual(2, items)
+        self.assertEqual(2, len(items))
