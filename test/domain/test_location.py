@@ -72,3 +72,40 @@ class TestLocation(TestCase):
         actual = (location_a == location_b)
         # Assert
         self.assertTrue(actual)
+
+    @skip("Not Yet Implemented")
+    def test__equals__shouldReturnFalse__whenConstructionIsDifferent(self):
+        # Arrange
+        location_a = Location("Not Location B")
+        location_b = Location("Not Location A")
+
+        # Act
+        actual = (location_a == location_b)
+        # Assert
+        self.assertFalse(actual)
+
+    @skip("Not Yet Implemented")
+    def test__equals__shouldConsiderInstancesIdentical__whenConstructionIsIdentical(self):
+        # Arrange
+        location_a = Location("Identical Name")
+        location_b = Location("Identical Name")
+        locations = {location_a}
+
+        # Act
+        locations.add(location_b)
+
+        # Assert
+        self.assertEqual(1, len(locations))
+
+    @skip("Not Yet Implemented")
+    def test__equals__shouldConsiderInstancesDifferent__whenConstructionIsDifferent(self):
+        # Arrange
+        location_a = Location("Not Location B")
+        location_b = Location("Not Location A")
+        locations = {location_a}
+
+        # Act
+        locations.add(location_b)
+
+        # Assert
+        self.assertEqual(2, len(locations))
