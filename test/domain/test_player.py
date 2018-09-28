@@ -31,7 +31,7 @@ class TestPlayer(TestCase):
     def test__constructor__shouldThrowException__whenProvidedDict(self):
         # Act
         # noinspection PyTypeChecker
-        def action(): Player(3)
+        def action(): Player({"a": 2})
 
         # Assert
         self.assertRaises(TypeError, action)
@@ -39,7 +39,7 @@ class TestPlayer(TestCase):
     def test__constructor__shouldThrowException__whenProvidedList(self):
         # Act
         # noinspection PyTypeChecker
-        def action(): Player(3)
+        def action(): Player([1, 2])
 
         # Assert
         self.assertRaises(TypeError, action)
