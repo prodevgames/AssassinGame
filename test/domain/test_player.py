@@ -79,10 +79,10 @@ class TestPlayer(TestCase):
         player_b = Player("Not Player A")
 
         # Act
-        actual = (player_a != player_b)
+        actual = (player_a == player_b)
 
         # Assert
-        self.assertTrue(actual)
+        self.assertFalse(actual)
 
     @skip("Not Yet Implemented")
     def test__equals__shouldConsiderInstancesIdentical__whenConstructionIsIdentical(self):
@@ -95,7 +95,7 @@ class TestPlayer(TestCase):
         players.add(player_b)
 
         # Assert
-        self.assertEqual(1, players)
+        self.assertEqual(1, len(players))
 
     @skip("Not Yet Implemented")
     def test__equals__shouldConsiderInstancesDifferent__whenConstructionIsDifferent(self):
@@ -108,4 +108,4 @@ class TestPlayer(TestCase):
         players.add(player_b)
 
         # Assert
-        self.assertEqual(2, players)
+        self.assertEqual(2, len(players))
