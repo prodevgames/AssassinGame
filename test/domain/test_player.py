@@ -84,7 +84,6 @@ class TestPlayer(TestCase):
         # Assert
         self.assertFalse(actual)
 
-    @skip("Not Yet Implemented")
     def test__equals__shouldConsiderInstancesIdentical__whenConstructionIsIdentical(self):
         # Arrange
         player_a = Player("Identical Name")
@@ -97,7 +96,6 @@ class TestPlayer(TestCase):
         # Assert
         self.assertEqual(1, len(players))
 
-    @skip("Not Yet Implemented")
     def test__equals__shouldConsiderInstancesDifferent__whenConstructionIsDifferent(self):
         # Arrange
         player_a = Player("Not Player B")
