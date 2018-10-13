@@ -4,7 +4,6 @@ from assassin_game_csss.domain.location import Location
 
 
 class TestLocation(TestCase):
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedNone(self):
         # Act
         # noinspection PyTypeChecker
@@ -13,7 +12,6 @@ class TestLocation(TestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedInt(self):
         # Act
         # noinspection PyTypeChecker
@@ -22,7 +20,6 @@ class TestLocation(TestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedFloat(self):
         # Act
         # noinspection PyTypeChecker
@@ -31,7 +28,6 @@ class TestLocation(TestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedDict(self):
         # Act
         # noinspection PyTypeChecker
@@ -40,7 +36,6 @@ class TestLocation(TestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedList(self):
         # Act
         # noinspection PyTypeChecker
@@ -56,13 +51,11 @@ class TestLocation(TestCase):
         # Assert
         self.assertRaises(ValueError, action)
 
-    @skip("Not Yet Implemented")
     def test__get_name__shouldReturnName(self):
         expected_name = "Test Name"
         location = Location(expected_name)
         self.assertEqual(expected_name, location.get_name())
 
-    @skip("Not Yet Implemented")
     def test__equals__shouldReturnTrue__whenConstructionIsIdentical(self):
         # Arrange
         location_a = Location("Identical Name")
@@ -73,7 +66,6 @@ class TestLocation(TestCase):
         # Assert
         self.assertTrue(actual)
 
-    @skip("Not Yet Implemented")
     def test__equals__shouldReturnFalse__whenConstructionIsDifferent(self):
         # Arrange
         location_a = Location("Not Location B")
@@ -84,7 +76,6 @@ class TestLocation(TestCase):
         # Assert
         self.assertFalse(actual)
 
-    @skip("Not Yet Implemented")
     def test__equals__shouldConsiderInstancesIdentical__whenConstructionIsIdentical(self):
         # Arrange
         location_a = Location("Identical Name")
@@ -97,7 +88,6 @@ class TestLocation(TestCase):
         # Assert
         self.assertEqual(1, len(locations))
 
-    @skip("Not Yet Implemented")
     def test__equals__shouldConsiderInstancesDifferent__whenConstructionIsDifferent(self):
         # Arrange
         location_a = Location("Not Location B")
