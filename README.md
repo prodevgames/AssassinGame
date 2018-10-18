@@ -2,7 +2,7 @@
 
 ## Authors
 
-- Garrett Hansen, ***REMOVED***, ***REMOVED***
-- Jarod Pas, ***REMOVED***, ***REMOVED***
-- Jeremy Storring, ***REMOVED***, ***REMOVED***
-- Killian Stacey, ***REMOVED***, ***REMOVED***
+- Garrett Hansen, ***REMOVED***
+- Jarod Pas, ***REMOVED***
+- Jeremy Storring, ***REMOVED***
+- Killian Stacey, ***REMOVED***
