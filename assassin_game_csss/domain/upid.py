@@ -7,3 +7,7 @@ class UPID:
 
     def __init__(self, upid: str) -> None:
         raise NotImplementedError
+
+    @property
+    def upid(self):
+        raise NotImplementedError
