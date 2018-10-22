@@ -6,7 +6,16 @@ class UPID:
     __upid_pattern = compile("^[a-z]{3}[0-9]{3}$")
 
     def __init__(self, upid: str) -> None:
-        raise NotImplementedError
+
+        if type(upid) is not str:
+            raise TypeError("Provided upid arg must be a string")
+
+        upid = upid.lower()
+
+        if not self.__upid_pattern.match(upid):
+            raise ValueError("Provided upid arg must match 'abc123' pattern")
+
+        self.__upid = upid
 
     @property
     def upid(self) -> str:
