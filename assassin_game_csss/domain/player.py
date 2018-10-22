@@ -8,9 +8,6 @@ class Player:
             raise ValueError("Name cannot be an empty string for Player")
         self.__name = name
 
-    def get_name(self) -> str:
-        return self.__name
-
     @property
     def name(self) -> str:
         return self.__name

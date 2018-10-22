@@ -52,17 +52,6 @@ class TestPlayer(TestCase):
         # Assert
         self.assertRaises(ValueError, action)
 
-    def test__get_name__shouldReturnName(self):
-        # Arrange
-        expected_name = "Test Name"
-        player = Player(expected_name)
-
-        # Act
-        actual = player.get_name()
-
-        # Assert
-        self.assertEqual(expected_name, actual)
-
     def test__name__shouldReturnName_whenAccessing(self):
         # Arrange
         expected_name = "Test Name"
