@@ -1,6 +1,7 @@
 from unittest import TestCase, skip
 
 from assassin_game_csss.domain.player import Player
+from test.test_helper.anon import anon_player
 
 
 class TestPlayer(TestCase):
@@ -61,6 +62,29 @@ class TestPlayer(TestCase):
 
         # Assert
         self.assertEqual(expected_name, actual)
+
+    @skip
+    def test__name__shouldReturnName_whenAccessing(self):
+        # Arrange
+        expected_name = "Test Name"
+        player = Player(expected_name)
+
+        # Act
+        actual = player.name
+
+        # Assert
+        self.assertEqual(expected_name, actual)
+
+    @skip
+    def test__name__shouldThrowException__whenAttemptingToSet(self):
+        # Arrange
+        player = anon_player()
+
+        # Act
+        def action(): player.name = "New Name"
+
+        # Assert
+        self.assertRaises(AttributeError, action)
 
     def test__equals__shouldReturnTrue__whenConstructionIsIdentical(self):
         # Arrange
