@@ -1,11 +1,10 @@
-from unittest import TestCase, skip
+from unittest import TestCase
 
 from assassin_game_csss.domain.upid import UPID
 
 
 class TestUPID(TestCase):
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenGivenNonString(self):
         # Act
         # noinspection PyTypeChecker
@@ -26,7 +25,6 @@ class TestUPID(TestCase):
         self.assertRaises(TypeError, action_set)
         self.assertRaises(TypeError, action_list)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenUPIDDoesNotMatchExpectedPattern(self):
         # Arrange
         upid1 = "snto264"
@@ -57,7 +55,6 @@ class TestUPID(TestCase):
         self.assertRaises(ValueError, action5)
         self.assertRaises(ValueError, action6)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldConvertUppercaseUPIDToLower__whenGivenValidButUpperUPID(self):
         # Arrange
         upid = "aCe249"
@@ -69,10 +66,9 @@ class TestUPID(TestCase):
         # Assert
         self.assertEqual(expected_upid, actual.upid)
 
-    @skip("Not Yet Implemented")
     def test__upid__shouldReturnProvidedUPID__whenAccessing(self):
         # Arrange
-        upid = "ERN395"
+        upid = "ern395"
 
         # Act
         actual = UPID(upid)
@@ -80,7 +76,6 @@ class TestUPID(TestCase):
         # Assert
         self.assertEqual(upid, actual.upid)
 
-    @skip("Not Yet Implemented")
     def test__equals__shouldReturnTrue__whenConstructionIsIdentical(self):
         # Arrange
         upid_a = UPID("ans235")
@@ -92,7 +87,6 @@ class TestUPID(TestCase):
         # Assert
         self.assertTrue(actual)
 
-    @skip("Not Yet Implemented")
     def test__equals__shouldReturnFalse__whenConstructionIsDifferent(self):
         # Arrange
         upid_a = UPID("sof252")
@@ -104,7 +98,6 @@ class TestUPID(TestCase):
         # Assert
         self.assertFalse(actual)
 
-    @skip("Not Yet Implemented")
     def test__hash__shouldConsiderInstancesIdentical__whenConstructionIsIdentical(self):
         # Arrange
         upid_a = UPID("spo130")
@@ -117,7 +110,6 @@ class TestUPID(TestCase):
         # Assert
         self.assertEqual(1, len(upids))
 
-    @skip("Not Yet Implemented")
     def test__hash__shouldConsiderInstancesDifferent__whenConstructionIsDifferent(self):
         # Arrange
         upid_a = UPID("enp234")
