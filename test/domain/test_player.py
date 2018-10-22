@@ -95,7 +95,7 @@ class TestPlayer(TestCase):
         # Assert
         self.assertFalse(actual)
 
-    def test__equals__shouldConsiderInstancesIdentical__whenConstructionIsIdentical(self):
+    def test__hash__shouldConsiderInstancesIdentical__whenConstructionIsIdentical(self):
         # Arrange
         player_a = Player("Identical Name")
         player_b = Player("Identical Name")
@@ -107,7 +107,7 @@ class TestPlayer(TestCase):
         # Assert
         self.assertEqual(1, len(players))
 
-    def test__equals__shouldConsiderInstancesDifferent__whenConstructionIsDifferent(self):
+    def test__hash__shouldConsiderInstancesDifferent__whenConstructionIsDifferent(self):
         # Arrange
         player_a = Player("Not Player B")
         player_b = Player("Not Player A")
