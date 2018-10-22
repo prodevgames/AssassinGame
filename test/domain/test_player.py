@@ -63,7 +63,6 @@ class TestPlayer(TestCase):
         # Assert
         self.assertEqual(expected_name, actual)
 
-    @skip
     def test__name__shouldReturnName_whenAccessing(self):
         # Arrange
         expected_name = "Test Name"
@@ -75,7 +74,6 @@ class TestPlayer(TestCase):
         # Assert
         self.assertEqual(expected_name, actual)
 
-    @skip
     def test__name__shouldThrowException__whenAttemptingToSet(self):
         # Arrange
         player = anon_player()
