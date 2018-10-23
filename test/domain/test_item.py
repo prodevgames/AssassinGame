@@ -73,7 +73,6 @@ class TestItem(TestCase):
         # Assert
         self.assertTrue(actual)
 
-    @skip("Not Yet Implemented")
     def test__equals__shouldReturnFalse__whenConstructionIsDifferent(self):
         # Arrange
         item_a = Item("Not Item B")
