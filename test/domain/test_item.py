@@ -62,7 +62,6 @@ class TestItem(TestCase):
         # Assert
         self.assertEqual(expected_name, actual)
 
-    @skip("Not Yet Implemented")
     def test__equals__shouldReturnTrue__whenConstructionIsIdentical(self):
         # Arrange
         item_a = Item("Identical Name")

@@ -10,3 +10,9 @@ class Item:
 
     def get_name(self) -> str:
         return self.__name
+
+    def __eq__(self, other):
+        if not isinstance(other, Item):
+            return False
+
+        return self.__name == other.__name
