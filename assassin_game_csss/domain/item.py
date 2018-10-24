@@ -16,3 +16,6 @@ class Item:
             return False
 
         return self.__name == other.__name
+
+    def __hash__(self):
+        return hash(self.__name)
