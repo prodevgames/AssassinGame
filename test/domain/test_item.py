@@ -4,7 +4,6 @@ from assassin_game_csss.domain.item import Item
 
 
 class TestItem(TestCase):
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedNone(self):
         # Act
         # noinspection PyTypeChecker
@@ -13,7 +12,6 @@ class TestItem(TestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedInt(self):
         # Act
         # noinspection PyTypeChecker
@@ -22,7 +20,6 @@ class TestItem(TestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedFloat(self):
         # Act
         # noinspection PyTypeChecker
@@ -31,7 +28,6 @@ class TestItem(TestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedDict(self):
         # Act
         # noinspection PyTypeChecker
@@ -40,7 +36,6 @@ class TestItem(TestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedList(self):
         # Act
         # noinspection PyTypeChecker
@@ -49,7 +44,6 @@ class TestItem(TestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenProvidedEmptyString(self):
         # Act
         def action(): Item("")
@@ -57,13 +51,17 @@ class TestItem(TestCase):
         # Assert
         self.assertRaises(ValueError, action)
 
-    @skip("Not Yet Implemented")
     def test__get_name__shouldReturnName(self):
+        # Arrange
         expected_name = "Test Name"
         item = Item(expected_name)
-        self.assertEqual(expected_name, item.get_name())
 
-    @skip("Not Yet Implemented")
+        # Act
+        actual = item.get_name()
+
+        # Assert
+        self.assertEqual(expected_name, actual)
+
     def test__equals__shouldReturnTrue__whenConstructionIsIdentical(self):
         # Arrange
         item_a = Item("Identical Name")
@@ -74,3 +72,38 @@ class TestItem(TestCase):
 
         # Assert
         self.assertTrue(actual)
+
+    def test__equals__shouldReturnFalse__whenConstructionIsDifferent(self):
+        # Arrange
+        item_a = Item("Not Item B")
+        item_b = Item("Not Item A")
+
+        # Act
+        actual = (item_a == item_b)
+
+        # Assert
+        self.assertFalse(actual)
+
+    def test__equals__shouldConsiderInstancesIdentical__whenConstructionIsIdentical(self):
+        # Arrange
+        item_a = Item("Identical Name")
+        item_b = Item("Identical Name")
+        items = {item_a}
+
+        # Act
+        items.add(item_b)
+
+        # Assert
+        self.assertEqual(1, len(items))
+
+    def test__equals__shouldConsiderInstancesDifferent__whenConstructionIsDifferent(self):
+        # Arrange
+        item_a = Item("Not Item B")
+        item_b = Item("Not Item A")
+        items = {item_a}
+
+        # Act
+        items.add(item_b)
+
+        # Assert
+        self.assertEqual(2, len(items))
