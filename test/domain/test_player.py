@@ -1,6 +1,7 @@
 from unittest import TestCase, skip
 
 from assassin_game_csss.domain.player import Player
+from test.test_helper.anon import anon_player
 
 
 class TestPlayer(TestCase):
@@ -51,16 +52,26 @@ class TestPlayer(TestCase):
         # Assert
         self.assertRaises(ValueError, action)
 
-    def test__get_name__shouldReturnName(self):
+    def test__name__shouldReturnName_whenAccessing(self):
         # Arrange
         expected_name = "Test Name"
         player = Player(expected_name)
 
         # Act
-        actual = player.get_name()
+        actual = player.name
 
         # Assert
         self.assertEqual(expected_name, actual)
+
+    def test__name__shouldThrowException__whenAttemptingToSet(self):
+        # Arrange
+        player = anon_player()
+
+        # Act
+        def action(): player.name = "New Name"
+
+        # Assert
+        self.assertRaises(AttributeError, action)
 
     def test__equals__shouldReturnTrue__whenConstructionIsIdentical(self):
         # Arrange
@@ -84,7 +95,7 @@ class TestPlayer(TestCase):
         # Assert
         self.assertFalse(actual)
 
-    def test__equals__shouldConsiderInstancesIdentical__whenConstructionIsIdentical(self):
+    def test__hash__shouldConsiderInstancesIdentical__whenConstructionIsIdentical(self):
         # Arrange
         player_a = Player("Identical Name")
         player_b = Player("Identical Name")
@@ -96,7 +107,7 @@ class TestPlayer(TestCase):
         # Assert
         self.assertEqual(1, len(players))
 
-    def test__equals__shouldConsiderInstancesDifferent__whenConstructionIsDifferent(self):
+    def test__hash__shouldConsiderInstancesDifferent__whenConstructionIsDifferent(self):
         # Arrange
         player_a = Player("Not Player B")
         player_b = Player("Not Player A")
