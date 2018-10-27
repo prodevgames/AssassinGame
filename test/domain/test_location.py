@@ -1,6 +1,7 @@
-from unittest import TestCase
+from unittest import TestCase, skip
 
 from assassin_game_csss.domain.location import Location
+from test.test_helper.anon import anon_location
 
 
 class TestLocation(TestCase):
@@ -51,10 +52,29 @@ class TestLocation(TestCase):
         # Assert
         self.assertRaises(ValueError, action)
 
+    # TODO: Delete this test when the accessor is removed
     def test__get_name__shouldReturnName(self):
         expected_name = "Test Name"
         location = Location(expected_name)
         self.assertEqual(expected_name, location.get_name())
+
+    @skip
+    def test__name__shouldReturnName_whenAccessing(self):
+        expected_name = "Test Name"
+        location = Location(expected_name)
+        self.assertEqual(expected_name, location.name)
+
+    @skip
+    def test__name__shouldRaiseException_whenAttemptingToSet(self):
+        # Arrange
+        location = anon_location()
+
+        # Act
+        # noinspection PyPropertyAccess
+        def action(): location.name = "New Name"
+
+        # Assert
+        self.assertRaises(AttributeError, action)
 
     def test__equals__shouldReturnTrue__whenConstructionIsIdentical(self):
         # Arrange
