@@ -1,4 +1,4 @@
-from unittest import TestCase, skip
+from unittest import TestCase
 
 from assassin_game_csss.domain.player import Player
 from test.test_helper.anon import anon_player
@@ -68,6 +68,7 @@ class TestPlayer(TestCase):
         player = anon_player()
 
         # Act
+        # noinspection PyPropertyAccess
         def action(): player.name = "New Name"
 
         # Assert
