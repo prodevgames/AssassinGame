@@ -54,15 +54,27 @@ class TestLocation(TestCase):
 
     # TODO: Delete this test when the accessor is removed
     def test__get_name__shouldReturnName(self):
+        # Arrange
         expected_name = "Test Name"
         location = Location(expected_name)
-        self.assertEqual(expected_name, location.get_name())
+
+        # Act
+        name = location.get_name()
+
+        # Assert
+        self.assertEqual(expected_name, name)
 
     @skip
     def test__name__shouldReturnName_whenAccessing(self):
+        # Arrange
         expected_name = "Test Name"
         location = Location(expected_name)
-        self.assertEqual(expected_name, location.name)
+
+        # Act
+        name = location.name
+
+        # Assert
+        self.assertEqual(expected_name, name)
 
     @skip
     def test__name__shouldRaiseException_whenAttemptingToSet(self):
