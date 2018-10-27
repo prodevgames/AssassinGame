@@ -1,4 +1,5 @@
 from unittest import TestCase, skip
+from uuid import UUID
 
 from assassin_game_csss.domain.game import Game
 from assassin_game_csss.domain.game_state import GameState
@@ -181,6 +182,44 @@ class TestGame(TestCase):
 
         # Assert
         self.assertNotEqual(game1.get_id(), game2.get_id())
+
+    @skip("Not Yet Implemented")
+    def test__get_id__shouldReturnUuid__whenGameJustCreated(self):
+        # Arrange
+        game = anon_game()
+
+        # Act
+        game_id = game.get_id()
+
+        # Assert
+        self.assertIsInstance(game_id, UUID)
+
+    @skip("Not Yet Implemented")
+    def test__get_id__shouldNotChange__whenGameStarts(self):
+        # Arrange
+        game = anon_game()
+        expected_id = game.get_id()
+        game.start()
+
+        # Act
+        actual = game.get_id()
+
+        # Assert
+        self.assertEqual(expected_id, actual)
+
+    @skip("Not Yet Implemented")
+    def test__get_id__shouldNotChange__whenEnds(self):
+        # Arrange
+        game = anon_game()
+        expected_id = game.get_id()
+        game.start()
+        game.end()
+
+        # Act
+        actual = game.get_id()
+
+        # Assert
+        self.assertEqual(expected_id, actual)
 
     @skip("Not Yet Implemented")
     def test__get_status__shouldReturnCreated__whenGameJustConstructed(self):
