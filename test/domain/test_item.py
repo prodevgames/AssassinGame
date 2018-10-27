@@ -1,6 +1,7 @@
 from unittest import TestCase, skip
 
 from assassin_game_csss.domain.item import Item
+from test.test_helper.anon import anon_item
 
 
 class TestItem(TestCase):
@@ -51,6 +52,7 @@ class TestItem(TestCase):
         # Assert
         self.assertRaises(ValueError, action)
 
+    # TODO: Delete this test when the method is remove
     def test__get_name__shouldReturnName(self):
         # Arrange
         expected_name = "Test Name"
@@ -61,6 +63,30 @@ class TestItem(TestCase):
 
         # Assert
         self.assertEqual(expected_name, actual)
+
+    @skip("Not Yet Implemented")
+    def test__name__shouldReturnName__whenAccessed(self):
+        # Arrange
+        expected_name = "Test Name"
+        item = Item(expected_name)
+
+        # Act
+        actual = item.name
+
+        # Assert
+        self.assertEqual(expected_name, actual)
+
+    @skip("Not Yet Implemented")
+    def test__name__shouldRaiseException__whenAttemptingToSet(self):
+        # Arrange
+        item = anon_item()
+
+        # Act
+        # noinspection PyPropertyAccess
+        def action(): item.name = "New Name"
+
+        # Assert
+        self.assertRaises(AttributeError, action)
 
     def test__equals__shouldReturnTrue__whenConstructionIsIdentical(self):
         # Arrange
