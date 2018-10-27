@@ -65,7 +65,7 @@ class TestItem(TestCase):
         self.assertEqual(expected_name, actual)
 
     @skip("Not Yet Implemented")
-    def test__name__shouldReturnName_whenAccessed(self):
+    def test__name__shouldReturnName__whenAccessed(self):
         # Arrange
         expected_name = "Test Name"
         item = Item(expected_name)

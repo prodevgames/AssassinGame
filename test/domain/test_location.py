@@ -65,7 +65,7 @@ class TestLocation(TestCase):
         self.assertEqual(expected_name, name)
 
     @skip
-    def test__name__shouldReturnName_whenAccessing(self):
+    def test__name__shouldReturnName__whenAccessing(self):
         # Arrange
         expected_name = "Test Name"
         location = Location(expected_name)
@@ -77,7 +77,7 @@ class TestLocation(TestCase):
         self.assertEqual(expected_name, name)
 
     @skip
-    def test__name__shouldRaiseException_whenAttemptingToSet(self):
+    def test__name__shouldRaiseException__whenAttemptingToSet(self):
         # Arrange
         location = anon_location()
 
