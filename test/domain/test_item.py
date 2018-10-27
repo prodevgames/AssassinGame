@@ -76,7 +76,7 @@ class TestItem(TestCase):
         # Assert
         self.assertEqual(expected_name, actual)
 
-    @skip
+    @skip("Not Yet Implemented")
     def test__name__shouldRaiseException__whenAttemptingToSet(self):
         # Arrange
         item = anon_item()

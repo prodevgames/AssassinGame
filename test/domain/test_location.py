@@ -64,7 +64,7 @@ class TestLocation(TestCase):
         # Assert
         self.assertEqual(expected_name, name)
 
-    @skip
+    @skip("Not Yet Implemented")
     def test__name__shouldReturnName__whenAccessing(self):
         # Arrange
         expected_name = "Test Name"
@@ -76,7 +76,7 @@ class TestLocation(TestCase):
         # Assert
         self.assertEqual(expected_name, name)
 
-    @skip
+    @skip("Not Yet Implemented")
     def test__name__shouldRaiseException__whenAttemptingToSet(self):
         # Arrange
         location = anon_location()
