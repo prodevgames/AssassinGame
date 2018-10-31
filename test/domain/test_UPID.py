@@ -1,4 +1,4 @@
-from unittest import TestCase
+from unittest import TestCase, skip
 
 from assassin_game_csss.domain.upid import UPID
 
@@ -55,26 +55,17 @@ class TestUPID(TestCase):
         self.assertRaises(ValueError, action5)
         self.assertRaises(ValueError, action6)
 
+    @skip("Not Yet Implemented")
     def test__constructor__shouldConvertUppercaseUPIDToLower__whenGivenValidButUpperUPID(self):
         # Arrange
-        upid = "aCe249"
-        expected_upid = upid.lower()
+        upid_string = "aCe249"
+        expected_upid = upid_string.lower()
 
         # Act
-        actual = UPID(upid)
+        actual = str(UPID(upid_string))
 
         # Assert
-        self.assertEqual(expected_upid, actual.upid)
-
-    def test__upid__shouldReturnProvidedUPID__whenAccessing(self):
-        # Arrange
-        upid = "ern395"
-
-        # Act
-        actual = UPID(upid)
-
-        # Assert
-        self.assertEqual(upid, actual.upid)
+        self.assertEqual(expected_upid, actual)
 
     def test__equals__shouldReturnTrue__whenConstructionIsIdentical(self):
         # Arrange
@@ -121,3 +112,28 @@ class TestUPID(TestCase):
 
         # Assert
         self.assertEqual(2, len(upids))
+
+    @skip("Not Yet Implemented")
+    def test__str__shouldReturnStringForm(self):
+        # Arrange
+        expected_string = "soq192"
+        upid = UPID(expected_string)
+
+        # Act
+        actual = str(upid)
+
+        # Assert
+        self.assertEqual(expected_string, actual)
+
+    @skip("Not Yet Implemented")
+    def test__repr__shouldReturnRepresentation(self):
+        # Arrange
+        upid_string = "abc123"
+        class_name = UPID(upid_string).__class__.__name__
+        expected_representation = "%s(\"%s\")" % (class_name, upid_string)
+
+        # Act
+        actual = repr(UPID(upid_string))
+
+        # Assert
+        self.assertEqual(expected_representation, actual)
