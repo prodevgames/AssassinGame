@@ -129,7 +129,7 @@ class TestUPID(TestCase):
     def test__repr__shouldReturnRepresentation(self):
         # Arrange
         upid_string = "abc123"
-        class_name = UPID(upid_string).__class__.__name__
+        class_name = UPID.__name__
         expected_representation = "%s(\"%s\")" % (class_name, upid_string)
 
         # Act
