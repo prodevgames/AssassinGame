@@ -5,45 +5,26 @@ from test.test_helper.anon import anon_player
 
 
 class TestPlayer(TestCase):
-    def test__constructor__shouldThrowException__whenProvidedNone(self):
+
+    def test__constructor__shouldThrowException__whenGivenNonString(self):
         # Act
         # noinspection PyTypeChecker
-        def action(): Player(None)
+        def action_none(): Player(None)
 
-        # Assert
-        self.assertRaises(TypeError, action)
-
-    def test__constructor__shouldThrowException__whenProvidedInt(self):
-        # Act
         # noinspection PyTypeChecker
-        def action(): Player(3)
+        def action_int(): Player(42)
 
-        # Assert
-        self.assertRaises(TypeError, action)
-
-    def test__constructor__shouldThrowException__whenProvidedFloat(self):
-        # Act
         # noinspection PyTypeChecker
-        def action(): Player(3.4)
+        def action_set(): Player(set())
 
-        # Assert
-        self.assertRaises(TypeError, action)
-
-    def test__constructor__shouldThrowException__whenProvidedDict(self):
-        # Act
         # noinspection PyTypeChecker
-        def action(): Player({"a": 2})
+        def action_list(): Player([])
 
         # Assert
-        self.assertRaises(TypeError, action)
-
-    def test__constructor__shouldThrowException__whenProvidedList(self):
-        # Act
-        # noinspection PyTypeChecker
-        def action(): Player([1, 2])
-
-        # Assert
-        self.assertRaises(TypeError, action)
+        self.assertRaises(TypeError, action_none)
+        self.assertRaises(TypeError, action_int)
+        self.assertRaises(TypeError, action_set)
+        self.assertRaises(TypeError, action_list)
 
     def test__constructor__shouldThrowException__whenProvidedEmptyString(self):
         # Act
