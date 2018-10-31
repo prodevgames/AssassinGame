@@ -5,45 +5,26 @@ from test.test_helper.anon import anon_location
 
 
 class TestLocation(TestCase):
-    def test__constructor__shouldThrowException__whenProvidedNone(self):
+
+    def test__constructor__shouldThrowException__whenGivenNonString(self):
         # Act
         # noinspection PyTypeChecker
-        def action(): Location(None)
+        def action_none(): Location(None)
 
-        # Assert
-        self.assertRaises(TypeError, action)
-
-    def test__constructor__shouldThrowException__whenProvidedInt(self):
-        # Act
         # noinspection PyTypeChecker
-        def action(): Location(3)
+        def action_int(): Location(42)
 
-        # Assert
-        self.assertRaises(TypeError, action)
-
-    def test__constructor__shouldThrowException__whenProvidedFloat(self):
-        # Act
         # noinspection PyTypeChecker
-        def action(): Location(3.4)
+        def action_set(): Location(set())
 
-        # Assert
-        self.assertRaises(TypeError, action)
-
-    def test__constructor__shouldThrowException__whenProvidedDict(self):
-        # Act
         # noinspection PyTypeChecker
-        def action(): Location(3)
+        def action_list(): Location([])
 
         # Assert
-        self.assertRaises(TypeError, action)
-
-    def test__constructor__shouldThrowException__whenProvidedList(self):
-        # Act
-        # noinspection PyTypeChecker
-        def action(): Location(3)
-
-        # Assert
-        self.assertRaises(TypeError, action)
+        self.assertRaises(TypeError, action_none)
+        self.assertRaises(TypeError, action_int)
+        self.assertRaises(TypeError, action_set)
+        self.assertRaises(TypeError, action_list)
 
     def test__constructor__shouldThrowException__whenProvidedEmptyString(self):
         # Act
