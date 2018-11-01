@@ -195,3 +195,31 @@ class TestPlayer(TestCase):
 
         # Assert
         self.assertEqual(2, len(players))
+
+    @skip("Not Yet Implemented")
+    def test__str__shouldReturnStringForm(self):
+        # Arrange
+        name = anon_string()
+        upid = anon_upid()
+        expected_string = "%s(\"%s\", \"%s\")" % (Player.__name__, name, str(upid))
+        player = Player(name, upid)
+
+        # Act
+        actual = str(player)
+
+        # Assert
+        self.assertEqual(expected_string, actual)
+
+    @skip("Not Yet Implemented")
+    def test__repr__shouldReturnRepresentation(self):
+        # Arrange
+        name = anon_string()
+        upid = anon_upid()
+        expected_string = "%s(\"%s\",%s)" % (Player.__name__, name, repr(upid))
+        player = Player(name, upid)
+
+        # Act
+        actual = str(player)
+
+        # Assert
+        self.assertEqual(expected_string, actual)
