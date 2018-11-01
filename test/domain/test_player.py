@@ -92,15 +92,15 @@ class TestPlayer(TestCase):
     @skip("Not Yet Implemented")
     def test__upid__shouldReturnUPID__whenConstructedWithStr(self):
         # Arrange
-        expected_upid_string = str(anon_upid())
-        player = Player(anon_string(), expected_upid_string)
+        expected_upid = anon_upid()
+        player = Player(anon_string(), str(expected_upid))
 
         # Act
         actual = player.upid
 
         # Assert
         self.assertIsInstance(actual, UPID)
-        self.assertEqual(expected_upid_string, str(actual))
+        self.assertEqual(expected_upid, actual)
 
     @skip("Not Yet Implemented")
     def test__upid__shouldReturnUPID__whenConstructedWithUPID(self):
