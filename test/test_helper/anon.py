@@ -13,7 +13,7 @@ def anon_string(count: int = 10) -> str:
 
 
 def anon_player() -> Player:
-    return Player(anon_string())
+    return Player(anon_string(), anon_upid())
 
 
 def anon_upid() -> UPID:
