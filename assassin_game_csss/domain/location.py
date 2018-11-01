@@ -8,9 +8,6 @@ class Location:
             raise ValueError("name of Location must be non-empty")
         self.__name = name
 
-    def get_name(self) -> str:
-        return self.__name
-
     @property
     def name(self) -> str:
         return self.__name
