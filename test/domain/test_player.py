@@ -113,10 +113,12 @@ class TestPlayer(TestCase):
         self.assertIsInstance(actual, UPID)
         self.assertEqual(expected_upid, actual)
 
-    def test__equals__shouldReturnTrue__whenConstructionIsIdentical(self):
+    def test__equals__shouldReturnTrue__whenUPIDIsIdenticalAndNameIsSame(self):
         # Arrange
-        player_a = Player("Identical Name")
-        player_b = Player("Identical Name")
+        upid = anon_upid()
+        name = anon_string()
+        player_a = Player(name, upid)
+        player_b = Player(name, upid)
 
         # Act
         actual = (player_a == player_b)
@@ -124,10 +126,35 @@ class TestPlayer(TestCase):
         # Assert
         self.assertTrue(actual)
 
-    def test__equals__shouldReturnFalse__whenConstructionIsDifferent(self):
+    def test__equals__shouldReturnTrue__whenUPIDIsIdenticalAndNameIsDifferent(self):
         # Arrange
-        player_a = Player("Not Player B")
-        player_b = Player("Not Player A")
+        upid = anon_upid()
+        player_a = Player(anon_string(), upid)
+        player_b = Player(anon_string(), upid)
+
+        # Act
+        actual = (player_a == player_b)
+
+        # Assert
+        self.assertTrue(actual)
+
+    def test__equals__shouldReturnFalse__whenUPIDIsDifferentAndNameIsSame(self):
+        # Arrange
+        name = anon_string()
+        player_a = Player(name, anon_upid())
+        player_b = Player(name, anon_upid())
+
+        # Act
+        actual = (player_a == player_b)
+
+        # Assert
+        self.assertFalse(actual)
+        self.assertTrue(actual)
+
+    def test__equals__shouldReturnFalse__whenUPIDIsDifferentAndNameIsDifferent(self):
+        # Arrange
+        player_a = Player(anon_string(), anon_upid())
+        player_b = Player(anon_string(), anon_upid())
 
         # Act
         actual = (player_a == player_b)
@@ -135,10 +162,11 @@ class TestPlayer(TestCase):
         # Assert
         self.assertFalse(actual)
 
-    def test__hash__shouldConsiderInstancesIdentical__whenConstructionIsIdentical(self):
+    def test__hash__shouldConsiderInstancesIdentical__whenUPIDIsSame(self):
         # Arrange
-        player_a = Player("Identical Name")
-        player_b = Player("Identical Name")
+        upid = anon_upid()
+        player_a = Player(anon_string(), upid)
+        player_b = Player(anon_string(), upid)
         players = {player_a}
 
         # Act
@@ -149,8 +177,9 @@ class TestPlayer(TestCase):
 
     def test__hash__shouldConsiderInstancesDifferent__whenConstructionIsDifferent(self):
         # Arrange
-        player_a = Player("Not Player B")
-        player_b = Player("Not Player A")
+        name = anon_string()
+        player_a = Player(name, anon_upid())
+        player_b = Player(name, anon_upid())
         players = {player_a}
 
         # Act
