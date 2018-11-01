@@ -11,6 +11,10 @@ class Location:
     def get_name(self) -> str:
         return self.__name
 
+    @property
+    def name(self) -> str:
+        return self.__name
+
     def __eq__(self, other):
         if not isinstance(other, Location):
             return False
