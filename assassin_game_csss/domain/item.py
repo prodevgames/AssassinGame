@@ -8,7 +8,8 @@ class Item:
             raise ValueError("Argument name must be at least 1 character")
         self.__name = name
 
-    def get_name(self) -> str:
+    @property
+    def name(self) -> str:
         return self.__name
 
     def __eq__(self, other):
