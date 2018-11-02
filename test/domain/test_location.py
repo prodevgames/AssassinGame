@@ -1,4 +1,4 @@
-from unittest import TestCase, skip
+from unittest import TestCase
 
 from assassin_game_csss.domain.location import Location
 from test.test_helper.anon import anon_location
@@ -33,19 +33,6 @@ class TestLocation(TestCase):
         # Assert
         self.assertRaises(ValueError, action)
 
-    # TODO: Delete this test when the accessor is removed
-    def test__get_name__shouldReturnName(self):
-        # Arrange
-        expected_name = "Test Name"
-        location = Location(expected_name)
-
-        # Act
-        name = location.get_name()
-
-        # Assert
-        self.assertEqual(expected_name, name)
-
-    @skip("Not Yet Implemented")
     def test__name__shouldReturnName__whenAccessing(self):
         # Arrange
         expected_name = "Test Name"
@@ -57,7 +44,6 @@ class TestLocation(TestCase):
         # Assert
         self.assertEqual(expected_name, name)
 
-    @skip("Not Yet Implemented")
     def test__name__shouldRaiseException__whenAttemptingToSet(self):
         # Arrange
         location = anon_location()
