@@ -201,7 +201,7 @@ class TestPlayer(TestCase):
         player = Player(name, upid)
 
         # Act
-        actual = str(player)
+        actual = repr(player)
 
         # Assert
         self.assertEqual(expected_string, actual)
