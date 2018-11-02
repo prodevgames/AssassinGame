@@ -154,7 +154,6 @@ class TestPlayer(TestCase):
 
         # Assert
         self.assertFalse(actual)
-        self.assertTrue(actual)
 
     @skip("Not Yet Implemented")
     def test__equals__shouldReturnFalse__whenUPIDIsDifferentAndNameIsDifferent(self):
