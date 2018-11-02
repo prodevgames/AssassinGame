@@ -9,13 +9,17 @@ class Player:
             raise TypeError("Invalid type given as name to Player")
         if len(name) <= 0:
             raise ValueError("Name cannot be an empty string for Player")
-        if type(upid) is not UPID:
+        if type(upid) is not UPID and type(upid) is not str:
             raise TypeError("Invalid type given to Player UPID")
-        if len(str(upid)) <= 0:
-            raise ValueError("UPID must not be an empty string")
+        if type(upid) is str:
+            if len(upid) <= 0:
+                raise ValueError()
+            else:
+                self.__upid = UPID(upid)
+        else:
+            self.__upid = upid
 
         self.__name = name
-        self.__upid = upid
 
     @property
     def name(self) -> str:
