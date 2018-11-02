@@ -38,3 +38,6 @@ class Player:
 
     def __str__(self):
         return self.__name
+
+    def __repr__(self):
+        return "%s(\"%s\",%s)" % (self.__class__.__name__, self.__name, repr(self.__upid))
