@@ -17,10 +17,6 @@ class UPID:
 
         self.__upid = upid
 
-    @property
-    def upid(self) -> str:
-        return self.__upid
-
     def __eq__(self, other):
         if not isinstance(other, UPID):
             return False
