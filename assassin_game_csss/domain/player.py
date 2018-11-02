@@ -13,11 +13,11 @@ class Player:
             raise ValueError("Name cannot be an empty string for Player")
         if type(upid) is not UPID and type(upid) is not str:
             raise TypeError("Invalid type given to Player UPID")
+
         if type(upid) is str:
             self.__upid = UPID(upid)
         else:
             self.__upid = upid
-
         self.__name = name
 
     @property
