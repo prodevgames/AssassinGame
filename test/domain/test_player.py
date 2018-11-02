@@ -199,9 +199,8 @@ class TestPlayer(TestCase):
     def test__str__shouldReturnStringForm(self):
         # Arrange
         name = anon_string()
-        upid = anon_upid()
-        expected_string = "%s(\"%s\", \"%s\")" % (Player.__name__, name, str(upid))
-        player = Player(name, upid)
+        expected_string = name
+        player = Player(name, anon_upid())
 
         # Act
         actual = str(player)
