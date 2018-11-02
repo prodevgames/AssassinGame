@@ -1,6 +1,7 @@
 from assassin_game_csss.domain.upid import UPID
 from typing import Union
 
+
 class Player:
     __name: str = None
     __upid: UPID = None
