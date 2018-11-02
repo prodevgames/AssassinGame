@@ -1,10 +1,11 @@
 from assassin_game_csss.domain.upid import UPID
+from typing import Union
 
 class Player:
     __name: str = None
     __upid: UPID = None
 
-    def __init__(self, name: str, upid: UPID) -> None:
+    def __init__(self, name: str, upid: Union[UPID, str]) -> None:
         if type(name) is not str:
             raise TypeError("Invalid type given as name to Player")
         if len(name) <= 0:
@@ -12,10 +13,7 @@ class Player:
         if type(upid) is not UPID and type(upid) is not str:
             raise TypeError("Invalid type given to Player UPID")
         if type(upid) is str:
-            if len(upid) <= 0:
-                raise ValueError()
-            else:
-                self.__upid = UPID(upid)
+            self.__upid = UPID(upid)
         else:
             self.__upid = upid
 
