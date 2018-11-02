@@ -1,7 +1,7 @@
-from unittest import TestCase
+from unittest import TestCase, skip
 
 from assassin_game_csss.domain.location import Location
-from test.test_helper.anon import anon_location
+from test.test_helper.anon import anon_location, anon_string
 
 
 class TestLocation(TestCase):
@@ -98,3 +98,28 @@ class TestLocation(TestCase):
 
         # Assert
         self.assertEqual(2, len(locations))
+
+    @skip("Not Yet Implemented")
+    def test__str__shouldReturnLocationName(self):
+        # Arrange
+        expected_name = anon_string()
+        location = Location(expected_name)
+
+        # Act
+        actual = str(location)
+
+        # Assert
+        self.assertEquals(expected_name, actual)
+
+    @skip("Not Yet Implemented")
+    def test__repr__shouldReturnRepresentation(self):
+        # Arrange
+        name = anon_string()
+        location = Location(name)
+        expected = "%s(\"%s\")" % (Location.__name__, name)
+
+        # Act
+        actual = repr(location)
+
+        # Assert
+        self.assertEquals(expected, actual)
