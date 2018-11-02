@@ -25,3 +25,6 @@ class UPID:
 
     def __hash__(self):
         return hash(self.__upid)
+
+    def __str__(self):
+        return self.__upid
