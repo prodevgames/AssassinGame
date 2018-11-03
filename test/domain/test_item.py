@@ -35,7 +35,7 @@ class TestItem(TestCase):
 
     def test__name__shouldReturnName__whenAccessed(self):
         # Arrange
-        expected_name = "Test Name"
+        expected_name = anon_string()
         item = Item(expected_name)
 
         # Act
@@ -50,15 +50,16 @@ class TestItem(TestCase):
 
         # Act
         # noinspection PyPropertyAccess
-        def action(): item.name = "New Name"
+        def action(): item.name = anon_string()
 
         # Assert
         self.assertRaises(AttributeError, action)
 
-    def test__equals__shouldReturnTrue__whenConstructionIsIdentical(self):
+    def test__equals__shouldReturnTrue__whenNameIsSame(self):
         # Arrange
-        item_a = Item("Identical Name")
-        item_b = Item("Identical Name")
+        name = anon_string()
+        item_a = Item(name)
+        item_b = Item(name)
 
         # Act
         actual = (item_a == item_b)
@@ -66,10 +67,10 @@ class TestItem(TestCase):
         # Assert
         self.assertTrue(actual)
 
-    def test__equals__shouldReturnFalse__whenConstructionIsDifferent(self):
+    def test__equals__shouldReturnFalse__whenNameIsDifferent(self):
         # Arrange
-        item_a = Item("Not Item B")
-        item_b = Item("Not Item A")
+        item_a = Item(anon_string())
+        item_b = Item(anon_string())
 
         # Act
         actual = (item_a == item_b)
@@ -114,7 +115,7 @@ class TestItem(TestCase):
         # Assert
         self.assertEqual(expected_name, actual)
 
-    @skip
+    @skip("Not Yet Implemented")
     def test__repr__shouldReturnRepresentation(self):
         # Arrange
         name = anon_string()
