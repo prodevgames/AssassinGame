@@ -35,6 +35,18 @@ class TestTarget(TestCase):
         # Assert
         self.assertRaises(action)
 
+    # TODO: Player getter property
+
+    # TODO: Player setter throw exception
+
+    # TODO: Item getter property
+
+    # TODO: Item setter throw exception
+
+    # TODO: Location getter property
+
+    # TODO: Location setter throw exception
+
     @skip("Not Yet Implemented")
     def test__equals__shouldReturnTrue__whenConstructionIsIdentical(self):
         # Arrange
@@ -46,3 +58,17 @@ class TestTarget(TestCase):
 
         # Assert
         self.assertTrue(actual)
+
+    # TODO: Equals False construction case
+
+    # TODO: hash positive all 3
+
+    # TODO: hash negative (only Player different)
+
+    # TODO: hash negative (only Item different)
+
+    # TODO: hash negative (only Location different)
+
+    # TODO: Str()
+
+    # TODO: Repr()
