@@ -39,7 +39,7 @@ class TestTarget(TestCase):
     def test__player__shouldReturnPlayer__whenAccessing(self):
         # Arrange
         expected_player = anon_player()
-        target = Target(expected_player, Item(anon_string()), Location(anon_string()))
+        target = Target(expected_player, anon_item(), Location(anon_string()))
 
         # Act
         actual = target.player
@@ -116,9 +116,28 @@ class TestTarget(TestCase):
         # Assert
         self.assertTrue(actual)
 
-    # TODO: Equals False construction case
+    @skip("Not Yet Implemented")
+    def test__equals__shouldReturnFalse__whenConstructionIsDifferent(self):
+        # Arrange
+        target_a = Target(Player("Player 1", "ply111"), Item("Item 1"), Location("Location 1"))
+        target_b = Target(Player("Player 2", "ply222"), Item("Item 2"), Location("Location 2"))
 
-    # TODO: hash positive all 3
+        # Act
+        actual = (target_a == target_b)
+
+        # Assert
+        self.assertFalse(actual)
+
+    @skip("Not Yet Implemented")
+    def test__hash__shouldReturnSameValue__whenConstructionIsIdentical(self):
+        target_a = Target(Player("Identical Player", "abc123"), Item("Identical Item"), Location("Identical Location"))
+        target_b = Target(Player("Identical Player", "abc123"), Item("Identical Item"), Location("Identical Location"))
+
+        # Act
+        actual = hash(target_a) == hash(target_b)
+
+        # Assert
+        self.assertTrue(actual)
 
     # TODO: hash negative (only Player different)
 
