@@ -107,8 +107,8 @@ class TestTarget(TestCase):
     @skip("Not Yet Implemented")
     def test__equals__shouldReturnTrue__whenConstructionIsIdentical(self):
         # Arrange
-        target_a = Target(Player("Identical Player"), Item("Identical Item"), Location("Identical Location"))
-        target_b = Target(Player("Identical Player"), Item("Identical Item"), Location("Identical Location"))
+        target_a = Target(Player("Identical Player", "abc123"), Item("Identical Item"), Location("Identical Location"))
+        target_b = Target(Player("Identical Player", "abc123"), Item("Identical Item"), Location("Identical Location"))
 
         # Act
         actual = (target_a == target_b)
