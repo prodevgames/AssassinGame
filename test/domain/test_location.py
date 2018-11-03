@@ -35,7 +35,7 @@ class TestLocation(TestCase):
 
     def test__name__shouldReturnName__whenAccessing(self):
         # Arrange
-        expected_name = "Test Name"
+        expected_name = anon_string()
         location = Location(expected_name)
 
         # Act
@@ -50,25 +50,26 @@ class TestLocation(TestCase):
 
         # Act
         # noinspection PyPropertyAccess
-        def action(): location.name = "New Name"
+        def action(): location.name = anon_string()
 
         # Assert
         self.assertRaises(AttributeError, action)
 
-    def test__equals__shouldReturnTrue__whenConstructionIsIdentical(self):
+    def test__equals__shouldReturnTrue__whenNameIsSame(self):
         # Arrange
-        location_a = Location("Identical Name")
-        location_b = Location("Identical Name")
+        name = anon_string()
+        location_a = Location(name)
+        location_b = Location(name)
 
         # Act
         actual = (location_a == location_b)
         # Assert
         self.assertTrue(actual)
 
-    def test__equals__shouldReturnFalse__whenConstructionIsDifferent(self):
+    def test__equals__shouldReturnFalse__whenNameIsDifferent(self):
         # Arrange
-        location_a = Location("Not Location B")
-        location_b = Location("Not Location A")
+        location_a = Location(anon_string())
+        location_b = Location(anon_string())
 
         # Act
         actual = (location_a == location_b)
