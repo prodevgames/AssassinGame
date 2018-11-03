@@ -77,10 +77,11 @@ class TestItem(TestCase):
         # Assert
         self.assertFalse(actual)
 
-    def test__equals__shouldConsiderInstancesIdentical__whenConstructionIsIdentical(self):
+    def test__hash__shouldReturnSameHash__whenNameIsSame(self):
         # Arrange
         item_a = Item("Identical Name")
         item_b = Item("Identical Name")
+        # TODO: change test to use hash directly
         items = {item_a}
 
         # Act
@@ -89,10 +90,11 @@ class TestItem(TestCase):
         # Assert
         self.assertEqual(1, len(items))
 
-    def test__equals__shouldConsiderInstancesDifferent__whenConstructionIsDifferent(self):
+    def test__hash__shouldReturnDifferentHash__whenNameIsDifferent(self):
         # Arrange
         item_a = Item("Not Item B")
         item_b = Item("Not Item A")
+        # TODO: change test to use hash directly
         items = {item_a}
 
         # Act

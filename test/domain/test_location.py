@@ -75,10 +75,11 @@ class TestLocation(TestCase):
         # Assert
         self.assertFalse(actual)
 
-    def test__equals__shouldConsiderInstancesIdentical__whenConstructionIsIdentical(self):
+    def test__hash__shouldReturnSameHash__whenNameIsSame(self):
         # Arrange
         location_a = Location("Identical Name")
         location_b = Location("Identical Name")
+        # TODO: change test to use hash directly
         locations = {location_a}
 
         # Act
@@ -87,10 +88,11 @@ class TestLocation(TestCase):
         # Assert
         self.assertEqual(1, len(locations))
 
-    def test__equals__shouldConsiderInstancesDifferent__whenConstructionIsDifferent(self):
+    def test__hash__shouldReturnDifferentHash__whenNameIsDifferent(self):
         # Arrange
         location_a = Location("Not Location B")
         location_b = Location("Not Location A")
+        # TODO: change test to use hash directly
         locations = {location_a}
 
         # Act

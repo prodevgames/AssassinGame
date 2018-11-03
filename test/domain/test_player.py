@@ -168,7 +168,7 @@ class TestPlayer(TestCase):
         self.assertFalse(actual)
 
     @skip("Not Yet Implemented")
-    def test__hash__shouldConsiderInstancesIdentical__whenUPIDIsSame(self):
+    def test__hash__shouldReturnSameHash__whenUPIDIsSame(self):
         # Arrange
         upid = anon_upid()
         player_a = Player(anon_string(), upid)
@@ -183,7 +183,7 @@ class TestPlayer(TestCase):
         self.assertEqual(1, len(players))
 
     @skip("Not Yet Implemented")
-    def test__hash__shouldConsiderInstancesDifferent__whenConstructionIsDifferent(self):
+    def test__hash__shouldReturnDifferentHash__whenUPIDIsDifferent(self):
         # Arrange
         name = anon_string()
         player_a = Player(name, anon_upid())
