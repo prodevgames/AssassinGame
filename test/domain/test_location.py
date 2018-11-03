@@ -77,29 +77,28 @@ class TestLocation(TestCase):
 
     def test__hash__shouldReturnSameHash__whenNameIsSame(self):
         # Arrange
-        location_a = Location("Identical Name")
-        location_b = Location("Identical Name")
-        # TODO: change test to use hash directly
-        locations = {location_a}
+        name = anon_string()
+        location_a = Location(name)
+        location_b = Location(name)
 
         # Act
-        locations.add(location_b)
+        hash_a = location_a
+        hash_b = location_b
 
         # Assert
-        self.assertEqual(1, len(locations))
+        self.assertEqual(hash_a, hash_b)
 
     def test__hash__shouldReturnDifferentHash__whenNameIsDifferent(self):
         # Arrange
-        location_a = Location("Not Location B")
-        location_b = Location("Not Location A")
-        # TODO: change test to use hash directly
-        locations = {location_a}
+        location_a = Location(anon_string())
+        location_b = Location(anon_string())
 
         # Act
-        locations.add(location_b)
+        hash_a = location_a
+        hash_b = location_b
 
         # Assert
-        self.assertEqual(2, len(locations))
+        self.assertNotEqual(hash_a, hash_b)
 
     @skip("Not Yet Implemented")
     def test__str__shouldReturnLocationName(self):
