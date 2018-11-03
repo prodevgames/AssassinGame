@@ -79,29 +79,28 @@ class TestItem(TestCase):
 
     def test__hash__shouldReturnSameHash__whenNameIsSame(self):
         # Arrange
-        item_a = Item("Identical Name")
-        item_b = Item("Identical Name")
-        # TODO: change test to use hash directly
-        items = {item_a}
+        name = anon_string()
+        item_a = Item(name)
+        item_b = Item(name)
 
         # Act
-        items.add(item_b)
+        hash_a = hash(item_a)
+        hash_b = hash(item_b)
 
         # Assert
-        self.assertEqual(1, len(items))
+        self.assertEqual(hash_a, hash_b)
 
     def test__hash__shouldReturnDifferentHash__whenNameIsDifferent(self):
         # Arrange
-        item_a = Item("Not Item B")
-        item_b = Item("Not Item A")
-        # TODO: change test to use hash directly
-        items = {item_a}
+        item_a = Item(anon_string())
+        item_b = Item(anon_string())
 
         # Act
-        items.add(item_b)
+        hash_a = hash(item_a)
+        hash_b = hash(item_b)
 
         # Assert
-        self.assertEqual(2, len(items))
+        self.assertNotEqual(hash_a, hash_b)
 
     @skip("Not Yet Implemented")
     def test__str__shouldReturnStringForm(self):
