@@ -39,7 +39,7 @@ class TestTarget(TestCase):
     def test__player__shouldReturnPlayer__whenAccessing(self):
         # Arrange
         expected_player = anon_player()
-        target = Target(expected_player, anon_item(), Location(anon_string()))
+        target = Target(expected_player, anon_item(), anon_location())
 
         # Act
         actual = target.player
