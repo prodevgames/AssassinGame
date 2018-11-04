@@ -160,6 +160,7 @@ class TestPlayer(TestCase):
         upid = anon_upid()
         player_a = Player(anon_string(), upid)
         player_b = Player(anon_string(), upid)
+        # TODO: Test hash directly because set uses eq()
         players = {player_a}
 
         # Act
@@ -173,6 +174,7 @@ class TestPlayer(TestCase):
         name = anon_string()
         player_a = Player(name, anon_upid())
         player_b = Player(name, anon_upid())
+        # TODO: Test hash directly because set uses eq()
         players = {player_a}
 
         # Act
