@@ -1,16 +1,16 @@
-import random
+from random import choices
 from string import ascii_letters, digits, ascii_lowercase
 
+from assassin_game_csss.domain.game import Game
 from assassin_game_csss.domain.item import Item
 from assassin_game_csss.domain.location import Location
 from assassin_game_csss.domain.player import Player
-from assassin_game_csss.domain.game import Game
 from assassin_game_csss.domain.target import Target
 from assassin_game_csss.domain.upid import UPID
 
 
 def anon_string(count: int = 10) -> str:
-    return ''.join(random.choices(ascii_letters + digits, k=count))
+    return ''.join(choices(ascii_letters + digits, k=count))
 
 
 def anon_player() -> Player:
@@ -18,8 +18,8 @@ def anon_player() -> Player:
 
 
 def anon_upid() -> UPID:
-    return UPID("%s%s" % ("".join(random.choices(ascii_lowercase, k=3)),
-                          "".join(random.choices(digits, k=3))))
+    return UPID("%s%s" % ("".join(choices(ascii_lowercase, k=3)),
+                          "".join(choices(digits, k=3))))
 
 
 def anon_location() -> Location:
