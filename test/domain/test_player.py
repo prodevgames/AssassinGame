@@ -155,33 +155,31 @@ class TestPlayer(TestCase):
         # Assert
         self.assertFalse(actual)
 
-    def test__hash__shouldConsiderInstancesIdentical__whenUPIDIsSame(self):
+    def test__hash__shouldReturnSameHash__whenUPIDIsSame(self):
         # Arrange
         upid = anon_upid()
         player_a = Player(anon_string(), upid)
         player_b = Player(anon_string(), upid)
-        # TODO: Test hash directly because set uses eq()
-        players = {player_a}
 
         # Act
-        players.add(player_b)
+        hash_a = hash(player_a)
+        hash_b = hash(player_b)
 
         # Assert
-        self.assertEqual(1, len(players))
+        self.assertEqual(hash_a, hash_b)
 
-    def test__hash__shouldConsiderInstancesDifferent__whenConstructionIsDifferent(self):
+    def test__hash__shouldReturnDifferentHash__whenUPIDIsDifferent(self):
         # Arrange
         name = anon_string()
         player_a = Player(name, anon_upid())
         player_b = Player(name, anon_upid())
-        # TODO: Test hash directly because set uses eq()
-        players = {player_a}
 
         # Act
-        players.add(player_b)
+        hash_a = hash(player_a)
+        hash_b = hash(player_b)
 
         # Assert
-        self.assertEqual(2, len(players))
+        self.assertNotEqual(hash_a, hash_b)
 
     def test__str__shouldReturnStringForm(self):
         # Arrange
