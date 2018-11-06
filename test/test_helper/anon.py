@@ -1,5 +1,10 @@
-from random import choices
-from string import ascii_letters, digits, ascii_lowercase
+from functools import wraps
+from itertools import product
+from string import (
+    ascii_letters,
+    ascii_lowercase,
+    digits,
+)
 
 from assassin_game_csss.domain.game import Game
 from assassin_game_csss.domain.item import Item
@@ -9,17 +14,34 @@ from assassin_game_csss.domain.target import Target
 from assassin_game_csss.domain.upid import UPID
 
 
-def anon_string(count: int = 10) -> str:
-    return ''.join(choices(ascii_letters + digits, k=count))
+def anon_product(*args, **kwargs):
+    def decorator(func):
+        def iterator():
+            while ...:
+                yield from product(*args, **kwargs)
+        iterator = iterator()
+
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            return func(next(iterator), *args, **kwarts)
+
+        return wrapper
+    return decorator
+
+
+@anon_product(ascii_letters + digits, repeat=10)
+def anon_string(prod, count: int = 10):
+    # TODO: strings of specific length
+    return ''.join(prod)
+
+
+@anon_product(*(ascii_lowercase,)*3, *(digits,)*3)
+def anon_upid(prod):
+    return UPID(''.join(prod))
 
 
 def anon_player() -> Player:
     return Player(anon_string(), anon_upid())
-
-
-def anon_upid() -> UPID:
-    return UPID("%s%s" % ("".join(choices(ascii_lowercase, k=3)),
-                          "".join(choices(digits, k=3))))
 
 
 def anon_location() -> Location:
