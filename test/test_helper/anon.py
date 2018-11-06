@@ -23,7 +23,7 @@ def anon_product(*args, **kwargs):
 
         @wraps(func)
         def wrapper(*args, **kwargs):
-            return func(next(iterator), *args, **kwarts)
+            return func(next(iterator), *args, **kwargs)
 
         return wrapper
     return decorator
