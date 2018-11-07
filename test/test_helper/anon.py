@@ -1,5 +1,6 @@
+import random
+from itertools import count
 from functools import wraps
-from itertools import product
 from string import (
     ascii_letters,
     ascii_lowercase,
@@ -14,30 +15,42 @@ from assassin_game_csss.domain.target import Target
 from assassin_game_csss.domain.upid import UPID
 
 
-def anon_product(*args, **kwargs):
-    def decorator(func):
-        def iterator():
-            while ...:
-                yield from product(*args, **kwargs)
-        iterator = iterator()
+def counter(func):
+    index = count(random.randint(0, 1<<63))
 
-        @wraps(func)
-        def wrapper(*args, **kwargs):
-            return func(next(iterator), *args, **kwargs)
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        return func(next(index), *args, **kwargs)
 
-        return wrapper
-    return decorator
+    return wrapper
+
+def trim_char(index, chars):
+    new_index, char = divmod(index, len(chars))
+    return new_index, chars[char]
+
+@counter
+def anon_string(index, length: int = 10):
+    chars = digits + ascii_letters
+    to_join = []
+    for _ in range(length):
+        index, c = trim_char(index, chars)
+        to_join.append(c)
+    return ''.join(to_join)
 
 
-@anon_product(ascii_letters + digits, repeat=10)
-def anon_string(prod, count: int = 10):
-    # TODO: strings of specific length
-    return ''.join(prod)
+@counter
+def anon_upid(index):
+    to_join = []
 
+    for _ in range(3):
+        index, c = trim_char(index, ascii_lowercase)
+        to_join.append(c)
 
-@anon_product(*(ascii_lowercase,)*3, *(digits,)*3)
-def anon_upid(prod):
-    return UPID(''.join(prod))
+    for _ in range(3):
+        index, c = trim_char(index, digits)
+        to_join.append(c)
+
+    return UPID(''.join(to_join))
 
 
 def anon_player() -> Player:
