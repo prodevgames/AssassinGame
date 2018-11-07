@@ -119,8 +119,8 @@ class TestTarget(TestCase):
     @skip("Not Yet Implemented")
     def test__equals__shouldReturnFalse__whenConstructionIsDifferent(self):
         # Arrange
-        target_a = Target(Player("Player 1", "ply111"), Item("Item 1"), Location("Location 1"))
-        target_b = Target(Player("Player 2", "ply222"), Item("Item 2"), Location("Location 2"))
+        target_a = anon_target()
+        target_b = anon_target()
 
         # Act
         actual = (target_a == target_b)
