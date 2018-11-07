@@ -4,7 +4,7 @@ from assassin_game_csss.domain.target import Target
 from assassin_game_csss.domain.item import Item
 from assassin_game_csss.domain.location import Location
 from assassin_game_csss.domain.player import Player
-from test.test_helper.anon import anon_item, anon_player, anon_location, anon_string, anon_target
+from test.test_helper.anon import anon_item, anon_player, anon_location, anon_target
 
 
 class TestTarget(TestCase):
@@ -139,11 +139,38 @@ class TestTarget(TestCase):
         # Assert
         self.assertTrue(actual)
 
-    # TODO: hash negative (only Player different)
+    @skip("Not Yet Implemented")
+    def test__hash__shouldReturnDifferentValues__whenPlayerArgumentIsDifferent(self):
+        target_a = Target(anon_player(), Item("Identical Item"), Location("Identical Location"))
+        target_b = Target(anon_player(), Item("Identical Item"), Location("Identical Location"))
 
-    # TODO: hash negative (only Item different)
+        # Act
+        actual = hash(target_a) == hash(target_b)
 
-    # TODO: hash negative (only Location different)
+        # Assert
+        self.assertFalse(actual)
+
+    @skip("Not Yet Implemented")
+    def test__hash__shouldReturnDifferentValues__whenItemArgumentIsDifferent(self):
+        target_a = Target(Player("Identical Player", "abc123"), anon_item(), Location("Identical Location"))
+        target_b = Target(Player("Identical Player", "abc123"), anon_item(), Location("Identical Location"))
+
+        # Act
+        actual = hash(target_a) == hash(target_b)
+
+        # Assert
+        self.assertFalse(actual)
+
+    @skip("Not Yet Implemented")
+    def test__hash__shouldReturnDifferentValues__whenLocationArgumentIsDifferent(self):
+        target_a = Target(Player("Identical Player", "abc123"), Item("Identical Item"), anon_location())
+        target_b = Target(Player("Identical Player", "abc123"), Item("Identical Item"), anon_location())
+
+        # Act
+        actual = hash(target_a) == hash(target_b)
+
+        # Assert
+        self.assertFalse(actual)
 
     # TODO: Str() (CLUE style!)
 
