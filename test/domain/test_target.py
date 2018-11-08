@@ -172,6 +172,26 @@ class TestTarget(TestCase):
         # Assert
         self.assertFalse(actual)
 
-    # TODO: Str() (CLUE style!)
+    @skip("Not Yet Implemented")
+    def test__str__shouldReturnAllTargetInfo__whenCalled(self):
+        # Arrange
+        target = anon_target()
+        expected = "%s(%s) at %s with %s" % (target.player.name, target.player.upid, target.location, target.item)
 
-    # TODO: Repr()
+        # Act
+        actual = str(target)
+
+        # Assert
+        self.assertEquals(expected, actual)
+
+    @skip("Not Yet Implemented")
+    def test__repr__shouldReturnRepresentation__whenCalled(self):
+        # Arrange
+        target = anon_target()
+        expected = "%s(%s, %s, %s)" % (Target.__name__, repr(target.player), repr(target.location), repr(target.item))
+
+        # Act
+        actual = repr(target)
+
+        # Assert
+        self.assertEquals(expected, actual)
