@@ -176,7 +176,7 @@ class TestTarget(TestCase):
     def test__str__shouldReturnAllTargetInfo__whenCalled(self):
         # Arrange
         target = anon_target()
-        expected = "%s(%s) at %s with %s" % (target.player.name, target.player.upid, target.location, target.item)
+        expected = "%s at %s with a %s" % (str(target.player), str(target.location), str(target.item))
 
         # Act
         actual = str(target)
