@@ -107,8 +107,11 @@ class TestTarget(TestCase):
     @skip("Not Yet Implemented")
     def test__equals__shouldReturnTrue__whenConstructionIsIdentical(self):
         # Arrange
-        target_a = Target(Player("Identical Player", "abc123"), Item("Identical Item"), Location("Identical Location"))
-        target_b = Target(Player("Identical Player", "abc123"), Item("Identical Item"), Location("Identical Location"))
+        player = anon_player()
+        item = anon_item()
+        location = anon_location()
+        target_a = Target(player, item, location)
+        target_b = Target(player, item, location)
 
         # Act
         actual = (target_a == target_b)
@@ -130,8 +133,11 @@ class TestTarget(TestCase):
 
     @skip("Not Yet Implemented")
     def test__hash__shouldReturnSameValue__whenConstructionIsIdentical(self):
-        target_a = Target(Player("Identical Player", "abc123"), Item("Identical Item"), Location("Identical Location"))
-        target_b = Target(Player("Identical Player", "abc123"), Item("Identical Item"), Location("Identical Location"))
+        player = anon_player()
+        item = anon_item()
+        location = anon_location()
+        target_a = Target(player, item, location)
+        target_b = Target(player, item, location)
 
         # Act
         actual = hash(target_a) == hash(target_b)
@@ -141,8 +147,10 @@ class TestTarget(TestCase):
 
     @skip("Not Yet Implemented")
     def test__hash__shouldReturnDifferentValues__whenPlayerArgumentIsDifferent(self):
-        target_a = Target(anon_player(), Item("Identical Item"), Location("Identical Location"))
-        target_b = Target(anon_player(), Item("Identical Item"), Location("Identical Location"))
+        item = anon_item()
+        location = anon_location()
+        target_a = Target(anon_player(), item, location)
+        target_b = Target(anon_player(), item, location)
 
         # Act
         actual = hash(target_a) == hash(target_b)
@@ -152,8 +160,10 @@ class TestTarget(TestCase):
 
     @skip("Not Yet Implemented")
     def test__hash__shouldReturnDifferentValues__whenItemArgumentIsDifferent(self):
-        target_a = Target(Player("Identical Player", "abc123"), anon_item(), Location("Identical Location"))
-        target_b = Target(Player("Identical Player", "abc123"), anon_item(), Location("Identical Location"))
+        player = anon_player()
+        location = anon_location()
+        target_a = Target(player, anon_item(), location)
+        target_b = Target(player, anon_item(), location)
 
         # Act
         actual = hash(target_a) == hash(target_b)
@@ -163,8 +173,10 @@ class TestTarget(TestCase):
 
     @skip("Not Yet Implemented")
     def test__hash__shouldReturnDifferentValues__whenLocationArgumentIsDifferent(self):
-        target_a = Target(Player("Identical Player", "abc123"), Item("Identical Item"), anon_location())
-        target_b = Target(Player("Identical Player", "abc123"), Item("Identical Item"), anon_location())
+        player = anon_player()
+        item = anon_item()
+        target_a = Target(player, item, anon_location())
+        target_b = Target(player, item, anon_location())
 
         # Act
         actual = hash(target_a) == hash(target_b)
