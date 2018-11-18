@@ -1,14 +1,10 @@
-from unittest import skip, TestCase
+from unittest import TestCase
 
 from assassin_game_csss.domain.target import Target
-from assassin_game_csss.domain.item import Item
-from assassin_game_csss.domain.location import Location
-from assassin_game_csss.domain.player import Player
 from test.test_helper.anon import anon_item, anon_player, anon_location, anon_target
 
 
 class TestTarget(TestCase):
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenPlayerArgIsWrongType(self):
         # Act
         # noinspection PyTypeChecker
@@ -17,7 +13,6 @@ class TestTarget(TestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenItemArgIsWrongType(self):
         # Act
         # noinspection PyTypeChecker
@@ -26,7 +21,6 @@ class TestTarget(TestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenLocationArgIsWrongType(self):
         # Act
         # noinspection PyTypeChecker
@@ -35,7 +29,6 @@ class TestTarget(TestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__player__shouldReturnPlayer__whenAccessing(self):
         # Arrange
         expected_player = anon_player()
@@ -47,7 +40,6 @@ class TestTarget(TestCase):
         # Assert
         self.assertEquals(expected_player, actual)
 
-    @skip("Not Yet Implemented")
     def test__player__shouldThrowException__whenTryingToSetPlayer(self):
         # Arrange
         target = anon_target()
@@ -58,7 +50,6 @@ class TestTarget(TestCase):
         # Assert
         self.assertRaises(AttributeError, action)
 
-    @skip("Not Yet Implemented")
     def test__item__shouldReturnItem__whenAccessing(self):
         # Arrange
         expected_item = anon_item()
@@ -70,7 +61,6 @@ class TestTarget(TestCase):
         # Assert
         self.assertEquals(expected_item, actual)
 
-    @skip("Not Yet Implemented")
     def test__item__shouldThrowException__whenTryingToSetItem(self):
         # Arrange
         target = anon_target()
@@ -81,7 +71,6 @@ class TestTarget(TestCase):
         # Assert
         self.assertRaises(AttributeError, action)
 
-    @skip("Not Yet Implemented")
     def test__location__shouldReturnLocation__whenAccessing(self):
         # Arrange
         expected_location = anon_location()
@@ -93,7 +82,6 @@ class TestTarget(TestCase):
         # Assert
         self.assertEquals(expected_location, actual)
 
-    @skip("Not Yet Implemented")
     def test__location__shouldThrowException__whenTryingToSetLocation(self):
         # Arrange
         target = anon_target()
@@ -104,7 +92,6 @@ class TestTarget(TestCase):
         # Assert
         self.assertRaises(AttributeError, action)
 
-    @skip("Not Yet Implemented")
     def test__equals__shouldReturnTrue__whenConstructionIsIdentical(self):
         # Arrange
         player = anon_player()
@@ -119,7 +106,6 @@ class TestTarget(TestCase):
         # Assert
         self.assertTrue(actual)
 
-    @skip("Not Yet Implemented")
     def test__equals__shouldReturnFalse__whenConstructionIsDifferent(self):
         # Arrange
         target_a = anon_target()
@@ -131,7 +117,6 @@ class TestTarget(TestCase):
         # Assert
         self.assertFalse(actual)
 
-    @skip("Not Yet Implemented")
     def test__hash__shouldReturnSameValue__whenConstructionIsIdentical(self):
         player = anon_player()
         item = anon_item()
@@ -145,7 +130,6 @@ class TestTarget(TestCase):
         # Assert
         self.assertTrue(actual)
 
-    @skip("Not Yet Implemented")
     def test__hash__shouldReturnDifferentValues__whenPlayerArgumentIsDifferent(self):
         item = anon_item()
         location = anon_location()
@@ -158,7 +142,6 @@ class TestTarget(TestCase):
         # Assert
         self.assertFalse(actual)
 
-    @skip("Not Yet Implemented")
     def test__hash__shouldReturnDifferentValues__whenItemArgumentIsDifferent(self):
         player = anon_player()
         location = anon_location()
@@ -171,7 +154,6 @@ class TestTarget(TestCase):
         # Assert
         self.assertFalse(actual)
 
-    @skip("Not Yet Implemented")
     def test__hash__shouldReturnDifferentValues__whenLocationArgumentIsDifferent(self):
         player = anon_player()
         item = anon_item()
@@ -184,7 +166,6 @@ class TestTarget(TestCase):
         # Assert
         self.assertFalse(actual)
 
-    @skip("Not Yet Implemented")
     def test__str__shouldReturnAllTargetInfo__whenCalled(self):
         # Arrange
         target = anon_target()
@@ -196,7 +177,6 @@ class TestTarget(TestCase):
         # Assert
         self.assertEquals(expected, actual)
 
-    @skip("Not Yet Implemented")
     def test__repr__shouldReturnRepresentation__whenCalled(self):
         # Arrange
         target = anon_target()
