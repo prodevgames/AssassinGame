@@ -4,7 +4,7 @@ from assassin_game_csss.domain.target import Target
 from assassin_game_csss.domain.item import Item
 from assassin_game_csss.domain.location import Location
 from assassin_game_csss.domain.player import Player
-from test.test_helper.anon import anon_item, anon_player, anon_location, anon_string, anon_target
+from test.test_helper.anon import anon_item, anon_player, anon_location, anon_target
 
 
 class TestTarget(TestCase):
@@ -107,8 +107,11 @@ class TestTarget(TestCase):
     @skip("Not Yet Implemented")
     def test__equals__shouldReturnTrue__whenConstructionIsIdentical(self):
         # Arrange
-        target_a = Target(Player("Identical Player", "abc123"), Item("Identical Item"), Location("Identical Location"))
-        target_b = Target(Player("Identical Player", "abc123"), Item("Identical Item"), Location("Identical Location"))
+        player = anon_player()
+        item = anon_item()
+        location = anon_location()
+        target_a = Target(player, item, location)
+        target_b = Target(player, item, location)
 
         # Act
         actual = (target_a == target_b)
@@ -119,8 +122,8 @@ class TestTarget(TestCase):
     @skip("Not Yet Implemented")
     def test__equals__shouldReturnFalse__whenConstructionIsDifferent(self):
         # Arrange
-        target_a = Target(Player("Player 1", "ply111"), Item("Item 1"), Location("Location 1"))
-        target_b = Target(Player("Player 2", "ply222"), Item("Item 2"), Location("Location 2"))
+        target_a = anon_target()
+        target_b = anon_target()
 
         # Act
         actual = (target_a == target_b)
@@ -130,8 +133,11 @@ class TestTarget(TestCase):
 
     @skip("Not Yet Implemented")
     def test__hash__shouldReturnSameValue__whenConstructionIsIdentical(self):
-        target_a = Target(Player("Identical Player", "abc123"), Item("Identical Item"), Location("Identical Location"))
-        target_b = Target(Player("Identical Player", "abc123"), Item("Identical Item"), Location("Identical Location"))
+        player = anon_player()
+        item = anon_item()
+        location = anon_location()
+        target_a = Target(player, item, location)
+        target_b = Target(player, item, location)
 
         # Act
         actual = hash(target_a) == hash(target_b)
@@ -139,12 +145,65 @@ class TestTarget(TestCase):
         # Assert
         self.assertTrue(actual)
 
-    # TODO: hash negative (only Player different)
+    @skip("Not Yet Implemented")
+    def test__hash__shouldReturnDifferentValues__whenPlayerArgumentIsDifferent(self):
+        item = anon_item()
+        location = anon_location()
+        target_a = Target(anon_player(), item, location)
+        target_b = Target(anon_player(), item, location)
 
-    # TODO: hash negative (only Item different)
+        # Act
+        actual = hash(target_a) == hash(target_b)
 
-    # TODO: hash negative (only Location different)
+        # Assert
+        self.assertFalse(actual)
 
-    # TODO: Str() (CLUE style!)
+    @skip("Not Yet Implemented")
+    def test__hash__shouldReturnDifferentValues__whenItemArgumentIsDifferent(self):
+        player = anon_player()
+        location = anon_location()
+        target_a = Target(player, anon_item(), location)
+        target_b = Target(player, anon_item(), location)
 
-    # TODO: Repr()
+        # Act
+        actual = hash(target_a) == hash(target_b)
+
+        # Assert
+        self.assertFalse(actual)
+
+    @skip("Not Yet Implemented")
+    def test__hash__shouldReturnDifferentValues__whenLocationArgumentIsDifferent(self):
+        player = anon_player()
+        item = anon_item()
+        target_a = Target(player, item, anon_location())
+        target_b = Target(player, item, anon_location())
+
+        # Act
+        actual = hash(target_a) == hash(target_b)
+
+        # Assert
+        self.assertFalse(actual)
+
+    @skip("Not Yet Implemented")
+    def test__str__shouldReturnAllTargetInfo__whenCalled(self):
+        # Arrange
+        target = anon_target()
+        expected = "%s at %s with a %s" % (str(target.player), str(target.location), str(target.item))
+
+        # Act
+        actual = str(target)
+
+        # Assert
+        self.assertEquals(expected, actual)
+
+    @skip("Not Yet Implemented")
+    def test__repr__shouldReturnRepresentation__whenCalled(self):
+        # Arrange
+        target = anon_target()
+        expected = "%s(%s, %s, %s)" % (Target.__name__, repr(target.player), repr(target.location), repr(target.item))
+
+        # Act
+        actual = repr(target)
+
+        # Assert
+        self.assertEquals(expected, actual)
