@@ -1,49 +1,30 @@
 from unittest import TestCase, skip
 
 from assassin_game_csss.domain.item import Item
-from test.test_helper.anon import anon_item
+from test.test_helper.anon import anon_item, anon_string
 
 
 class TestItem(TestCase):
-    def test__constructor__shouldThrowException__whenProvidedNone(self):
+
+    def test__constructor__shouldThrowException__whenGivenNonString(self):
         # Act
         # noinspection PyTypeChecker
-        def action(): Item(None)
+        def action_none(): Item(None)
 
-        # Assert
-        self.assertRaises(TypeError, action)
-
-    def test__constructor__shouldThrowException__whenProvidedInt(self):
-        # Act
         # noinspection PyTypeChecker
-        def action(): Item(3)
+        def action_int(): Item(42)
 
-        # Assert
-        self.assertRaises(TypeError, action)
-
-    def test__constructor__shouldThrowException__whenProvidedFloat(self):
-        # Act
         # noinspection PyTypeChecker
-        def action(): Item(3.4)
+        def action_set(): Item(set())
 
-        # Assert
-        self.assertRaises(TypeError, action)
-
-    def test__constructor__shouldThrowException__whenProvidedDict(self):
-        # Act
         # noinspection PyTypeChecker
-        def action(): Item(3)
+        def action_list(): Item([])
 
         # Assert
-        self.assertRaises(TypeError, action)
-
-    def test__constructor__shouldThrowException__whenProvidedList(self):
-        # Act
-        # noinspection PyTypeChecker
-        def action(): Item(3)
-
-        # Assert
-        self.assertRaises(TypeError, action)
+        self.assertRaises(TypeError, action_none)
+        self.assertRaises(TypeError, action_int)
+        self.assertRaises(TypeError, action_set)
+        self.assertRaises(TypeError, action_list)
 
     def test__constructor__shouldThrowException__whenProvidedEmptyString(self):
         # Act
@@ -52,22 +33,9 @@ class TestItem(TestCase):
         # Assert
         self.assertRaises(ValueError, action)
 
-    # TODO: Delete this test when the method is remove
-    def test__get_name__shouldReturnName(self):
-        # Arrange
-        expected_name = "Test Name"
-        item = Item(expected_name)
-
-        # Act
-        actual = item.get_name()
-
-        # Assert
-        self.assertEqual(expected_name, actual)
-
-    @skip("Not Yet Implemented")
     def test__name__shouldReturnName__whenAccessed(self):
         # Arrange
-        expected_name = "Test Name"
+        expected_name = anon_string()
         item = Item(expected_name)
 
         # Act
@@ -76,22 +44,22 @@ class TestItem(TestCase):
         # Assert
         self.assertEqual(expected_name, actual)
 
-    @skip("Not Yet Implemented")
     def test__name__shouldRaiseException__whenAttemptingToSet(self):
         # Arrange
         item = anon_item()
 
         # Act
         # noinspection PyPropertyAccess
-        def action(): item.name = "New Name"
+        def action(): item.name = anon_string()
 
         # Assert
         self.assertRaises(AttributeError, action)
 
-    def test__equals__shouldReturnTrue__whenConstructionIsIdentical(self):
+    def test__equals__shouldReturnTrue__whenNameIsSame(self):
         # Arrange
-        item_a = Item("Identical Name")
-        item_b = Item("Identical Name")
+        name = anon_string()
+        item_a = Item(name)
+        item_b = Item(name)
 
         # Act
         actual = (item_a == item_b)
@@ -99,10 +67,10 @@ class TestItem(TestCase):
         # Assert
         self.assertTrue(actual)
 
-    def test__equals__shouldReturnFalse__whenConstructionIsDifferent(self):
+    def test__equals__shouldReturnFalse__whenNameIsDifferent(self):
         # Arrange
-        item_a = Item("Not Item B")
-        item_b = Item("Not Item A")
+        item_a = Item(anon_string())
+        item_b = Item(anon_string())
 
         # Act
         actual = (item_a == item_b)
@@ -110,26 +78,52 @@ class TestItem(TestCase):
         # Assert
         self.assertFalse(actual)
 
-    def test__equals__shouldConsiderInstancesIdentical__whenConstructionIsIdentical(self):
+    def test__hash__shouldReturnSameHash__whenNameIsSame(self):
         # Arrange
-        item_a = Item("Identical Name")
-        item_b = Item("Identical Name")
-        items = {item_a}
+        name = anon_string()
+        item_a = Item(name)
+        item_b = Item(name)
 
         # Act
-        items.add(item_b)
+        hash_a = hash(item_a)
+        hash_b = hash(item_b)
 
         # Assert
-        self.assertEqual(1, len(items))
+        self.assertEqual(hash_a, hash_b)
 
-    def test__equals__shouldConsiderInstancesDifferent__whenConstructionIsDifferent(self):
+    def test__hash__shouldReturnDifferentHash__whenNameIsDifferent(self):
         # Arrange
-        item_a = Item("Not Item B")
-        item_b = Item("Not Item A")
-        items = {item_a}
+        item_a = Item(anon_string())
+        item_b = Item(anon_string())
 
         # Act
-        items.add(item_b)
+        hash_a = hash(item_a)
+        hash_b = hash(item_b)
 
         # Assert
-        self.assertEqual(2, len(items))
+        self.assertNotEqual(hash_a, hash_b)
+
+    @skip("Not Yet Implemented")
+    def test__str__shouldReturnStringForm(self):
+        # Arrange
+        expected_name = anon_string()
+        item = Item(expected_name)
+
+        # Act
+        actual = str(item)
+
+        # Assert
+        self.assertEqual(expected_name, actual)
+
+    @skip("Not Yet Implemented")
+    def test__repr__shouldReturnRepresentation(self):
+        # Arrange
+        name = anon_string()
+        expected_string = "%s(\"%s\")" % (Item.__name__, name)
+        item = Item(name)
+
+        # Act
+        actual = repr(item)
+
+        # Assert
+        self.assertEqual(expected_string, actual)
