@@ -38,69 +38,11 @@ class TestTarget(TestCase):
     @skip("Not Yet Implemented")
     def test__equals__shouldReturnTrue__whenConstructionIsIdentical(self):
         # Arrange
-        player = anon_player()
-        item = anon_item()
-        location = anon_location()
-        target_a = Target(player, item, location)
-        target_b = Target(player, item, location)
+        target_a = Target(Player("Identical Player"), Item("Identical Item"), Location("Identical Location"))
+        target_b = Target(Player("Identical Player"), Item("Identical Item"), Location("Identical Location"))
 
         # Act
         actual = (target_a == target_b)
 
         # Assert
         self.assertTrue(actual)
-
-    @skip("Not Yet Implemented")
-    def test__equals__shouldReturnFalse__whenConstructionIsDifferent(self):
-        # Arrange
-        player_a = anon_player()
-        player_b = anon_player()
-        item_a = anon_item()
-        item_b = anon_item()
-        location_a = anon_location()
-        location_b = anon_location()
-
-        target_a = Target(player_a, item_a, location_a)
-        target_b = Target(player_b, item_b, location_b)
-
-        # Act
-        actual = (target_a == target_b)
-
-        # Assert\
-        self.assertFalse(actual)
-
-    @skip("Not Yet Implemented")
-    def test__equals__shouldConsiderInstancesIdentical__whenConstructionIsIdentical(self):
-        # Arrange
-        player = anon_player()
-        item = anon_item()
-        location = anon_location()
-        target_a = Target(player, item, location)
-        target_b = Target(player, item, location)
-        targets = {target_a}
-
-        # Act
-        targets.add(target_b)
-
-        # Assert
-        self.assertEqual(1, len(targets))
-
-    @skip("Not Yet Implemented")
-    def test__equals__shouldConsiderInstancesDifferent__whenConstructionIsDifferent(self):
-        # Arrange
-        player_a = anon_player()
-        player_b = anon_player()
-        item_a = anon_item()
-        item_b = anon_item()
-        location_a = anon_location()
-        location_b = anon_location()
-
-        target_a = Target(player_a, item_a, location_a)
-        target_b = Target(player_b, item_b, location_b)
-        targets = {target_a}
-
-        # Act
-        targets.add(target_b)
-
-        # Assert
-        self.assertEqual(2, len(targets))
