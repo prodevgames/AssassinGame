@@ -20,3 +20,9 @@ class Item:
 
     def __hash__(self):
         return hash(self.__name)
+
+    def __str__(self):
+        return self.__name
+
+    def __repr__(self):
+        return "%s(\"%s\")" % (Item.__name__, self.__name)
