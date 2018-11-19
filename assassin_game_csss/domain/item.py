@@ -25,4 +25,4 @@ class Item:
         return self.__name
 
     def __repr__(self):
-        return "%s(\"%s\")" % (Item.__name__, self.__name)
+        return "%s(\"%s\")" % (self.__class__.__name__, self.__name)
