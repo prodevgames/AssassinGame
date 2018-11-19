@@ -9,5 +9,5 @@ class InMemoryItemRepo(AbstractItemRepo):
     def retrieve_all(self) -> set:
         raise NotImplementedError
 
-    def delete(self, item: Item) -> bool:
+    def delete(self, item: Item) -> None:
         raise NotImplementedError
