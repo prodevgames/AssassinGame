@@ -1,4 +1,4 @@
-from unittest import TestCase, skip
+from unittest import TestCase
 
 from assassin_game_csss.domain.item import Item
 from test.test_helper.anon import anon_item, anon_string
@@ -103,7 +103,6 @@ class TestItem(TestCase):
         # Assert
         self.assertNotEqual(hash_a, hash_b)
 
-    @skip("Not Yet Implemented")
     def test__str__shouldReturnStringForm(self):
         # Arrange
         expected_name = anon_string()
@@ -115,7 +114,6 @@ class TestItem(TestCase):
         # Assert
         self.assertEqual(expected_name, actual)
 
-    @skip("Not Yet Implemented")
     def test__repr__shouldReturnRepresentation(self):
         # Arrange
         name = anon_string()
