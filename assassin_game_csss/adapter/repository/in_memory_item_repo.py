@@ -1,13 +1,25 @@
-from assassin_game_csss.domain.repository.abstract_item_repo import AbstractItemRepo
 from assassin_game_csss.domain.item import Item
+from assassin_game_csss.domain.repository.abstract_item_repo import AbstractItemRepo
 
 
 class InMemoryItemRepo(AbstractItemRepo):
+
+    __items: set = None
+
+    def __init__(self):
+        self.__items = set()
+
     def save(self, item: Item) -> None:
-        raise NotImplementedError
+        if type(item) is not Item:
+            raise TypeError("Invalid type given as item argument")
+
+        self.__items.add(item)
 
     def retrieve_all(self) -> set:
-        raise NotImplementedError
+        return self.__items.copy()
 
     def delete(self, item: Item) -> None:
-        raise NotImplementedError
+        if type(item) is not Item:
+            raise TypeError("Invalid type given as item argument")
+
+        self.__items.remove(item)
