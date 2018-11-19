@@ -53,7 +53,7 @@ class TestAbstractItemRepo(AbstractTestCase):
         items = self._item_repo.retrieve_all()
 
         # Assert
-        self.assertIsInstance(set, items)
+        self.assertIsInstance(items, set)
         self.assertEqual(0, len(items))
 
     def test__retrieve_all__shouldReturnSavedItem__whenOnlyOneItemStored(self):
