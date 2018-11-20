@@ -15,8 +15,12 @@ from assassin_game_csss.domain.target import Target
 from assassin_game_csss.domain.upid import UPID
 
 
-def counter(func):
-    index = count(random.randint(0, 1<<63))
+def autoindex(func):
+    """
+    Converts func that takes an index into a function where index is
+    incremented for successive calls.
+    """
+    index = count(random.randint(0, 1 << 63))
 
     @wraps(func)
     def wrapper(*args, **kwargs):
@@ -30,7 +34,7 @@ def trim_char(index, chars):
     return new_index, chars[char]
 
 
-@counter
+@autoindex
 def anon_string(index: int, length: int = 10) -> str:
     chars = digits + ascii_letters
     to_join = []
@@ -40,7 +44,7 @@ def anon_string(index: int, length: int = 10) -> str:
     return ''.join(to_join)
 
 
-@counter
+@autoindex
 def anon_upid(index: int) -> UPID:
     to_join = []
 
