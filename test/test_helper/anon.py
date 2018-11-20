@@ -24,12 +24,14 @@ def counter(func):
 
     return wrapper
 
+
 def trim_char(index, chars):
     new_index, char = divmod(index, len(chars))
     return new_index, chars[char]
 
+
 @counter
-def anon_string(index, length: int = 10):
+def anon_string(index: int, length: int = 10) -> str:
     chars = digits + ascii_letters
     to_join = []
     for _ in range(length):
@@ -39,7 +41,7 @@ def anon_string(index, length: int = 10):
 
 
 @counter
-def anon_upid(index):
+def anon_upid(index: int) -> UPID:
     to_join = []
 
     for _ in range(3):
