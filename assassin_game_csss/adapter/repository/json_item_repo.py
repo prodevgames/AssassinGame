@@ -20,8 +20,8 @@ class JsonItemRepo(AbstractItemRepo):
         items.add(item)
         self.__save_to_json(items)
 
-    def retrieve_all(self) -> set:
-        return self.__retrieve_from_json()
+    def retrieve_all(self) -> frozenset:
+        return frozenset(self.__retrieve_from_json())
 
     def delete(self, item: Item) -> None:
         if type(item) is not Item:

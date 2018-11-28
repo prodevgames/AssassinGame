@@ -47,13 +47,13 @@ class TestAbstractItemRepo(AbstractTestCase):
         items = self._item_repo.retrieve_all()
         self.assertEqual(1, len(items))
 
-    def test__retrieve_all__shouldReturnEmptySet__whenRepoIsEmpty(self):
+    def test__retrieve_all__shouldReturnEmptyFrozenset__whenRepoIsEmpty(self):
 
         # Act
         items = self._item_repo.retrieve_all()
 
         # Assert
-        self.assertIsInstance(items, set)
+        self.assertIsInstance(items, frozenset)
         self.assertEqual(0, len(items))
 
     def test__retrieve_all__shouldReturnSavedItem__whenOnlyOneItemStored(self):
@@ -63,11 +63,11 @@ class TestAbstractItemRepo(AbstractTestCase):
         self._item_repo.save(expected_item)
 
         # Act
-        items = self._item_repo.retrieve_all()
+        items = list(self._item_repo.retrieve_all())
 
         # Assert
-        actual = items.pop()
-        self.assertEqual(expected_item, actual)
+        self.assertEqual(1, len(items))
+        self.assertEqual(expected_item, items[0])
 
     def test__retrieve_all__shouldReturnAllSavedItems__whenMultipleItemsStored(self):
 

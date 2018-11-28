@@ -15,8 +15,8 @@ class InMemoryItemRepo(AbstractItemRepo):
 
         self.__items.add(item)
 
-    def retrieve_all(self) -> set:
-        return self.__items.copy()
+    def retrieve_all(self) -> frozenset:
+        return frozenset(self.__items)
 
     def delete(self, item: Item) -> None:
         if type(item) is not Item:
