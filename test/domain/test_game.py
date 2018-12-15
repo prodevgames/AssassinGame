@@ -665,7 +665,7 @@ class TestGame(TestCase):
         # Assert
         self.assertEqual(expected_next_target, game.get_target(player))
 
-    def test__mark_kill__shouldSetTargetToNone__whenKilledPlayersTargetIsTheKiller(self):
+    def test__mark_kill__shouldSetLastPlayersTargetToHimself__whenOnlyOnePlayerLeft(self):
         # Arrange
         player = anon_player()
         game = anon_game(players={player, anon_player()})
@@ -676,7 +676,7 @@ class TestGame(TestCase):
         game.mark_kill(player, target)
 
         # Assert
-        self.assertEqual(None, game.get_target(player))
+        self.assertEqual(player, game.get_target(player).player)
 
     def test__mark_kill__shouldEndGame__whenAllPlayersButLastHaveBeenKilled(self):
         # Arrange
