@@ -13,7 +13,7 @@ class Game:
     __name: str = None
     __id: UUID = None
     __players: Set[Player] = None
-    __scores: dict = None
+    __scores: Dict[Player, int] = None
     __targets: Dict[Player, Target] = None
 
     def __init__(self, players: Set[Player], items: Set[Item], locations: Set[Location], num_targets: int = 1) -> None:
@@ -33,12 +33,15 @@ class Game:
             raise ValueError("A game cannot be constructed with fewer than 1 locations")
 
         # Game Initialization Logic
+        self.__scores = dict()
+        self.__targets = dict()
         self.__players = players
         players = list(players)
         shuffle(players)
-        self.__targets = dict()
         for index, player in enumerate(players):
-            self.__targets[player] = Target(players[(index+1) % len(players)], sample(items, 1)[0],
+            self.__scores[player] = 0
+            self.__targets[player] = Target(players[(index + 1) % len(players)],
+                                            sample(items, 1)[0],
                                             sample(locations, 1)[0])
 
     @property
