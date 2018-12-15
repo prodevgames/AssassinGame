@@ -642,6 +642,7 @@ class TestGame(TestCase):
         game = anon_game(players={player, anon_player(), anon_player()})
         target = game.get_target(player)
         expected_next_target = game.get_target(target.player)
+        game.start()
 
         # Act
         game.mark_kill(player, target)
@@ -654,6 +655,7 @@ class TestGame(TestCase):
         player = anon_player()
         game = anon_game(players={player, anon_player()})
         target = game.get_target(player)
+        game.start()
 
         # Act
         game.mark_kill(player, target)
@@ -665,6 +667,7 @@ class TestGame(TestCase):
         # Arrange
         player = anon_player()
         game = anon_game(players={player, anon_player(), anon_player()})
+        game.start()
         first_target = game.get_target(player)
         game.mark_kill(player, first_target)
         final_target = game.get_target(player)
@@ -679,6 +682,7 @@ class TestGame(TestCase):
         # Arrange
         player = anon_player()
         game = anon_game(players={player, anon_player(), anon_player()})
+        game.stsart()
         target = game.get_target(player)
         killed_player = target.player
 
