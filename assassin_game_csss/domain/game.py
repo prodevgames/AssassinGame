@@ -18,6 +18,13 @@ class Game:
 
     def __init__(self, players: Set[Player], items: Set[Item], locations: Set[Location], num_targets: int = 1) -> None:
         # Type Checking
+        if not isinstance(players, set) or any(not isinstance(player, Player) for player in players):
+            raise TypeError("The 'players' argument must be a set of Player objects")
+        if not isinstance(items, set) or any(not isinstance(item, Item) for item in items):
+            raise TypeError("The 'items' argument must be a set of Item objects")
+        if not isinstance(locations, set) or any(not isinstance(location, Location) for location in locations):
+            raise TypeError("The 'locations' argument must be a set of Location objects")
+
 
         # Game Initialization Logic
         raise NotImplementedError
