@@ -53,7 +53,9 @@ class Game:
         raise NotImplementedError
 
     def get_target(self, player: Player) -> Target:
-        raise NotImplementedError
+        if not isinstance(player, Player):
+            raise TypeError("Cannot get the target of a non-player argument")
+        return self.__targets[player]
 
     def start(self) -> None:
         raise NotImplementedError
