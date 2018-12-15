@@ -526,7 +526,10 @@ class TestGame(TestCase):
         p1_initial_target = game.get_target(player1)
 
         # Act
-        game.mark_kill(player1, p1_initial_target)
+        try:
+            game.mark_kill(player1, p1_initial_target)
+        except IllegalActionError:
+            pass
 
         # Assert
         p1_actual_target_player = game.get_target(player1).player
@@ -544,7 +547,10 @@ class TestGame(TestCase):
                                 target.location)
 
         # Act
-        game.mark_kill(player1, invalid_target)
+        try:
+            game.mark_kill(player1, invalid_target)
+        except IllegalActionError:
+            pass
 
         # Assert
         p1_actual_target = game.get_target(player1)
@@ -579,7 +585,10 @@ class TestGame(TestCase):
         game.start()
 
         # Act
-        game.mark_kill(player1, invalid_target)
+        try:
+            game.mark_kill(player1, invalid_target)
+        except ValueError:
+            pass
 
         # Assert
         p1_actual_target = game.get_target(player1)
@@ -596,7 +605,10 @@ class TestGame(TestCase):
         game.end()
 
         # Act
-        game.mark_kill(player1, expected_target)
+        try:
+            game.mark_kill(player1, expected_target)
+        except IllegalActionError:
+            pass
 
         # Assert
         self.assertEqual(expected_target, game.get_target(player1))
@@ -615,7 +627,10 @@ class TestGame(TestCase):
         game.end()
 
         # Act
-        game.mark_kill(player1, invalid_target)
+        try:
+            game.mark_kill(player1, invalid_target)
+        except IllegalActionError:
+            pass
 
         # Assert
         p1_actual_target = game.get_target(player1)
