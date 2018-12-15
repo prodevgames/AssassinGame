@@ -682,7 +682,7 @@ class TestGame(TestCase):
         # Arrange
         player = anon_player()
         game = anon_game(players={player, anon_player(), anon_player()})
-        game.stsart()
+        game.start()
         target = game.get_target(player)
         killed_player = target.player
 
