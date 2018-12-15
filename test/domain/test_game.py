@@ -503,7 +503,7 @@ class TestGame(TestCase):
         # Assert
         self.assertRaises(ValueError, action)
 
-    def test__mark_kill__shouldReturnFalse__whenTargetIsCorrectButGameIsNotStarted(self):
+    def test__mark_kill__shouldThrowException__whenGameIsNotStarted(self):
         # Arrange
         player1 = anon_player()
         player2 = anon_player()
@@ -512,62 +512,12 @@ class TestGame(TestCase):
         game = Game({player1, player2}, {item}, {location})
 
         # Act
-        actual = game.mark_kill(player1, Target(player2, item, location))
+        def action(): game.mark_kill(player1, Target(player2, item, location))
 
         # Assert
-        self.assertFalse(actual)
+        self.assertRaises(RuntimeError, action)
 
-    def test__mark_kill__shouldReturnFalse__whenTargetIsIncorrectAndGameIsNotStarted(self):
-        # Arrange
-        player1 = anon_player()
-        player2 = anon_player()
-        location = anon_location()
-        item1 = anon_item()
-        item2 = anon_item()
-        game = Game({player1, player2}, {item1, item2}, {location})
-        target = game.get_target(player1)
-        other_item = item1 if target.item != item1 else item2
-
-        # Act
-        actual = game.mark_kill(player1, Target(player2, other_item, location))
-
-        # Assert
-        self.assertFalse(actual)
-
-    def test__mark_kill__shouldReturnTrue__whenTargetIsCorrectAndGameIsStarted(self):
-        # Arrange
-        player1 = anon_player()
-        player2 = anon_player()
-        location = anon_location()
-        item = anon_item()
-        game = Game({player1, player2}, {item}, {location})
-        game.start()
-
-        # Act
-        actual = game.mark_kill(player1, Target(player2, item, location))
-
-        # Assert
-        self.assertTrue(actual)
-
-    def test__mark_kill__shouldReturnFalse__whenTargetIsIncorrectAndGameIsStarted(self):
-        # Arrange
-        player1 = anon_player()
-        player2 = anon_player()
-        location = anon_location()
-        item1 = anon_item()
-        item2 = anon_item()
-        game = Game({player1, player2}, {item1, item2}, {location})
-        target = game.get_target(player1)
-        other_item = item1 if target.item != item1 else item2
-        game.start()
-
-        # Act
-        actual = game.mark_kill(player1, Target(player2, other_item, location))
-
-        # Assert
-        self.assertFalse(actual)
-
-    def test__mark_kill__shouldReturnFalse__whenTargetIsCorrectButGameHasEnded(self):
+    def test__mark_kill__shouldThrowException__whenGameHasEnded(self):
         # Arrange
         player1 = anon_player()
         player2 = anon_player()
@@ -578,12 +528,12 @@ class TestGame(TestCase):
         game.end()
 
         # Act
-        actual = game.mark_kill(player1, Target(player2, item, location))
+        def action(): game.mark_kill(player1, Target(player2, item, location))
 
         # Assert
-        self.assertFalse(actual)
+        self.assertRaises(RuntimeError, action)
 
-    def test__mark_kill__shouldReturnFalse__whenTargetIsIncorrectGameHasEnded(self):
+    def test__mark_kill__shouldRaiseException__whenTargetIsIncorrect(self):
         # Arrange
         player1 = anon_player()
         player2 = anon_player()
@@ -594,13 +544,29 @@ class TestGame(TestCase):
         target = game.get_target(player1)
         other_item = item1 if target.item != item1 else item2
         game.start()
-        game.end()
 
         # Act
-        actual = game.mark_kill(player1, Target(player2, other_item, location))
+        def action(): game.mark_kill(player1, Target(player2, other_item, location))
 
         # Assert
-        self.assertFalse(actual)
+        self.assertRaises(ValueError, action)
+
+    def test__mark_kill__shouldRaiseException__whenPlayerIsNotInGame(self):
+        # Arrange
+        player1 = anon_player()
+        player2 = anon_player()
+        location = anon_location()
+        item1 = anon_item()
+        item2 = anon_item()
+        game = Game({player1, player2}, {item1, item2}, {location})
+        target = game.get_target(player1)
+        game.start()
+
+        # Act
+        def action(): game.mark_kill(anon_player(), target)
+
+        # Assert
+        self.assertRaises(ValueError, action)
 
     def test__mark_kill__shouldNotModifyTarget__whenTargetIsCorrectButGameIsNotStarted(self):
         # Arrange
