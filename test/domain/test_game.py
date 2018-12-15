@@ -131,8 +131,8 @@ class TestGame(TestCase):
         # Assert
         player1_target = game.get_target(player1)
         player2_target = game.get_target(player2)
-        self.assertEqual(player2, player1_target.get_player())
-        self.assertEqual(player1, player2_target.get_player())
+        self.assertEqual(player2, player1_target.player)
+        self.assertEqual(player1, player2_target.player)
         self.assertIn(player1_target.get_item(), items)
         self.assertIn(player2_target.get_item(), items)
         self.assertIn(player2_target.get_location(), locations)
@@ -152,7 +152,7 @@ class TestGame(TestCase):
         current_player = initial_player
         seen_players = set()
         for index in range(0, len(players)):
-            next_player = game.get_target(current_player).get_player()
+            next_player = game.get_target(current_player).player
             self.assertNotIn(next_player, seen_players)
             seen_players.add(next_player)
             current_player = next_player
@@ -612,8 +612,8 @@ class TestGame(TestCase):
         game.mark_kill(player1, p1_initial_target)
 
         # Assert
-        p1_actual_target_player = game.get_target(player1).get_player()
-        self.assertEqual(p1_initial_target.get_player(), p1_actual_target_player)
+        p1_actual_target_player = game.get_target(player1).player
+        self.assertEqual(p1_initial_target.player, p1_actual_target_player)
 
     def test__mark_kill__shouldNotModifyTarget__whenTargetIsIncorrectAndGameIsNotStarted(self):
         # Arrange
@@ -622,7 +622,7 @@ class TestGame(TestCase):
         player3 = anon_player()
         game = anon_game(players={player1, player2, player3})
         target = game.get_target(player1)
-        invalid_target = Target(player2 if target.get_player() != player2 else player3,
+        invalid_target = Target(player2 if target.player != player2 else player3,
                                 target.get_item(),
                                 target.get_location())
 
@@ -640,14 +640,14 @@ class TestGame(TestCase):
         player3 = anon_player()
         game = anon_game(players={player1, player2, player3})
         target = game.get_target(player1)
-        expected_next_target_player = player2 if target.get_player() != player2 else player3
+        expected_next_target_player = player2 if target.player != player2 else player3
         game.start()
 
         # Act
         game.mark_kill(player1, target)
 
         # Assert
-        self.assertEqual(expected_next_target_player, game.get_target(player1).get_player())
+        self.assertEqual(expected_next_target_player, game.get_target(player1).player)
 
     def test__mark_kill__shouldNotModifyTarget__whenTargetIsIncorrectAndGameIsStarted(self):
         # Arrange
@@ -656,7 +656,7 @@ class TestGame(TestCase):
         player3 = anon_player()
         game = anon_game(players={player1, player2, player3})
         target = game.get_target(player1)
-        invalid_target = Target(player2 if target.get_player() != player2 else player3,
+        invalid_target = Target(player2 if target.player != player2 else player3,
                                 target.get_item(),
                                 target.get_location())
         game.start()
@@ -691,7 +691,7 @@ class TestGame(TestCase):
         player3 = anon_player()
         game = anon_game(players={player1, player2, player3})
         expected_target = game.get_target(player1)
-        invalid_target = Target(player2 if expected_target.get_player() != player2 else player3,
+        invalid_target = Target(player2 if expected_target.player != player2 else player3,
                                 expected_target.get_item(),
                                 expected_target.get_location())
         game.start()
@@ -709,7 +709,7 @@ class TestGame(TestCase):
         player = anon_player()
         game = anon_game(players={player, anon_player(), anon_player()})
         target = game.get_target(player)
-        expected_next_target = game.get_target(target.get_player())
+        expected_next_target = game.get_target(target.player)
 
         # Act
         game.mark_kill(player, target)
@@ -748,7 +748,7 @@ class TestGame(TestCase):
         player = anon_player()
         game = anon_game(players={player, anon_player(), anon_player()})
         target = game.get_target(player)
-        killed_player = target.get_player()
+        killed_player = target.player
 
         # Act
         game.mark_kill(player, target)
