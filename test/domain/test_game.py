@@ -724,6 +724,84 @@ class TestGame(TestCase):
         self.assertTrue(actual2)
         self.assertTrue(actual3)
 
+    def test__is_alive__shouldReturnCorrectBool__whenPlayersAreStillAliveAndGameIsActive(self):
+        # Arrange
+        player1 = anon_player()
+        game = anon_game(players={player1, anon_player(), anon_player()})
+        player2 = game.get_target(player1).player
+        player3 = game.get_target(player2).player
+        game.start()
+
+        # Act
+        actual1 = game.is_alive(player1)
+        actual2 = game.is_alive(player2)
+        actual3 = game.is_alive(player3)
+
+        # Assert
+        self.assertTrue(actual1)
+        self.assertTrue(actual2)
+        self.assertTrue(actual3)
+
+    def test__is_alive__shouldReturnCorrectBool__whenSomePlayersAreDeadAndGameIsActive(self):
+        # Arrange
+        player1 = anon_player()
+        game = anon_game(players={player1, anon_player(), anon_player()})
+        player1_target = game.get_target(player1)
+        player2 = player1_target.player
+        player3 = game.get_target(player2).player
+        game.start()
+        game.mark_kill(player1, player1_target)
+
+        # Act
+        actual1 = game.is_alive(player1)
+        actual2 = game.is_alive(player2)
+        actual3 = game.is_alive(player3)
+
+        # Assert
+        self.assertTrue(actual1)
+        self.assertFalse(actual2)
+        self.assertTrue(actual3)
+
+    def test__is_alive__shouldReturnCorrectBool__whenPlayersAreStillAliveAndGameIsOver(self):
+        # Arrange
+        player1 = anon_player()
+        game = anon_game(players={player1, anon_player(), anon_player()})
+        player2 = game.get_target(player1).player
+        player3 = game.get_target(player2).player
+        game.start()
+        game.end()
+
+        # Act
+        actual1 = game.is_alive(player1)
+        actual2 = game.is_alive(player2)
+        actual3 = game.is_alive(player3)
+
+        # Assert
+        self.assertTrue(actual1)
+        self.assertTrue(actual2)
+        self.assertTrue(actual3)
+
+    def test__is_alive__shouldReturnCorrectBool__whenSomePlayersAreDeadAndGameIsOver(self):
+        # Arrange
+        player1 = anon_player()
+        game = anon_game(players={player1, anon_player(), anon_player()})
+        player1_target = game.get_target(player1)
+        player2 = player1_target.player
+        player3 = game.get_target(player2).player
+        game.start()
+        game.mark_kill(player1, player1_target)
+        game.end()
+
+        # Act
+        actual1 = game.is_alive(player1)
+        actual2 = game.is_alive(player2)
+        actual3 = game.is_alive(player3)
+
+        # Assert
+        self.assertTrue(actual1)
+        self.assertFalse(actual2)
+        self.assertTrue(actual3)
+
     def test__equals__shouldReturnFalse__whenGamesCreatedWithIdenticalOptions(self):
         # Arrange
         players = {anon_player(), anon_player(), anon_player()}
