@@ -9,7 +9,11 @@ class Target:
     __location: Location = None
 
     def __init__(self, player: Player, item: Item, location: Location):
-        raise NotImplementedError
+        if not isinstance(player, Player) or not isinstance(item, Item) or not isinstance(location, Location):
+            raise TypeError
+        self.__player = player
+        self.__item = item
+        self.__location = location
 
     def get_player(self) -> Player:
         raise NotImplementedError
