@@ -17,7 +17,7 @@ class Game:
 
     @property
     def id(self) -> UUID:
-        raise NotImplementedError
+        return self.__id
 
     @property
     def status(self) -> GameState:
