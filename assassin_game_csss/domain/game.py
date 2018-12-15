@@ -67,14 +67,14 @@ class Game:
     def get_score(self, player: Player) -> int:
         if not isinstance(player, Player):
             raise TypeError("Cannot get the score of a non-player argument")
-        elif player not in self.__players:
+        if player not in self.__players:
             raise ValueError("Player '%s' not found in game" % player)
         return self.__scores[player]
 
     def get_target(self, player: Player) -> Target:
         if not isinstance(player, Player):
             raise TypeError("Cannot get the target of a non-player argument")
-        elif player not in self.__players:
+        if player not in self.__players:
             raise ValueError("Player '%s' not found in game" % player)
         return self.__targets[player]
 
@@ -89,4 +89,19 @@ class Game:
         self.__status = GameState.ENDED
 
     def mark_kill(self, player: Player, target: Target):
-        raise NotImplementedError
+        if self.__status is not GameState.STARTED:
+            raise IllegalActionError("Cannot kill a target if game has not been started.")
+        if player not in self.__players:
+            raise ValueError("Player not found in game")
+        if target != self.__targets[player]:
+            raise ValueError("Target to be marked as killed was not found in game")
+
+        # change targets
+        self.__targets[player] = self.__targets[target.player]
+        del self.__targets[target.player]
+        # increment score
+        self.__scores[player] += 1
+
+        # if the last target is killed, STOP game
+        if len(self.__targets) == 1:
+            self.__status = GameState.ENDED
