@@ -1,6 +1,6 @@
+from random import sample, shuffle
 from typing import Set, Dict
 from uuid import UUID
-from random import randint
 
 from assassin_game_csss.domain.game_state import GameState
 from assassin_game_csss.domain.item import Item
@@ -33,7 +33,13 @@ class Game:
             raise ValueError("A game cannot be constructed with fewer than 1 locations")
 
         # Game Initialization Logic
-        raise NotImplementedError
+        self.__players = players
+        players = list(players)
+        shuffle(players)
+        self.__targets = dict()
+        for index, player in enumerate(players):
+            self.__targets[player] = Target(players[(index+1) % len(players)], sample(items, 1)[0],
+                                            sample(locations, 1)[0])
 
     @property
     def id(self) -> UUID:
