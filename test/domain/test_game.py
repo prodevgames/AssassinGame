@@ -693,7 +693,7 @@ class TestGame(TestCase):
         # Assert
         self.assertEqual(GameState.ENDED, game.status)
 
-    def test__mark_kill__shouldSetTargetOfKilledPlayerToNone__whenPlayerSuccessfullyKilled(self):
+    def test__mark_kill__shouldRemovePlayersTarget__whenPlayerSuccessfullyKilled(self):
         # Arrange
         player = anon_player()
         game = anon_game(players={player, anon_player(), anon_player()})
@@ -705,7 +705,7 @@ class TestGame(TestCase):
         game.mark_kill(player, target)
 
         # Assert
-        self.assertEqual(None, game.get_target(killed_player))
+        self.assertRaises(ValueError, lambda: game.get_target(killed_player))
 
     def test__is_alive__shouldReturnCorrectBool__whenPlayersAreStillAliveAndGameIsNotStarted(self):
         # Arrange
