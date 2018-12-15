@@ -11,7 +11,7 @@ from assassin_game_csss.domain.target import Target
 
 
 class Game:
-    __name: str = None
+    # TODO: Killian Stacey 2018DEC15: add name attribute to game class
     __id: UUID = None
     __status: GameState = None
     __players: Set[Player] = None
