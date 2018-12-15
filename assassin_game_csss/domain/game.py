@@ -1,6 +1,6 @@
 from random import sample, shuffle
 from typing import Set, Dict
-from uuid import UUID
+from uuid import UUID, uuid4
 
 from assassin_game_csss.domain.game_state import GameState
 from assassin_game_csss.domain.item import Item
@@ -41,6 +41,7 @@ class Game:
             raise NotImplementedError("The multiple-target game feature is not yet supported")
 
         # Game Initialization Logic
+        self.__id = uuid4()
         self.__scores = dict()
         self.__targets = dict()
         self.__players = players
