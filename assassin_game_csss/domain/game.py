@@ -1,5 +1,6 @@
-from typing import Set
+from typing import Set, Dict
 from uuid import UUID
+from random import randint
 
 from assassin_game_csss.domain.game_state import GameState
 from assassin_game_csss.domain.item import Item
@@ -11,9 +12,9 @@ from assassin_game_csss.domain.target import Target
 class Game:
     __name: str = None
     __id: UUID = None
-    __players: set = None
+    __players: Set[Player] = None
     __scores: dict = None
-    __targets: dict = None
+    __targets: Dict[Player, Target] = None
 
     def __init__(self, players: Set[Player], items: Set[Item], locations: Set[Location], num_targets: int = 1) -> None:
         # Type Checking
