@@ -9,8 +9,12 @@ class Target:
     __location: Location = None
 
     def __init__(self, player: Player, item: Item, location: Location):
-        if not isinstance(player, Player) or not isinstance(item, Item) or not isinstance(location, Location):
-            raise TypeError
+        if not isinstance(player, Player):
+            raise TypeError("Target argument player is not of type Player")
+        elif not isinstance(item, Item):
+            raise TypeError("Target argument item is not of type Item")
+        elif not isinstance(location, Location):
+            raise TypeError("Target argument location is not of type Location")
         self.__player = player
         self.__item = item
         self.__location = location
