@@ -24,6 +24,8 @@ class Game:
             raise TypeError("The 'items' argument must be a set of Item objects")
         elif not isinstance(locations, set) or any(not isinstance(location, Location) for location in locations):
             raise TypeError("The 'locations' argument must be a set of Location objects")
+        elif not isinstance(num_targets, int):
+            raise TypeError("The 'num_targets' argument must be an int")
 
         if len(players) < 2:
             raise ValueError("A game cannot be constructed with fewer than 2 players")
@@ -31,6 +33,8 @@ class Game:
             raise ValueError("A game cannot be constructed with fewer than 1 items")
         elif len(locations) < 1:
             raise ValueError("A game cannot be constructed with fewer than 1 locations")
+        elif num_targets < 1:
+            raise ValueError("A game cannot be constructed with fewer than 1 target per player")
 
         # Game Initialization Logic
         self.__scores = dict()
