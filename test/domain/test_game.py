@@ -15,6 +15,7 @@ class TestGame(TestCase):
         locations = {anon_location(), anon_location(), anon_location()}
 
         # Act
+        # noinspection PyTypeChecker
         def action(): Game(invalid_players, items, locations)
 
         # Assert
@@ -27,6 +28,7 @@ class TestGame(TestCase):
         locations = {anon_location(), anon_location(), anon_location()}
 
         # Act
+        # noinspection PyTypeChecker
         def action(): Game(players, invalid_items, locations)
 
         # Assert
@@ -39,6 +41,7 @@ class TestGame(TestCase):
         invalid_locations = {2, 3, 4}
 
         # Act
+        # noinspection PyTypeChecker
         def action(): Game(players, items, invalid_locations)
 
         # Assert
