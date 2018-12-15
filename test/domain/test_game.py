@@ -206,35 +206,35 @@ class TestGame(TestCase):
         # Assert
         self.assertEqual(expected_id, actual)
 
-    def test__get_status__shouldReturnCreated__whenGameJustConstructed(self):
+    def test__status__shouldReturnCreated__whenGameJustConstructed(self):
         # Arrange
         game = anon_game()
 
         # Act
-        actual = game.get_status()
+        actual = game.status
 
         # Assert
         self.assertEqual(GameState.CREATED, actual)
 
-    def test__get_status__shouldReturnStarted__whenGameHasBeenStarted(self):
+    def test__status__shouldReturnStarted__whenGameHasBeenStarted(self):
         # Arrange
         game = anon_game()
         game.start()
 
         # Act
-        actual = game.get_status()
+        actual = game.status
 
         # Assert
         self.assertEqual(GameState.STARTED, actual)
 
-    def test__get_status__shouldReturnEnded__whenGameHasBeenEnded(self):
+    def test__status__shouldReturnEnded__whenGameHasBeenEnded(self):
         # Arrange
         game = anon_game()
         game.start()
         game.end()
 
         # Act
-        actual = game.get_status()
+        actual = game.status
 
         # Assert
         self.assertEqual(GameState.ENDED, actual)
@@ -372,7 +372,7 @@ class TestGame(TestCase):
         game.start()
 
         # Assert
-        actual = game.get_status()
+        actual = game.status
         self.assertEqual(GameState.STARTED, actual)
 
     def test__end__shouldThrowException__whenCalledOnGameInCreatedState(self):
@@ -406,7 +406,7 @@ class TestGame(TestCase):
         game.end()
 
         # Assert
-        self.assertEqual(GameState.ENDED, game.get_status())
+        self.assertEqual(GameState.ENDED, game.status)
     
     def test__mark_kill__shouldThrowException__whenPlayerNotInGameAndGameCreated(self):
         # Arrange
@@ -741,7 +741,7 @@ class TestGame(TestCase):
         game.mark_kill(player, final_target)
 
         # Assert
-        self.assertEqual(GameState.ENDED, game.get_status())
+        self.assertEqual(GameState.ENDED, game.status)
 
     def test__mark_kill__shouldSetTargetOfKilledPlayerToNone__whenPlayerSuccessfullyKilled(self):
         # Arrange
