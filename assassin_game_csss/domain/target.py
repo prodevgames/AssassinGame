@@ -26,3 +26,6 @@ class Target:
     @property
     def location(self) -> Location:
         return self.__location
+
+    def __str__(self):
+        return "%s at %s with a %s" % (str(self.__player), str(self.__location), str(self.__item))
