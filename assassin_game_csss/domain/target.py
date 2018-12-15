@@ -1,6 +1,6 @@
+from assassin_game_csss.domain.item import Item
 from assassin_game_csss.domain.location import Location
 from assassin_game_csss.domain.player import Player
-from assassin_game_csss.domain.item import Item
 
 
 class Target:
@@ -29,3 +29,7 @@ class Target:
 
     def __str__(self):
         return "%s at %s with a %s" % (str(self.__player), str(self.__location), str(self.__item))
+
+    def __repr__(self):
+        return "%s(%s, %s, %s)" % (
+            self.__class__.__name__, repr(self.__player), repr(self.__location), repr(self.__item))
