@@ -74,7 +74,9 @@ class Game:
         return self.__targets[player]
 
     def start(self) -> None:
-        raise NotImplementedError
+        if self.__status is not GameState.CREATED:
+            raise RuntimeError("Invalid state, cannot start game from state '%s'" % self.__status)
+        self.__status = GameState.STARTED
 
     def end(self) -> None:
         if self.__status is not GameState.STARTED:
