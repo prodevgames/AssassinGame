@@ -15,10 +15,12 @@ class Game:
     def __init__(self, players: set, items: set, locations: set, num_targets: int = 1) -> None:
         raise NotImplementedError
 
-    def get_id(self) -> UUID:
+    @property
+    def id(self) -> UUID:
         raise NotImplementedError
 
-    def get_status(self) -> GameState:
+    @property
+    def status(self) -> GameState:
         raise NotImplementedError
 
     def get_score(self, player) -> int:
