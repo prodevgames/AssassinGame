@@ -12,7 +12,7 @@ from assassin_game_csss.domain.target import Target
 class Game:
     __name: str = None
     __id: UUID = None
-    __status = None
+    __status: GameState = None
     __players: Set[Player] = None
     __scores: Dict[Player, int] = None
     __targets: Dict[Player, Target] = None
