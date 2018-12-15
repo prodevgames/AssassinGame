@@ -135,8 +135,8 @@ class TestGame(TestCase):
         self.assertEqual(player1, player2_target.player)
         self.assertIn(player1_target.item, items)
         self.assertIn(player2_target.item, items)
-        self.assertIn(player2_target.get_location(), locations)
-        self.assertIn(player2_target.get_location(), locations)
+        self.assertIn(player2_target.location, locations)
+        self.assertIn(player2_target.location, locations)
 
     def test__constructor__shouldGenerateSingleCompleteLoopOfPlayerTargets__whenNumTargetsArgIsOne(self):
         # Arrange
@@ -452,7 +452,7 @@ class TestGame(TestCase):
         player = anon_player()
         game = anon_game(players={player, anon_player()})
         valid_target = game.get_target(player)
-        invalid_target = Target(anon_player(), valid_target.item, valid_target.get_location())
+        invalid_target = Target(anon_player(), valid_target.item, valid_target.location)
 
         # Act
         def action(): game.mark_kill(player, invalid_target)
@@ -465,7 +465,7 @@ class TestGame(TestCase):
         player = anon_player()
         game = anon_game(players={player, anon_player()})
         valid_target = game.get_target(player)
-        invalid_target = Target(anon_player(), valid_target.item, valid_target.get_location())
+        invalid_target = Target(anon_player(), valid_target.item, valid_target.location)
         game.start()
 
         # Act
@@ -479,7 +479,7 @@ class TestGame(TestCase):
         player = anon_player()
         game = anon_game(players={player, anon_player()})
         valid_target = game.get_target(player)
-        invalid_target = Target(anon_player(), valid_target.item, valid_target.get_location())
+        invalid_target = Target(anon_player(), valid_target.item, valid_target.location)
         game.start()
         game.end()
 
@@ -624,7 +624,7 @@ class TestGame(TestCase):
         target = game.get_target(player1)
         invalid_target = Target(player2 if target.player != player2 else player3,
                                 target.item,
-                                target.get_location())
+                                target.location)
 
         # Act
         game.mark_kill(player1, invalid_target)
@@ -658,7 +658,7 @@ class TestGame(TestCase):
         target = game.get_target(player1)
         invalid_target = Target(player2 if target.player != player2 else player3,
                                 target.item,
-                                target.get_location())
+                                target.location)
         game.start()
 
         # Act
@@ -693,7 +693,7 @@ class TestGame(TestCase):
         expected_target = game.get_target(player1)
         invalid_target = Target(player2 if expected_target.player != player2 else player3,
                                 expected_target.item,
-                                expected_target.get_location())
+                                expected_target.location)
         game.start()
         game.end()
 
