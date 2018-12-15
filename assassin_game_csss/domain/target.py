@@ -15,11 +15,14 @@ class Target:
         self.__item = item
         self.__location = location
 
-    def get_player(self) -> Player:
-        raise NotImplementedError
+    @property
+    def player(self) -> Player:
+        return self.__player
 
-    def get_item(self) -> Item:
-        raise NotImplementedError
+    @property
+    def item(self) -> Item:
+        return self.__item
 
-    def get_location(self) -> Location:
-        raise NotImplementedError
+    @property
+    def location(self) -> Location:
+        return self.__location
