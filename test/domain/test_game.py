@@ -169,39 +169,39 @@ class TestGame(TestCase):
         game2 = Game(players, items, locations)
 
         # Assert
-        self.assertNotEqual(game1.get_id(), game2.get_id())
+        self.assertNotEqual(game1.id, game2.id)
 
-    def test__get_id__shouldReturnUuid__whenGameJustCreated(self):
+    def test__id__shouldReturnUuid__whenGameJustCreated(self):
         # Arrange
         game = anon_game()
 
         # Act
-        game_id = game.get_id()
+        game_id = game.id
 
         # Assert
         self.assertIsInstance(game_id, UUID)
 
-    def test__get_id__shouldNotChange__whenGameStarts(self):
+    def test__id__shouldNotChange__whenGameStarts(self):
         # Arrange
         game = anon_game()
-        expected_id = game.get_id()
+        expected_id = game.id
         game.start()
 
         # Act
-        actual = game.get_id()
+        actual = game.id
 
         # Assert
         self.assertEqual(expected_id, actual)
 
-    def test__get_id__shouldNotChange__whenEnds(self):
+    def test__id__shouldNotChange__whenEnds(self):
         # Arrange
         game = anon_game()
-        expected_id = game.get_id()
+        expected_id = game.id
         game.start()
         game.end()
 
         # Act
-        actual = game.get_id()
+        actual = game.id
 
         # Assert
         self.assertEqual(expected_id, actual)
