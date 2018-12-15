@@ -133,8 +133,8 @@ class TestGame(TestCase):
         player2_target = game.get_target(player2)
         self.assertEqual(player2, player1_target.player)
         self.assertEqual(player1, player2_target.player)
-        self.assertIn(player1_target.get_item(), items)
-        self.assertIn(player2_target.get_item(), items)
+        self.assertIn(player1_target.item, items)
+        self.assertIn(player2_target.item, items)
         self.assertIn(player2_target.get_location(), locations)
         self.assertIn(player2_target.get_location(), locations)
 
@@ -452,7 +452,7 @@ class TestGame(TestCase):
         player = anon_player()
         game = anon_game(players={player, anon_player()})
         valid_target = game.get_target(player)
-        invalid_target = Target(anon_player(), valid_target.get_item(), valid_target.get_location())
+        invalid_target = Target(anon_player(), valid_target.item, valid_target.get_location())
 
         # Act
         def action(): game.mark_kill(player, invalid_target)
@@ -465,7 +465,7 @@ class TestGame(TestCase):
         player = anon_player()
         game = anon_game(players={player, anon_player()})
         valid_target = game.get_target(player)
-        invalid_target = Target(anon_player(), valid_target.get_item(), valid_target.get_location())
+        invalid_target = Target(anon_player(), valid_target.item, valid_target.get_location())
         game.start()
 
         # Act
@@ -479,7 +479,7 @@ class TestGame(TestCase):
         player = anon_player()
         game = anon_game(players={player, anon_player()})
         valid_target = game.get_target(player)
-        invalid_target = Target(anon_player(), valid_target.get_item(), valid_target.get_location())
+        invalid_target = Target(anon_player(), valid_target.item, valid_target.get_location())
         game.start()
         game.end()
 
@@ -523,7 +523,7 @@ class TestGame(TestCase):
         item2 = anon_item()
         game = Game({player1, player2}, {item1, item2}, {location})
         target = game.get_target(player1)
-        other_item = item1 if target.get_item() != item1 else item2
+        other_item = item1 if target.item != item1 else item2
 
         # Act
         actual = game.mark_kill(player1, Target(player2, other_item, location))
@@ -555,7 +555,7 @@ class TestGame(TestCase):
         item2 = anon_item()
         game = Game({player1, player2}, {item1, item2}, {location})
         target = game.get_target(player1)
-        other_item = item1 if target.get_item() != item1 else item2
+        other_item = item1 if target.item != item1 else item2
         game.start()
 
         # Act
@@ -589,7 +589,7 @@ class TestGame(TestCase):
         item2 = anon_item()
         game = Game({player1, player2}, {item1, item2}, {location})
         target = game.get_target(player1)
-        other_item = item1 if target.get_item() != item1 else item2
+        other_item = item1 if target.item != item1 else item2
         game.start()
         game.end()
 
@@ -623,7 +623,7 @@ class TestGame(TestCase):
         game = anon_game(players={player1, player2, player3})
         target = game.get_target(player1)
         invalid_target = Target(player2 if target.player != player2 else player3,
-                                target.get_item(),
+                                target.item,
                                 target.get_location())
 
         # Act
@@ -657,7 +657,7 @@ class TestGame(TestCase):
         game = anon_game(players={player1, player2, player3})
         target = game.get_target(player1)
         invalid_target = Target(player2 if target.player != player2 else player3,
-                                target.get_item(),
+                                target.item,
                                 target.get_location())
         game.start()
 
@@ -692,7 +692,7 @@ class TestGame(TestCase):
         game = anon_game(players={player1, player2, player3})
         expected_target = game.get_target(player1)
         invalid_target = Target(player2 if expected_target.player != player2 else player3,
-                                expected_target.get_item(),
+                                expected_target.item,
                                 expected_target.get_location())
         game.start()
         game.end()
