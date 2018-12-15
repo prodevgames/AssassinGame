@@ -2,6 +2,7 @@ from random import sample, shuffle
 from typing import Set, Dict
 from uuid import UUID, uuid4
 
+from assassin_game_csss.domain.exceptions import IllegalActionError
 from assassin_game_csss.domain.game_state import GameState
 from assassin_game_csss.domain.item import Item
 from assassin_game_csss.domain.location import Location
@@ -79,12 +80,12 @@ class Game:
 
     def start(self) -> None:
         if self.__status is not GameState.CREATED:
-            raise RuntimeError("Invalid state, cannot start game from state '%s'" % self.__status)
+            raise IllegalActionError("Invalid state, cannot start game from state '%s'" % self.__status)
         self.__status = GameState.STARTED
 
     def end(self) -> None:
         if self.__status is not GameState.STARTED:
-            raise RuntimeError("Invalid state, cannot end game from state '%s'" % self.__status)
+            raise IllegalActionError("Invalid state, cannot end game from state '%s'" % self.__status)
         self.__status = GameState.ENDED
 
     def mark_kill(self, player: Player, target: Target):
