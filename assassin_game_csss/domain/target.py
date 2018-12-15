@@ -27,6 +27,14 @@ class Target:
     def location(self) -> Location:
         return self.__location
 
+    def __hash__(self):
+        return hash((self.__player, self.__item, self.__location))
+
+    def __eq__(self, other):
+        if not isinstance(other, Target):
+            raise TypeError
+        return hash(self) == hash(other)
+
     def __str__(self):
         return "%s at %s with a %s" % (str(self.__player), str(self.__location), str(self.__item))
 
