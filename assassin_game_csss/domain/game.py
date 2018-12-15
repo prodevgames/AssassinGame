@@ -12,6 +12,7 @@ from assassin_game_csss.domain.target import Target
 class Game:
     __name: str = None
     __id: UUID = None
+    __status = None
     __players: Set[Player] = None
     __scores: Dict[Player, int] = None
     __targets: Dict[Player, Target] = None
@@ -41,6 +42,7 @@ class Game:
             raise NotImplementedError("The multiple-target game feature is not yet supported")
 
         # Game Initialization Logic
+        self.__status = GameState.CREATED
         self.__id = uuid4()
         self.__scores = dict()
         self.__targets = dict()
@@ -59,7 +61,7 @@ class Game:
 
     @property
     def status(self) -> GameState:
-        raise NotImplementedError
+        return self.__status
 
     def get_score(self, player: Player) -> int:
         if not isinstance(player, Player):
