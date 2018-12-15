@@ -1,4 +1,4 @@
-from unittest import TestCase, skip
+from unittest import TestCase
 from uuid import UUID
 
 from assassin_game_csss.domain.game import Game
