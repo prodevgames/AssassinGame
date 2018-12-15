@@ -20,11 +20,17 @@ class Game:
         # Type Checking
         if not isinstance(players, set) or any(not isinstance(player, Player) for player in players):
             raise TypeError("The 'players' argument must be a set of Player objects")
-        if not isinstance(items, set) or any(not isinstance(item, Item) for item in items):
+        elif not isinstance(items, set) or any(not isinstance(item, Item) for item in items):
             raise TypeError("The 'items' argument must be a set of Item objects")
-        if not isinstance(locations, set) or any(not isinstance(location, Location) for location in locations):
+        elif not isinstance(locations, set) or any(not isinstance(location, Location) for location in locations):
             raise TypeError("The 'locations' argument must be a set of Location objects")
 
+        if len(players) < 2:
+            raise ValueError("A game cannot be constructed with fewer than 2 players")
+        elif len(items) < 1:
+            raise ValueError("A game cannot be constructed with fewer than 1 items")
+        elif len(locations) < 1:
+            raise ValueError("A game cannot be constructed with fewer than 1 locations")
 
         # Game Initialization Logic
         raise NotImplementedError
