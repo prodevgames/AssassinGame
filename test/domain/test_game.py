@@ -297,7 +297,7 @@ class TestGame(TestCase):
         self.assertEqual(2, actual)
     
     def test__get_target__shouldThrowException__whenPlayerNotInGame(self):
-        # Arrange
+        # ArrangeX
         game = anon_game()
 
         # Act

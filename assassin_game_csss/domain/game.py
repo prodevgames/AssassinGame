@@ -66,11 +66,15 @@ class Game:
     def get_score(self, player: Player) -> int:
         if not isinstance(player, Player):
             raise TypeError("Cannot get the score of a non-player argument")
+        elif player not in self.__players:
+            raise ValueError("Player '%s' not found in game" % player)
         return self.__scores[player]
 
     def get_target(self, player: Player) -> Target:
         if not isinstance(player, Player):
             raise TypeError("Cannot get the target of a non-player argument")
+        elif player not in self.__players:
+            raise ValueError("Player '%s' not found in game" % player)
         return self.__targets[player]
 
     def start(self) -> None:
