@@ -707,6 +707,23 @@ class TestGame(TestCase):
         # Assert
         self.assertEqual(None, game.get_target(killed_player))
 
+    def test__is_alive__shouldReturnCorrectBool__whenPlayersAreStillAliveAndGameIsNotStarted(self):
+        # Arrange
+        player1 = anon_player()
+        game = anon_game(players={player1, anon_player(), anon_player()})
+        player2 = game.get_target(player1).player
+        player3 = game.get_target(player2).player
+
+        # Act
+        actual1 = game.is_alive(player1)
+        actual2 = game.is_alive(player2)
+        actual3 = game.is_alive(player3)
+
+        # Assert
+        self.assertTrue(actual1)
+        self.assertTrue(actual2)
+        self.assertTrue(actual3)
+
     def test__equals__shouldReturnFalse__whenGamesCreatedWithIdenticalOptions(self):
         # Arrange
         players = {anon_player(), anon_player(), anon_player()}
