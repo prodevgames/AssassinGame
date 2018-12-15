@@ -76,6 +76,8 @@ class Game:
             raise TypeError("Cannot get the target of a non-player argument")
         if player not in self.__players:
             raise ValueError("Player '%s' not found in game" % player)
+        if player not in self.__targets:
+            raise ValueError("Player is dead and does not have a target")
         return self.__targets[player]
 
     def start(self) -> None:
