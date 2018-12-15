@@ -90,6 +90,9 @@ class Game:
             raise IllegalActionError("Invalid state, cannot end game from state '%s'" % self.__status)
         self.__status = GameState.ENDED
 
+    def is_alive(self, player: Player) -> bool:
+        return player in self.__targets.keys()
+
     def mark_kill(self, player: Player, target: Target):
         if self.__status is not GameState.STARTED:
             raise IllegalActionError("Cannot kill a target if game has not been started.")
