@@ -1,6 +1,7 @@
 from unittest import TestCase
 from uuid import UUID
 
+from assassin_game_csss.domain.exceptions import IllegalActionError
 from assassin_game_csss.domain.game import Game
 from assassin_game_csss.domain.game_state import GameState
 from assassin_game_csss.domain.target import Target
@@ -353,7 +354,7 @@ class TestGame(TestCase):
         def action(): game.start()
 
         # Assert
-        self.assertRaises(RuntimeError, action)
+        self.assertRaises(IllegalActionError, action)
 
     def test__start__shouldThrowException__whenCalledAfterGameEnded(self):
         # Arrange
@@ -365,7 +366,7 @@ class TestGame(TestCase):
         def action(): game.start()
 
         # Assert
-        self.assertRaises(RuntimeError, action)
+        self.assertRaises(IllegalActionError, action)
 
     def test__start__shouldModifyStatusToStarted__whenCalledOnGameInCreatedState(self):
         # Arrange
@@ -386,7 +387,7 @@ class TestGame(TestCase):
         def action(): game.end()
 
         # Assert
-        self.assertRaises(RuntimeError, action)
+        self.assertRaises(IllegalActionError, action)
 
     def test__end__shouldThrowException__whenCalledAfterGameEnded(self):
         # Arrange
@@ -398,7 +399,7 @@ class TestGame(TestCase):
         def action(): game.end()
 
         # Assert
-        self.assertRaises(RuntimeError, action)
+        self.assertRaises(IllegalActionError, action)
 
     def test__end__shouldModifyStatusToEnded__whenCalledOnGameInStartedState(self):
         # Arrange
@@ -515,7 +516,7 @@ class TestGame(TestCase):
         def action(): game.mark_kill(player1, Target(player2, item, location))
 
         # Assert
-        self.assertRaises(RuntimeError, action)
+        self.assertRaises(IllegalActionError, action)
 
     def test__mark_kill__shouldThrowException__whenGameHasEnded(self):
         # Arrange
@@ -531,7 +532,7 @@ class TestGame(TestCase):
         def action(): game.mark_kill(player1, Target(player2, item, location))
 
         # Assert
-        self.assertRaises(RuntimeError, action)
+        self.assertRaises(IllegalActionError, action)
 
     def test__mark_kill__shouldRaiseException__whenTargetIsIncorrect(self):
         # Arrange
