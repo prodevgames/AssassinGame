@@ -8,7 +8,6 @@ from test.test_helper.anon import anon_item, anon_location, anon_player, anon_ga
 
 
 class TestGame(TestCase):
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenPlayersArgIsNotSetOfPlayers(self):
         # Arrange
         invalid_players = {2, 3, 4}
@@ -21,7 +20,6 @@ class TestGame(TestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenItemsArgIsNotSetOfItems(self):
         # Arrange
         players = {anon_player(), anon_player(), anon_player()}
@@ -34,7 +32,6 @@ class TestGame(TestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenLocationsArgIsNotSetOfLocations(self):
         # Arrange
         players = {anon_player(), anon_player(), anon_player()}
@@ -47,7 +44,6 @@ class TestGame(TestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenLessThanTwoPlayersProvided(self):
         # Arrange
         players = {anon_player()}
@@ -60,7 +56,6 @@ class TestGame(TestCase):
         # Assert
         self.assertRaises(ValueError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenLessThanOneItemProvided(self):
         # Arrange
         players = {anon_player(), anon_player(), anon_player()}
@@ -73,7 +68,6 @@ class TestGame(TestCase):
         # Assert
         self.assertRaises(ValueError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenLessThanOneLocationProvided(self):
         # Arrange
         players = {anon_player(), anon_player(), anon_player()}
@@ -86,7 +80,6 @@ class TestGame(TestCase):
         # Assert
         self.assertRaises(ValueError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenNumTargetsArgIsNotAnInt(self):
         # Arrange
         players = {anon_player(), anon_player(), anon_player()}
@@ -100,7 +93,6 @@ class TestGame(TestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenNumTargetArgIsLessThanOne(self):
         # Arrange
         players = {anon_player(), anon_player(), anon_player()}
@@ -113,7 +105,6 @@ class TestGame(TestCase):
         # Assert
         self.assertRaises(ValueError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldThrowException__whenNumTargetArgIsNotOne(self):
         # TODO GH 2018-Sep-15: Add functionality to support multiple targets and change this test to match new behaviour
         # Arrange
@@ -127,7 +118,6 @@ class TestGame(TestCase):
         # Assert
         self.assertRaises(NotImplementedError, action)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldGenerateTargetsForEachPlayerFromProvidedOptions__whenGameJustCreated(self):
         # Arrange
         player1 = anon_player()
@@ -148,7 +138,6 @@ class TestGame(TestCase):
         self.assertIn(player2_target.get_location(), locations)
         self.assertIn(player2_target.get_location(), locations)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldGenerateSingleCompleteLoopOfPlayerTargets__whenNumTargetsArgIsOne(self):
         # Arrange
         initial_player = anon_player()
@@ -169,7 +158,6 @@ class TestGame(TestCase):
             current_player = next_player
         self.assertEqual(current_player, initial_player)
 
-    @skip("Not Yet Implemented")
     def test__constructor__shouldGenerateUniqueIdentifiers__whenGameInfoIsOtherwiseIdentical(self):
         # Arrange
         players = {anon_player(), anon_player(), anon_player()}
@@ -183,7 +171,6 @@ class TestGame(TestCase):
         # Assert
         self.assertNotEqual(game1.get_id(), game2.get_id())
 
-    @skip("Not Yet Implemented")
     def test__get_id__shouldReturnUuid__whenGameJustCreated(self):
         # Arrange
         game = anon_game()
@@ -194,7 +181,6 @@ class TestGame(TestCase):
         # Assert
         self.assertIsInstance(game_id, UUID)
 
-    @skip("Not Yet Implemented")
     def test__get_id__shouldNotChange__whenGameStarts(self):
         # Arrange
         game = anon_game()
@@ -207,7 +193,6 @@ class TestGame(TestCase):
         # Assert
         self.assertEqual(expected_id, actual)
 
-    @skip("Not Yet Implemented")
     def test__get_id__shouldNotChange__whenEnds(self):
         # Arrange
         game = anon_game()
@@ -221,7 +206,6 @@ class TestGame(TestCase):
         # Assert
         self.assertEqual(expected_id, actual)
 
-    @skip("Not Yet Implemented")
     def test__get_status__shouldReturnCreated__whenGameJustConstructed(self):
         # Arrange
         game = anon_game()
@@ -232,7 +216,6 @@ class TestGame(TestCase):
         # Assert
         self.assertEqual(GameState.CREATED, actual)
 
-    @skip("Not Yet Implemented")
     def test__get_status__shouldReturnStarted__whenGameHasBeenStarted(self):
         # Arrange
         game = anon_game()
@@ -244,7 +227,6 @@ class TestGame(TestCase):
         # Assert
         self.assertEqual(GameState.STARTED, actual)
 
-    @skip("Not Yet Implemented")
     def test__get_status__shouldReturnEnded__whenGameHasBeenEnded(self):
         # Arrange
         game = anon_game()
@@ -257,7 +239,6 @@ class TestGame(TestCase):
         # Assert
         self.assertEqual(GameState.ENDED, actual)
 
-    @skip("Not Yet Implemented")
     def test__get_score__shouldThrowException__whenPlayerNotInGame(self):
         # Arrange
         game = anon_game()
@@ -268,7 +249,6 @@ class TestGame(TestCase):
         # Assert
         self.assertRaises(ValueError, action)
 
-    @skip("Not Yet Implemented")
     def test__get_score__shouldReturnZeroForEveryPlayer__whenGameJustCreated(self):
         # Arrange
         players = {anon_player(), anon_player(), anon_player()}
@@ -281,7 +261,6 @@ class TestGame(TestCase):
         for score in actual:
             self.assertEqual(0, score)
 
-    @skip("Not Yet Implemented")
     def test__get_score__shouldReturnOne__whenPlayerSuccessfullyKillsTarget(self):
         # Arrange
         first_player = anon_player()
@@ -298,7 +277,6 @@ class TestGame(TestCase):
         # Assert
         self.assertEqual(1, actual)
 
-    @skip("Not Yet Implemented")
     def test__get_score__shouldIncrement__whenPlayerKillsSuccessiveTargets(self):
         # Arrange
         player = anon_player()
@@ -315,7 +293,6 @@ class TestGame(TestCase):
         # Assert
         self.assertEqual(2, actual)
     
-    @skip("Not Yet Implemented")
     def test__get_target__shouldThrowException__whenPlayerNotInGame(self):
         # Arrange
         game = anon_game()
@@ -326,7 +303,6 @@ class TestGame(TestCase):
         # Assert
         self.assertRaises(ValueError, action)
     
-    @skip("Not Yet Implemented")
     def test__get_target__shouldReturnTarget__whenGameCreated(self):
         # Arrange
         player = anon_player()
@@ -338,7 +314,6 @@ class TestGame(TestCase):
         # Assert
         self.assertIsNotNone(actual)
 
-    @skip("Not Yet Implemented")
     def test__get_target__shouldReturnSameTarget__whenCalledAfterGameStarted(self):
         # Arrange
         player = anon_player()
@@ -352,7 +327,6 @@ class TestGame(TestCase):
         # Assert
         self.assertEqual(expected_target, actual)
 
-    @skip("Not Yet Implemented")
     def test__get_target__shouldReturnSameTarget__whenCalledAfterGameEnded(self):
         # Arrange
         player = anon_player()
@@ -367,7 +341,6 @@ class TestGame(TestCase):
         # Assert
         self.assertEqual(expected_target, actual)
 
-    @skip("Not Yet Implemented")
     def test__start__shouldThrowException__whenCalledAfterGameAlreadyStarted(self):
         # Arrange
         game = anon_game()
@@ -379,7 +352,6 @@ class TestGame(TestCase):
         # Assert
         self.assertRaises(RuntimeError, action)
 
-    @skip("Not Yet Implemented")
     def test__start__shouldThrowException__whenCalledAfterGameEnded(self):
         # Arrange
         game = anon_game()
@@ -392,7 +364,6 @@ class TestGame(TestCase):
         # Assert
         self.assertRaises(RuntimeError, action)
 
-    @skip("Not Yet Implemented")
     def test__start__shouldModifyStatusToStarted__whenCalledOnGameInCreatedState(self):
         # Arrange
         game = anon_game()
@@ -404,7 +375,6 @@ class TestGame(TestCase):
         actual = game.get_status()
         self.assertEqual(GameState.STARTED, actual)
 
-    @skip("Not Yet Implemented")
     def test__end__shouldThrowException__whenCalledOnGameInCreatedState(self):
         # Arrange
         game = anon_game()
@@ -415,7 +385,6 @@ class TestGame(TestCase):
         # Assert
         self.assertRaises(RuntimeError, action)
 
-    @skip("Not Yet Implemented")
     def test__end__shouldThrowException__whenCalledAfterGameEnded(self):
         # Arrange
         game = anon_game()
@@ -428,7 +397,6 @@ class TestGame(TestCase):
         # Assert
         self.assertRaises(RuntimeError, action)
 
-    @skip("Not Yet Implemented")
     def test__end__shouldModifyStatusToEnded__whenCalledOnGameInStartedState(self):
         # Arrange
         game = anon_game()
@@ -440,7 +408,6 @@ class TestGame(TestCase):
         # Assert
         self.assertEqual(GameState.ENDED, game.get_status())
     
-    @skip("Not Yet Implemented")
     def test__mark_kill__shouldThrowException__whenPlayerNotInGameAndGameCreated(self):
         # Arrange
         player = anon_player()
@@ -453,7 +420,6 @@ class TestGame(TestCase):
         # Assert
         self.assertRaises(ValueError, action)
 
-    @skip("Not Yet Implemented")
     def test__mark_kill__shouldThrowException__whenPlayerNotInGameAndGameStarted(self):
         # Arrange
         player = anon_player()
@@ -467,7 +433,6 @@ class TestGame(TestCase):
         # Assert
         self.assertRaises(ValueError, action)
 
-    @skip("Not Yet Implemented")
     def test__mark_kill__shouldThrowException__whenPlayerNotInGameAndGameEnded(self):
         # Arrange
         player = anon_player()
@@ -482,7 +447,6 @@ class TestGame(TestCase):
         # Assert
         self.assertRaises(ValueError, action)
 
-    @skip("Not Yet Implemented")
     def test__mark_kill__shouldThrowException__whenTargetPlayerNotInGameAndGameCreated(self):
         # Arrange
         player = anon_player()
@@ -496,7 +460,6 @@ class TestGame(TestCase):
         # Assert
         self.assertRaises(ValueError, action)
 
-    @skip("Not Yet Implemented")
     def test__mark_kill__shouldThrowException__whenTargetPlayerNotInGameAndGameStarted(self):
         # Arrange
         player = anon_player()
@@ -511,7 +474,6 @@ class TestGame(TestCase):
         # Assert
         self.assertRaises(ValueError, action)
 
-    @skip("Not Yet Implemented")
     def test__mark_kill__shouldThrowException__whenTargetPlayerNotInGameAndGameEnded(self):
         # Arrange
         player = anon_player()
@@ -527,7 +489,6 @@ class TestGame(TestCase):
         # Assert
         self.assertRaises(ValueError, action)
 
-    @skip("Not Yet Implemented")
     def test__mark_kill__shouldThrowException__whenTargetPlayerIsKillingPlayer(self):
         # Arrange
         player = anon_player()
@@ -539,7 +500,6 @@ class TestGame(TestCase):
         # Assert
         self.assertRaises(ValueError, action)
 
-    @skip("Not Yet Implemented")
     def test__mark_kill__shouldReturnFalse__whenTargetIsCorrectButGameIsNotStarted(self):
         # Arrange
         player1 = anon_player()
@@ -554,7 +514,6 @@ class TestGame(TestCase):
         # Assert
         self.assertFalse(actual)
 
-    @skip("Not Yet Implemented")
     def test__mark_kill__shouldReturnFalse__whenTargetIsIncorrectAndGameIsNotStarted(self):
         # Arrange
         player1 = anon_player()
@@ -572,7 +531,6 @@ class TestGame(TestCase):
         # Assert
         self.assertFalse(actual)
 
-    @skip("Not Yet Implemented")
     def test__mark_kill__shouldReturnTrue__whenTargetIsCorrectAndGameIsStarted(self):
         # Arrange
         player1 = anon_player()
@@ -588,7 +546,6 @@ class TestGame(TestCase):
         # Assert
         self.assertTrue(actual)
 
-    @skip("Not Yet Implemented")
     def test__mark_kill__shouldReturnFalse__whenTargetIsIncorrectAndGameIsStarted(self):
         # Arrange
         player1 = anon_player()
@@ -607,7 +564,6 @@ class TestGame(TestCase):
         # Assert
         self.assertFalse(actual)
 
-    @skip("Not Yet Implemented")
     def test__mark_kill__shouldReturnFalse__whenTargetIsCorrectButGameHasEnded(self):
         # Arrange
         player1 = anon_player()
@@ -624,7 +580,6 @@ class TestGame(TestCase):
         # Assert
         self.assertFalse(actual)
 
-    @skip("Not Yet Implemented")
     def test__mark_kill__shouldReturnFalse__whenTargetIsIncorrectGameHasEnded(self):
         # Arrange
         player1 = anon_player()
@@ -644,7 +599,6 @@ class TestGame(TestCase):
         # Assert
         self.assertFalse(actual)
 
-    @skip("Not Yet Implemented")
     def test__mark_kill__shouldNotModifyTarget__whenTargetIsCorrectButGameIsNotStarted(self):
         # Arrange
         player1 = anon_player()
@@ -661,7 +615,6 @@ class TestGame(TestCase):
         p1_actual_target_player = game.get_target(player1).get_player()
         self.assertEqual(p1_initial_target.get_player(), p1_actual_target_player)
 
-    @skip("Not Yet Implemented")
     def test__mark_kill__shouldNotModifyTarget__whenTargetIsIncorrectAndGameIsNotStarted(self):
         # Arrange
         player1 = anon_player()
@@ -680,7 +633,6 @@ class TestGame(TestCase):
         p1_actual_target = game.get_target(player1)
         self.assertEqual(target, p1_actual_target)
 
-    @skip("Not Yet Implemented")
     def test__mark_kill__shouldModifyTarget__whenTargetIsCorrectAndGameIsStarted(self):
         # Arrange
         player1 = anon_player()
@@ -697,7 +649,6 @@ class TestGame(TestCase):
         # Assert
         self.assertEqual(expected_next_target_player, game.get_target(player1).get_player())
 
-    @skip("Not Yet Implemented")
     def test__mark_kill__shouldNotModifyTarget__whenTargetIsIncorrectAndGameIsStarted(self):
         # Arrange
         player1 = anon_player()
@@ -717,7 +668,6 @@ class TestGame(TestCase):
         p1_actual_target = game.get_target(player1)
         self.assertEqual(target, p1_actual_target)
 
-    @skip("Not Yet Implemented")
     def test__mark_kill__shouldNotModifyTarget__whenTargetIsCorrectButGameHasEnded(self):
         # Arrange
         player1 = anon_player()
@@ -734,7 +684,6 @@ class TestGame(TestCase):
         # Assert
         self.assertEqual(expected_target, game.get_target(player1))
 
-    @skip("Not Yet Implemented")
     def test__mark_kill__shouldNotModifyTarget__whenTargetIsIncorrectGameHasEnded(self):
         # Arrange
         player1 = anon_player()
@@ -755,7 +704,6 @@ class TestGame(TestCase):
         p1_actual_target = game.get_target(player1)
         self.assertEqual(expected_target, p1_actual_target)
 
-    @skip("Not Yet Implemented")
     def test__mark_kill__shouldGiveKilledPlayersTargetToKiller__whenKilledPlayerHasTargetThatIsNotKiller(self):
         # Arrange
         player = anon_player()
@@ -769,7 +717,6 @@ class TestGame(TestCase):
         # Assert
         self.assertEqual(expected_next_target, game.get_target(player))
 
-    @skip("Not Yet Implemented")
     def test__mark_kill__shouldSetTargetToNone__whenKilledPlayersTargetIsTheKiller(self):
         # Arrange
         player = anon_player()
@@ -782,7 +729,6 @@ class TestGame(TestCase):
         # Assert
         self.assertEqual(None, game.get_target(player))
 
-    @skip("Not Yet Implemented")
     def test__mark_kill__shouldEndGame__whenAllPlayersButLastHaveBeenKilled(self):
         # Arrange
         player = anon_player()
@@ -797,7 +743,6 @@ class TestGame(TestCase):
         # Assert
         self.assertEqual(GameState.ENDED, game.get_status())
 
-    @skip("Not Yet Implemented")
     def test__mark_kill__shouldSetTargetOfKilledPlayerToNone__whenPlayerSuccessfullyKilled(self):
         # Arrange
         player = anon_player()
@@ -811,7 +756,6 @@ class TestGame(TestCase):
         # Assert
         self.assertEqual(None, game.get_target(killed_player))
 
-    @skip("Not Yet Implemented")
     def test__equals__shouldReturnFalse__whenGamesCreatedWithIdenticalOptions(self):
         # Arrange
         players = {anon_player(), anon_player(), anon_player()}
