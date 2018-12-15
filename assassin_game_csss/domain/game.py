@@ -36,6 +36,10 @@ class Game:
         elif num_targets < 1:
             raise ValueError("A game cannot be constructed with fewer than 1 target per player")
 
+        # TODO GH 2018-Sep-15: Add functionality to support multiple targets and remove this when done
+        if num_targets != 1:
+            raise NotImplementedError("The multiple-target game feature is not yet supported")
+
         # Game Initialization Logic
         self.__scores = dict()
         self.__targets = dict()
