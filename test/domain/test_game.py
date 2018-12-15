@@ -411,18 +411,6 @@ class TestGame(TestCase):
 
         # Assert
         self.assertEqual(GameState.ENDED, game.status)
-    
-    def test__mark_kill__shouldThrowException__whenPlayerNotInGameAndGameCreated(self):
-        # Arrange
-        player = anon_player()
-        game = anon_game(players={player, anon_player()})
-        valid_target = game.get_target(player)
-
-        # Act
-        def action(): game.mark_kill(anon_player(), valid_target)
-
-        # Assert
-        self.assertRaises(ValueError, action)
 
     def test__mark_kill__shouldThrowException__whenPlayerNotInGameAndGameStarted(self):
         # Arrange
@@ -433,33 +421,6 @@ class TestGame(TestCase):
 
         # Act
         def action(): game.mark_kill(anon_player(), valid_target)
-
-        # Assert
-        self.assertRaises(ValueError, action)
-
-    def test__mark_kill__shouldThrowException__whenPlayerNotInGameAndGameEnded(self):
-        # Arrange
-        player = anon_player()
-        game = anon_game(players={player, anon_player()})
-        valid_target = game.get_target(player)
-        game.start()
-        game.end()
-
-        # Act
-        def action(): game.mark_kill(anon_player(), valid_target)
-
-        # Assert
-        self.assertRaises(ValueError, action)
-
-    def test__mark_kill__shouldThrowException__whenTargetPlayerNotInGameAndGameCreated(self):
-        # Arrange
-        player = anon_player()
-        game = anon_game(players={player, anon_player()})
-        valid_target = game.get_target(player)
-        invalid_target = Target(anon_player(), valid_target.item, valid_target.location)
-
-        # Act
-        def action(): game.mark_kill(player, invalid_target)
 
         # Assert
         self.assertRaises(ValueError, action)
@@ -478,25 +439,11 @@ class TestGame(TestCase):
         # Assert
         self.assertRaises(ValueError, action)
 
-    def test__mark_kill__shouldThrowException__whenTargetPlayerNotInGameAndGameEnded(self):
-        # Arrange
-        player = anon_player()
-        game = anon_game(players={player, anon_player()})
-        valid_target = game.get_target(player)
-        invalid_target = Target(anon_player(), valid_target.item, valid_target.location)
-        game.start()
-        game.end()
-
-        # Act
-        def action(): game.mark_kill(player, invalid_target)
-
-        # Assert
-        self.assertRaises(ValueError, action)
-
     def test__mark_kill__shouldThrowException__whenTargetPlayerIsKillingPlayer(self):
         # Arrange
         player = anon_player()
         game = anon_game(players={player, anon_player(), anon_player()})
+        game.start()
 
         # Act
         def action(): game.mark_kill(player, Target(player, anon_item(), anon_location()))
