@@ -32,7 +32,7 @@ class Target:
 
     def __eq__(self, other):
         if not isinstance(other, Target):
-            raise TypeError
+            return False
         return hash(self) == hash(other)
 
     def __str__(self):
