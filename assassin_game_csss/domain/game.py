@@ -60,8 +60,10 @@ class Game:
     def status(self) -> GameState:
         raise NotImplementedError
 
-    def get_score(self, player) -> int:
-        raise NotImplementedError
+    def get_score(self, player: Player) -> int:
+        if not isinstance(player, Player):
+            raise TypeError("Cannot get the score of a non-player argument")
+        return self.__scores[player]
 
     def get_target(self, player: Player) -> Target:
         if not isinstance(player, Player):
