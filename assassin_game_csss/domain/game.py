@@ -87,5 +87,5 @@ class Game:
             raise RuntimeError("Invalid state, cannot end game from state '%s'" % self.__status)
         self.__status = GameState.ENDED
 
-    def mark_kill(self, player: Player, target: Target) -> bool:
+    def mark_kill(self, player: Player, target: Target):
         raise NotImplementedError
