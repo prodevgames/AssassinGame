@@ -344,6 +344,21 @@ class TestGame(TestCase):
 
         # Assert
         self.assertEqual(expected_target, actual)
+    
+    def test__get_target__shouldThrowException__whenPlayerIsDead(self):
+        # Arrange
+        player = anon_player()
+        game = anon_game(players={player, anon_player(), anon_player()})
+        target = game.get_target(player)
+        dead_player = target.player
+        game.start()
+        game.mark_kill(player, target)
+
+        # Act
+        def action(): game.get_target(dead_player)
+
+        # Assert
+        self.assertRaises(ValueError, action)
 
     def test__start__shouldThrowException__whenCalledAfterGameAlreadyStarted(self):
         # Arrange
