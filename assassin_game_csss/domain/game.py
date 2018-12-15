@@ -1,8 +1,11 @@
+from typing import Set
 from uuid import UUID
 
+from assassin_game_csss.domain.game_state import GameState
+from assassin_game_csss.domain.item import Item
+from assassin_game_csss.domain.location import Location
 from assassin_game_csss.domain.player import Player
 from assassin_game_csss.domain.target import Target
-from assassin_game_csss.domain.game_state import GameState
 
 
 class Game:
@@ -12,7 +15,10 @@ class Game:
     __scores: dict = None
     __targets: dict = None
 
-    def __init__(self, players: set, items: set, locations: set, num_targets: int = 1) -> None:
+    def __init__(self, players: Set[Player], items: Set[Item], locations: Set[Location], num_targets: int = 1) -> None:
+        # Type Checking
+
+        # Game Initialization Logic
         raise NotImplementedError
 
     @property
