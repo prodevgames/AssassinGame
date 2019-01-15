@@ -1,5 +1,11 @@
-from random import choices
-from string import ascii_letters, digits, ascii_lowercase
+import random
+from itertools import count
+from functools import wraps
+from string import (
+    ascii_letters,
+    ascii_lowercase,
+    digits,
+)
 
 from assassin_game_csss.domain.game import Game
 from assassin_game_csss.domain.item import Item
@@ -9,17 +15,52 @@ from assassin_game_csss.domain.target import Target
 from assassin_game_csss.domain.upid import UPID
 
 
-def anon_string(count: int = 10) -> str:
-    return ''.join(choices(ascii_letters + digits, k=count))
+def autoindex(func):
+    """
+    Converts func that takes an index into a function where index is
+    incremented for successive calls.
+    """
+    index = count(random.randint(0, 1 << 63))
+
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        return func(next(index), *args, **kwargs)
+
+    return wrapper
+
+
+def trim_char(index, chars):
+    new_index, char = divmod(index, len(chars))
+    return new_index, chars[char]
+
+
+@autoindex
+def anon_string(index: int, length: int = 10) -> str:
+    chars = digits + ascii_letters
+    to_join = []
+    for _ in range(length):
+        index, c = trim_char(index, chars)
+        to_join.append(c)
+    return ''.join(to_join)
+
+
+@autoindex
+def anon_upid(index: int) -> UPID:
+    to_join = []
+
+    for _ in range(3):
+        index, c = trim_char(index, ascii_lowercase)
+        to_join.append(c)
+
+    for _ in range(3):
+        index, c = trim_char(index, digits)
+        to_join.append(c)
+
+    return UPID(''.join(to_join))
 
 
 def anon_player() -> Player:
     return Player(anon_string(), anon_upid())
-
-
-def anon_upid() -> UPID:
-    return UPID("%s%s" % ("".join(choices(ascii_lowercase, k=3)),
-                          "".join(choices(digits, k=3))))
 
 
 def anon_location() -> Location:
