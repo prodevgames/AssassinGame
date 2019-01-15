@@ -101,12 +101,10 @@ class Game:
         if target != self.__targets[player]:
             raise ValueError("Target to be marked as killed was not found in game")
 
-        # change targets
         self.__targets[player] = self.__targets[target.player]
         del self.__targets[target.player]
-        # increment score
+
         self.__scores[player] += 1
 
-        # if the last target is killed, STOP game
         if len(self.__targets) == 1:
             self.__status = GameState.ENDED
