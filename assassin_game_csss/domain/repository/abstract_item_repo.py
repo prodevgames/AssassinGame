@@ -10,7 +10,7 @@ class AbstractItemRepo(ABC):
         pass
 
     @abstractmethod
-    def retrieve_all(self) -> set:
+    def retrieve_all(self) -> frozenset:
         pass
 
     @abstractmethod
