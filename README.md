@@ -1,12 +1,9 @@
-# CSSS Assassin Game
+# Assassin Game
 
 ## Authors
 
-- Garrett Hansen, ***REMOVED***
-- Jarrod Pas, ***REMOVED***
-- Jeremy Storring, ***REMOVED***
-- Killian Stacey, ***REMOVED***
-- Ben Lewis, ***REMOVED***
-- ***REMOVED***, ***REMOVED***
-- ***REMOVED***, ***REMOVED***
-- ***REMOVED***, ***REMOVED***
+- Garrett Hansen
+- Jarrod Pas
+- Jeremy Storring
+- Killian Stacey
+- Ben Lewis
