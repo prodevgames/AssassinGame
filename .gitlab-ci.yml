@@ -1,0 +1,6 @@
+before_script:
+- python --version
+
+tests:
+  script:
+    - python -m unittest --verbose --locals

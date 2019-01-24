@@ -1,5 +1,3 @@
-from unittest import skip
-
 from assassin_game_csss.domain.repository.abstract_item_repo import AbstractItemRepo
 from test.test_helper.abstract_test_case import AbstractTestCase
 from test.test_helper.anon import anon_item
@@ -12,7 +10,6 @@ class TestAbstractItemRepo(AbstractTestCase):
     def setUp(self):
         self._item_repo = self._get_instance()
 
-    @skip("Not Yet Implemented")
     def test__save__shouldThrowException__whenProvidedNonItemArg(self):
 
         # Act
@@ -22,7 +19,6 @@ class TestAbstractItemRepo(AbstractTestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__save__shouldNotThrowException__whenProvidedValidItemArg(self):
 
         # Arrange
@@ -31,7 +27,6 @@ class TestAbstractItemRepo(AbstractTestCase):
         # Act
         self._item_repo.save(item)
 
-    @skip("Not Yet Implemented")
     def test__save__shouldNotThrowException__whenItemAlreadyExistsInRepo(self):
         # Arrange
         item = anon_item()
@@ -40,7 +35,6 @@ class TestAbstractItemRepo(AbstractTestCase):
         # Act
         self._item_repo.save(item)
 
-    @skip("Not Yet Implemented")
     def test__save__shouldNotSaveDuplicateItem__whenItemAlreadyExistsInRepo(self):
         # Arrange
         item = anon_item()
@@ -53,17 +47,15 @@ class TestAbstractItemRepo(AbstractTestCase):
         items = self._item_repo.retrieve_all()
         self.assertEqual(1, len(items))
 
-    @skip("Not Yet Implemented")
-    def test__retrieve_all__shouldReturnEmptySet__whenRepoIsEmpty(self):
+    def test__retrieve_all__shouldReturnEmptyFrozenset__whenRepoIsEmpty(self):
 
         # Act
         items = self._item_repo.retrieve_all()
 
         # Assert
-        self.assertIsInstance(set, items)
+        self.assertIsInstance(items, frozenset)
         self.assertEqual(0, len(items))
 
-    @skip("Not Yet Implemented")
     def test__retrieve_all__shouldReturnSavedItem__whenOnlyOneItemStored(self):
 
         # Arrange
@@ -71,13 +63,12 @@ class TestAbstractItemRepo(AbstractTestCase):
         self._item_repo.save(expected_item)
 
         # Act
-        items = self._item_repo.retrieve_all()
+        items = list(self._item_repo.retrieve_all())
 
         # Assert
-        actual = items.pop()
-        self.assertEqual(expected_item, actual)
+        self.assertEqual(1, len(items))
+        self.assertEqual(expected_item, items[0])
 
-    @skip("Not Yet Implemented")
     def test__retrieve_all__shouldReturnAllSavedItems__whenMultipleItemsStored(self):
 
         # Arrange
@@ -94,7 +85,6 @@ class TestAbstractItemRepo(AbstractTestCase):
         # Assert
         self.assertEqual({item1, item2, item3}, items)
 
-    @skip("Not Yet Implemented")
     def test__delete__shouldThrowException__whenArgumentIsNotOfTypeItem(self):
 
         # Act
@@ -104,7 +94,6 @@ class TestAbstractItemRepo(AbstractTestCase):
         # Assert
         self.assertRaises(TypeError, action)
 
-    @skip("Not Yet Implemented")
     def test__delete__shouldThrowException__whenRepositoryIsEmpty(self):
 
         # Act
@@ -113,7 +102,6 @@ class TestAbstractItemRepo(AbstractTestCase):
         # Assert
         self.assertRaises(KeyError, action)
 
-    @skip("Not Yet Implemented")
     def test__delete__shouldThrowException__whenRepositoryContainsItemsButNotTheDeletedOne(self):
 
         # Arrange
@@ -126,7 +114,6 @@ class TestAbstractItemRepo(AbstractTestCase):
         # Assert
         self.assertRaises(KeyError, action)
 
-    @skip("Not Yet Implemented")
     def test__delete__shouldNotModifyEntries__whenDeleteCalledWithItemNotInRepo(self):
 
         # Arrange
@@ -145,7 +132,6 @@ class TestAbstractItemRepo(AbstractTestCase):
         items = self._item_repo.retrieve_all()
         self.assertEqual({item1, item2}, items)
 
-    @skip("Not Yet Implemented")
     def test__delete__shouldRemoveItem__whenItemExistsInRepository(self):
 
         # Arrange
